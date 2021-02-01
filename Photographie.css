@@ -1,0 +1,60 @@
+@font-face {
+  font-family: "Hind-Bold";
+  src: url("../Portfolio/font/Hind-Bold.ttf");
+}
+
+body {
+  background-color: #202020;
+}
+
+.galery {
+  width: 700px;
+  margin: 40px 375px;
+  display: grid;
+  grid-template-columns: repeat(1, 500px);
+  grid-gap: 40px;
+}
+
+.galery2 {
+  
+  width: 700px;
+  margin: 0 105px;
+  display: grid;
+  grid-template-columns: repeat(1, 300px);
+  grid-gap: 40px;
+}
+
+
+
+.cover {
+  -webkit-filter: grayscale(100%); 
+  filter: grayscale(100%); 
+  width: 500px;
+  height: 300px;
+}
+
+.cover2 {
+  -webkit-filter: grayscale(100%); 
+  filter: grayscale(100%); 
+  width: 300px;
+  height: 533px;
+}
+
+.cover:hover {
+     -webkit-filter: grayscale(0%); 
+  filter: grayscale(0%); 
+}
+
+.cover2:hover {
+     -webkit-filter: grayscale(0%); 
+  filter: grayscale(0%); 
+}
+
+h1 {
+
+  color: #ffd100;
+  font-family: 'Hind-Bold', sans-serif;
+  text-align: center;
+  margin-top: 52px;
+  font-size: 100px;
+}

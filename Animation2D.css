@@ -1,0 +1,39 @@
+@font-face {
+  font-family: "Hind-Bold";
+  src: url("../Portfolio/font/Hind-Bold.ttf");
+}
+
+body {
+  background-color: #202020;
+}
+
+.galery {
+  width: 1000px;
+  margin: 40px auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, 467px);
+  grid-gap: 40px;
+}
+.cell {
+  display: flex;
+  position: relative;
+  background-color: #fff;
+  width: auto;
+  overflow: hidden;
+}
+
+
+.cover {
+  width: 467px;
+  height: 263px;
+}
+
+
+h1 {
+
+  color: #ffd100;
+  font-family: 'Hind-Bold', sans-serif;
+  text-align: center;
+  margin-top: 52px;
+  font-size: 100px;
+}
