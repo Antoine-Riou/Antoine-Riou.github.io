@@ -9,7 +9,7 @@ body {
 
 .galery {
   width: 700px;
-  margin: 40px 375px;
+  margin: 40px 30.5%;
   display: grid;
   grid-template-columns: repeat(1, 500px);
   grid-gap: 40px;
