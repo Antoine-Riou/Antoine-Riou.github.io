@@ -139,11 +139,12 @@ body {
   transition: all .6s
 }
 
-.back-to-top .fa {
+.back-to-top .gg-chevron-up {
   
-  font-size: 18px;
-  color: white;
-  vertical-align: middle;
+  size: 200px;
+  color: #202020;
+  margin-left: 28%;
+  margin-top: 24%;
 }
 
 .back-to-top:hover {

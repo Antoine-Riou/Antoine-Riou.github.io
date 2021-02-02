@@ -58,3 +58,43 @@ h1 {
   margin-top: 52px;
   font-size: 100px;
 }
+
+
+/* Back to top */
+
+.back-to-top {
+  visibility: hidden;
+  background-color: #ffd100;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 48px;
+  position: fixed;
+  bottom: 65px;
+  right: 35px;
+  z-index: 90;
+  cursor: pointer;
+  border-radius: 1px;
+  opacity: 0;
+  -webkit-transform: translateZ(0);
+  transition: all .6s
+}
+
+.back-to-top .gg-chevron-up {
+  
+  size: 200px;
+  color: #202020;
+  margin-left: 28%;
+  margin-top: 24%;
+}
+
+.back-to-top:hover {
+  background-color: #d6d6d6;
+  opacity: 1
+}
+
+.back-to-top.show {
+  visibility: visible;
+  bottom: 35px;
+  opacity: 1;
+}
