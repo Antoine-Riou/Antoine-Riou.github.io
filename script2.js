@@ -12,5 +12,3 @@
   })
 }).call(this);
 
-// positionning //
-
