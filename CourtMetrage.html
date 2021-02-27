@@ -10,13 +10,58 @@
 
 <a href="./index.html" class="go-back-link"></a>
 
-<h1 class="titre_CM"> Court Métrage <h1>
+<h1 class="titre_CM"> Court Métrage </h1>
 
 <div class="galery">
-  <div class="cell"><video class="cover" src="./6_Vanished.mp4" width=467  height=263 controls poster="./6_VanishedNB.png"/></div>
+  <div class="cell"><img class="cover" src="./6_VanishedNB.png"/> <button id="myBtn" class="btn"> ? </button> </div>
 
 </div>
 
-  
+<p class="certif"> © 2019-2021 Antoine Riou</p>
+
+
+<!-- BOXES -->
+
+<div id="myModal" class="modal">
+
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Vanished</h2>
+    </div>
+    <div class="modal-body">
+      <video src="./6_Vanished.mp4" controls></video>
+      <div class="modal_txt">
+        <p><span>Contexte : </span>devoir pour un cours d'audiovisuel <br> <span> Mission : </span>réaliser un court métrage<br> <span>Effectif : </span>groupe de 4  <br> <span> Logiciel(s) utilisé(s) : </span>Premiere Pro et After Effect</p>
+      </div>
+    </div>
+    
+  </div>
+
+</div>
+
+<script>
+
+var modal = document.getElementById("myModal");
+
+var btn = document.getElementById("myBtn");
+
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+</script>
 </body>
 </html>

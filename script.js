@@ -1,3 +1,8 @@
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
+
+
 function scrollFooter(scrollY, heightFooter)
 {
     console.log(scrollY);
@@ -268,7 +273,5 @@ $(window).load(function(){
 });
 
 
-window.onbeforeunload = function () {
-  window.scrollTo(0, 0);
-}
+
 

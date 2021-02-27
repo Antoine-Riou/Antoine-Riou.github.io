@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Antoine Riou - Modélisation 3D</title>
+<link rel="stylesheet" href="./Modelisation3D.css">
+<link href='https://css.gg/chevron-up.css' rel='stylesheet'>
+
+</head>
+<body>
+
+<a href="./index.html" class="go-back-link"></a>
+
+<h1 class="titre_MD"> Modélisation 3D </h1>
+
+<div class="galery">
+  <div class="cell"><img class="cover" src="7_Maison.png"/>  <button id="myBtn" class="btn"> ? </button> </div>
+</div>
+
+<div class='back-to-top' id='back-to-top'><i class="gg-chevron-up"></i></div>
+	
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script2.js"></script>
+
+<p class="certif"> © 2019-2021 Antoine Riou</p>
+
+
+<!-- BOXES -->
+
+<div id="myModal" class="modal">
+
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Maison</h2>
+    </div>
+    <div class="modal-body">
+      <img src="7_Maison.gif"/>
+      <div class="modal_txt">
+        <p><span>Contexte : </span>devoir pour un cours d'infographie 3D <br> <span> Mission : </span>réaliser une maison en 3D avec au minimum une porte et deux fenêtres sur une surface de 4x4m maximum <br> <span>Effectif : </span>seul  <br> <span> Logiciel(s) utilisé(s) : </span>Blender</p>
+      </div>
+    </div>
+    
+  </div>
+
+</div>
+
+<script>
+
+var modal = document.getElementById("myModal");
+
+var btn = document.getElementById("myBtn");
+
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+</script>
+</body>
+</html>

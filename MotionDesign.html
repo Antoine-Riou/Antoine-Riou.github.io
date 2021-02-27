@@ -10,20 +10,102 @@
 
 <a href="./index.html" class="go-back-link"></a>
 
-<h1 class="titre_MD"> Motion Design <h1>
+<h1 class="titre_MD"> Motion Design </h1>
 
 <div class="galery">
-  <div class="cell"><img class="cover" src="./4_Perso.gif"/></div>
+  <div class="cell"><img class="cover" src="4_Perso.png"/>  <button id="myBtn" class="btn"> ? </button>  </div>
 
 <div class="galery2">
   
-  <div class="cell"><img class="cover2" src="./4_Google.gif"/></div>
+  <div class="cell"><img class="cover2" src="4_Google.png"/>  <button id="myBtn2" class="btn2"> ? </button>  </div>
 
 </div>
 
 </div>
 
+<p class="certif"> © 2019-2021 Antoine Riou</p>
 
+<!-- BOXES -->
+
+<div id="myModal" class="modal">
+
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Cycle de marche</h2>
+    </div>
+    <div class="modal-body">
+      <img src="4_Perso.gif"/>
+      <div class="modal_txt">
+        <p><span>Contexte : </span>devoir pour un cours d'infographie <br> <span> Mission : </span>réaliser un cycle de marche avec notre personnage créé au préalable sur Illustrator<br> <span>Effectif : </span>seul  <br> <span> Logiciel(s) utilisé(s) : </span>Illustrator et After Effect
+      </div>
+    </div>
+    
+  </div>
+
+</div>
+
+<div id="myModal2" class="modal">
+
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Google </h2>
+    </div>
+    <div class="modal-bodyadd1">
+      <img src="4_Google.gif"/>
+      <div class="modal_txt1">
+        <p><span>Contexte : </span>devoir pour un cours d'infographie <br> <span> Mission : </span>reproduire une animation en motion design grâce aux connaissances acquises en cours <br> <span>Effectif : </span>seul  <br> <span> Logiciel(s) utilisé(s) : </span>After Effect</p>
+      </div>
+    
+  </div>
+
+</div>
+
+<script>
+
+var modal = document.getElementById("myModal");
+
+var btn = document.getElementById("myBtn");
+
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+var modal2 = document.getElementById("myModal2");
+
+var btn2 = document.getElementById("myBtn2");
+
+var span2 = document.getElementsByClassName("close")[1];
+
+btn2.onclick = function() {
+  modal2.style.display = "block";
+}
+
+span2.onclick = function() {
+  modal2.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal2) {
+    modal2.style.display = "none";
+  }
+}
+
+</script>
 
 </body>
 </html>
