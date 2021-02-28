@@ -161,6 +161,7 @@ button:hover {
 .modal-body {
   position: absolute;
   height: auto;
+  width: 100%;
   background-color: #4d4d4d;
   padding-bottom: 20px;
 }
@@ -176,20 +177,6 @@ button:hover {
   width: 35%;
   float: left;
  }
-
- .modal-bodyadd1 img {
-  background-color: #202020;
-  padding-top: 5%;
-  padding-right: 32.5%;
-  padding-left: 32.5%;
-  padding-bottom: 5%;
-  position: relative;
-  display: inline-block;
-  height: auto;
-  width: 35%;
-  float: left;
- }
-
 
 .modal-body p {
   font-family: 'Jost-VariableFont_wght', sans-serif;

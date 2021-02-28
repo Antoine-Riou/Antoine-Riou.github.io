@@ -154,6 +154,7 @@ button:hover {
 .modal-body {
   position: absolute;
   height: auto;
+  width: 100%;
   background-color: #4d4d4d;
   padding-bottom: 20px;
 }
