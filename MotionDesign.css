@@ -12,6 +12,10 @@ body {
   background-color: #202020;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body::-webkit-scrollbar {
 width: 15px;
 height: 15px;
