@@ -102,6 +102,7 @@ footer
   bottom: -300px;
   position: fixed;
   z-index: -1;
+  
 }
 
 
@@ -124,12 +125,17 @@ footer
 
 .content #cata {
   font-family: 'Ananda', serif;
+
   color: #4d4d4d;
   position: absolute;
   margin-top: 20px;
   margin-left: 40px;
   font-size: 40px;
   z-index: 10;
+}
+
+.content #cata:hover{
+  cursor: default;
 }
 
 .content a {
@@ -450,7 +456,7 @@ background: url("draft.png") no-repeat 50% 50%;
   position: fixed;
   top: 0;
   left: 0;
-  backdrop-filter: blur(100px);
+  background-color: #202020;
   display:flex;
   justify-content: center;
   align-items: center;
