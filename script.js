@@ -1,6 +1,7 @@
-window.onbeforeunload = function () {
-  window.scrollTo(0, 0);
-}
+
+$(document).ready(function(){
+    $(this).scrollTop(0);
+});
 
 
 function scrollFooter(scrollY, heightFooter)
@@ -8,7 +9,7 @@ function scrollFooter(scrollY, heightFooter)
     console.log(scrollY);
     console.log(heightFooter);
 
-    if(scrollY >= heightFooter)
+    if(scrollY >= ($('.footer').height()) + ($('.draft').height()) + ($('.content').height()) )
     {
         $('footer').css({
             'bottom' : '0px'
@@ -22,16 +23,33 @@ function scrollFooter(scrollY, heightFooter)
     }
 }
 
+
+function scrollHeader(scrollY, heightFooter)
+{
+    console.log(scrollY);
+    console.log(heightFooter);
+
+    if(scrollY >= ($('header').height()) + 50)
+    {
+       $('.header').css({
+            'top' : '-' + ($('.header').height()) + 'px'
+        });
+    }
+    
+    else
+    {
+         $('.header').css({
+            'top' : '0px'
+        });
+    }
+}
+
 $(window).load(function(){
     var windowHeight        = $(window).height(),
         footerHeight        = $('footer').height(),
-        heightDocument      = (windowHeight) + ($('.content').height()) + ($('footer').height()) - 20;
+        heightDocument      = (windowHeight) + ($('.content').height()) + ($('.draft').height()) + ($('footer').height()) - 20;
 
     
-    $('#scroll-animate, #scroll-animate-main').css({
-        'height' :  heightDocument + 'px'
-    });
-
     
     $('header').css({
         'height' : windowHeight + 'px',
@@ -43,30 +61,26 @@ $(window).load(function(){
     });
 
     scrollFooter(window.scrollY, footerHeight);
+    scrollHeader(window.scrollY, footerHeight);
 
     
     window.onscroll = function(){
         var scroll = window.scrollY;
 
-        $('#scroll-animate-main').css({
-            'top' : '-' + scroll + 'px'
-        });
+      
         
         $('header').css({
             'background-position-y' : 50 - (scroll * 100 / heightDocument) + '%'
         });
 
         scrollFooter(scroll, footerHeight);
+        scrollHeader(scroll, footerHeight);
     }
 });
 
     (function($) { "use strict";
     
-    //Page cursors
-
-   
- 
-    
+       
     $(document).ready(function() {  
         
         /* Hero Case study images */            

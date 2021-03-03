@@ -1,11 +1,16 @@
 @font-face {
   font-family: "Hind-Bold";
-  src: url("./Hind-Bold.ttf");
+  src: url("Hind-Bold.ttf");
 }
 
 @font-face {
   font-family: "Jost-VariableFont_wght";
-  src: url("./Jost-VariableFont_wght.ttf");
+  src: url("Jost-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Ananda";
+  src: url("Ananda.ttf");
 }
 
 html {
@@ -16,25 +21,16 @@ body::-webkit-scrollbar {
 width: 15px;
 height: 15px;
 }
+
 body::-webkit-scrollbar-track-piece  {
 background-color: #202020;
 }
-body::-webkit-scrollbar-thumb:vertical {
+
+body::-webkit-scrollbar-thumb {
 height: 30px;
 background-color: #4d4d4d;
 }
 
-#scroll-animate
-{
-  overflow: hidden;
-}
-
-#scroll-animate-main
-{
-  width: 100%;
-  left: 0;
-  position: fixed;
-}
 
 #heightPage,
 #heightScroll
@@ -55,6 +51,7 @@ background-color: #4d4d4d;
   right: 0;
 }
 
+
 header
 {
   width: 100%;
@@ -64,13 +61,39 @@ header
   top: 0;
   position: fixed;
   z-index: -1;
+  background-color: #202020;
+
+
+}
+
+.header {
+  z-index: 1000;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  font-size: 32px;
+  line-height: 120px;
+  height: 120px;
+  background-color: #202020;
+  font-family: 'Ananda', serif;
+  
+}
+
+.header a {
+  color: #4d4d4d;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.header a:hover {
+  color: #d6d6d6;
 }
 
 footer
 {
-  width: 100%;
-  height: 300px;
   background-color: #202020;
+  width: 100%;
+  height: 320px;
   background-position: center;
   background-size: cover;
   bottom: -300px;
@@ -78,17 +101,32 @@ footer
   z-index: -1;
 }
 
+
+.blank2{
+  background-color: #4d4d4d;
+
+}
+
 .content
 {
-  height: 700px;
+  height: 100vh;
   min-height: 700px;
-  background: #4d4d4d;
+  background: #202020;
   position: relative;
   z-index: 5;
-  background-image: url("./texture.gif");
+  /*border: 5px solid #4d4d4d;
+  border-style: solid none;*/ 
 
-  background-size: 100% cover;
-  background-position: center;
+}
+
+.content #cata {
+  font-family: 'Ananda', serif;
+  color: #ffd100;
+  position: absolute;
+  margin-top: 20px;
+  margin-left: 40px;
+  font-size: 40px;
+  z-index: 10;
 }
 
 .wrapper-parallax {
@@ -126,8 +164,8 @@ header a{
   text-decoration: none;
 }
 
-p{
-    font-family: 'Jost-VariableFont_wght', sans-serif;
+footer p{
+  font-family: 'Jost-VariableFont_wght', sans-serif;
   font-size: 16px;
   line-height: 30px;
   color: var(--white);
@@ -144,7 +182,7 @@ header a{
   text-decoration: none;
 }
 
-p{
+footer p{
     font-family: 'Jost-VariableFont_wght', sans-serif;
   font-size: 16px;
   line-height: 30px;
@@ -164,66 +202,24 @@ p{
   margin: 60px 0;
   display: block;
   list-style: none;
-  -webkit-transition: all 300ms linear;
-  transition: all 300ms linear; 
 }
+
 .slide-buttons li a{
   position: relative;
-  display: inline-block;
-    font-family: 'Hind-Bold', sans-serif;
-  font-weight: 900;
+  font-family: 'Hind-Bold', sans-serif;
   font-size: 100px;
   line-height: 1;
   text-transform: uppercase;
-    -webkit-text-fill-color: transparent;
-    text-fill-color: transparent;
-    color: transparent;
-  opacity: 0.3;
-  -webkit-transition: all 300ms linear;
-  transition: all 300ms linear; 
-}
-.slide-buttons li.active a{
   opacity: 1;
+  color: #ffd100;
 }
+
 .slide-buttons li a:hover{
   text-decoration: none;
   cursor: default;
 }
-.slide-buttons li a:focus,
-.slide-buttons li a:active{
-  border: none;
-  outline: none;
-  box-shadow: none;
-}
-.slide-buttons li a::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-    font-family: 'Hind-Bold', sans-serif;
-  font-weight: 900;
-  font-size: 100px;
-  line-height: 1;
-  overflow: hidden;
-  text-transform: uppercase;
-  padding: 0;
-  max-height: 0;
-  -webkit-text-stroke: transparent;
-    text-stroke: transparent;
-    -webkit-text-fill-color: #ffd100;
-    text-fill-color: #ffd100;
-  color: #ffd100;
-  content: attr(data-hover);
-  -webkit-transition: max-height 0.4s;
-  -moz-transition: max-height 0.4s;
-  transition: max-height 0.4s;
-}
 
 
-.slide-buttons li.active a::before,
-.slide-buttons li a:active::before,
-.slide-buttons li a:focus::before {
-  max-height: 100%;
-}
 
 
 
@@ -241,13 +237,11 @@ p{
 }
 
 
-.content p {
-  color: #d6d6d6
-}
+
 
 .content a {
   text-decoration: none;
-  color: #ffd100;
+  color: #4d4d4d;
 }
 
 .content a:hover {
@@ -308,8 +302,8 @@ ul li {
 }
 #list li figure > div {
   margin: 0 auto;
-  width: 100%;
-  height: 300px;
+  width: 50vh;
+  height: 50vh;
   overflow: hidden;
  
 }
@@ -327,58 +321,57 @@ ul li {
 
 }
 
-#list li figure figcaption h2 {
-  text-align: center;
-  margin-top: 20px;
-  color: #d6d6d6;
-  font-size: 30px;
-
-}
-
 
 #list li:nth-child(1) figure > div > div {
   background-position: 0px 0px !important;
-  background: url("./A.png") no-repeat;
+  background: url("A.png") no-repeat;
   background-size: cover;
-  border: 2px solid #ffd100;
+  border: 2px solid #4d4d4d; 
+ 
 
 }
 #list li:nth-child(2) figure > div > div {
   background-position: 0px 20% !important;
-  background: url("./B.png") no-repeat;
+  background: url("B.png") no-repeat;
   background-size: cover;
-  border: 2px solid #ffd100;
+  border: 2px solid #4d4d4d; 
+  
 }
 #list li:nth-child(3) figure > div > div {
   background-position: 0px 40% !important;
-  background: url("./C.png") no-repeat;
+  background: url("C.png") no-repeat;
   background-size: cover;
-  border: 2px solid #ffd100;
+  border: 2px solid #4d4d4d; 
+ 
 }
 #list li:nth-child(4) figure > div > div {
   background-position: 0px 60% !important;
-  background: url("./D.png") no-repeat;
+  background: url("D.png") no-repeat;
   background-size: cover;
-  border: 2px solid #ffd100;
+  border: 2px solid #4d4d4d; 
+ 
 }
 #list li:nth-child(5) figure > div > div {
   background-position: 0px 80% !important;
-  background: url("./E.png") no-repeat;
+  background: url("E.png") no-repeat;
   background-size: cover;
-  border: 2px solid #ffd100;
+  border: 2px solid #4d4d4d; 
+  
 }
 #list li:nth-child(6) figure > div > div {
   background-position: 0px 100% !important;
-  background: url("./F.png") no-repeat;
+  background: url("F.png") no-repeat;
   background-size: cover;
-  border: 2px solid #ffd100;
+  border: 2px solid #4d4d4d; 
+  
 }
 
 #list li:nth-child(7) figure > div > div {
   background-position: 0px 0px !important;
-  background: url("./G.png") no-repeat;
+  background: url("G.png") no-repeat;
   background-size: cover;
-  border: 2px solid #ffd100;
+  border: 2px solid #4d4d4d; 
+  
 }
 
 .active {
@@ -437,6 +430,7 @@ footer a:hover {
   color: #d6d6d6;
 }
 
+
 header p {
   display: block;
   color: white;
@@ -456,4 +450,19 @@ header p {
 }
 
 
+/* brouillon */
+
+
+.draft img {  
+
+  width: 100%;
+  height: auto;
+  background-size: cover;
+  backdrop-filter: blur(8px);
+
+}
+
+/* 
+background: url("draft.png") no-repeat 50% 50%;
+*/
 
