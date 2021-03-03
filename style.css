@@ -364,6 +364,10 @@ ul li {
   transform: scale(1) translateZ(0px) !important;
 }
 
+.active figcaption:hover {
+  cursor: default;
+}
+
 .cf:before,
 .cf:after {
   content: " ";
