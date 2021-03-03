@@ -1,3 +1,6 @@
+$(window).on("load",function(){
+          $(".loader-wrapper").fadeOut("slow");
+        });
 
 $(document).ready(function(){
     $(this).scrollTop(0);
