@@ -267,6 +267,15 @@ footer a:hover {
   stroke: none;
 }
 
+.chargement {
+  text-align: center;
+  margin-top: 140px;
+  font-family: 'Jost-VariableFont_wght', sans-serif;
+  position: absolute;
+  font-size: 25px;
+  color: #d6d6d6;
+}
+
 
 /* SLIDER */
 
