@@ -164,6 +164,27 @@ button:hover {
   padding-bottom: 20px;
 }
 
+.modal-body1 {
+  position: absolute;
+  height: auto;
+  width: 100%;
+  background-color: #4d4d4d;
+  padding-bottom: 20px;
+}
+
+.modal-body1 img {
+  padding-top: 5%;
+  padding-right: 3%;
+  padding-left: 3%;
+  padding-bottom: 5%;
+  position: relative;
+  display: inline-block;
+  height: auto;
+  width: 35%;
+  float: left;
+  outline: none;
+ }
+
 .modal-body video {
   padding-top: 5%;
   padding-right: 3%;
@@ -177,16 +198,15 @@ button:hover {
   outline: none;
  }
 
-.modal-bodyadd1 video {
-  background-color: #202020;
+ .modal-body img {
   padding-top: 5%;
-  padding-right: 22.5%;
-  padding-left: 22.5%;
+  padding-right: 3%;
+  padding-left: 3%;
   padding-bottom: 5%;
   position: relative;
   display: inline-block;
   height: auto;
-  width: 55%;
+  width: 50%;
   float: left;
   outline: none;
  }
@@ -197,6 +217,11 @@ button:hover {
   font-size: 20px;
 }
 
+.modal-body1 p {
+  font-family: 'Jost-VariableFont_wght', sans-serif;
+  color: #d6d6d6;
+  font-size: 20px;
+}
 
 .modal_txt {
   padding-right: 3%;
@@ -208,6 +233,15 @@ button:hover {
   overflow: hidden;  
 }
 
+.modal_txt1 {
+  padding-right: 3%;
+  position: relative;
+  padding-top: 4%;
+  display: inline-block;
+  height: auto;
+  width: 55%;
+  overflow: hidden;  
+}
 
 .modal-header h2 {
   font-family: 'Hind-Bold', sans-serif;
@@ -313,5 +347,9 @@ button:hover {
 }
 
 .modal_txt span{
+  color: #ffd100;
+}
+
+.modal_txt1 span{
   color: #ffd100;
 }
