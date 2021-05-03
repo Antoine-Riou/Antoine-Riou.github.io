@@ -9,86 +9,32 @@
 
 <body>
 
-<!-- Inspiration : Marco Barría, Hudson Marinho, Ivan Grozdic, Arlina Code -->
+    <section>
 
 
-    <div class="wrapper-parallax">
-      
-
-      <header>
-		<div class="header">
-			<a href="#catalogue" >Catalogue</a>
-			<a  href="#brouillons">Brouillons</a>
-			<a class="a" href="#apropos">à propos</a>
-		</div>
-        		
-		<div class="section padding-top-bottom over-hide z-bigger">
-			<ul class="slide-buttons">
-				<li class="">
-					<a class="hover-target">Antoine Riou </a>
-					
-				</li>	
-			</ul>
-		</div>
-      </header>
+        <header>
+          <h1>ANTOINE RIOU</h1>
+          <span> Portfolio </span>
+        </header>
 
 
-      <p id="catalogue"></p>
+        <div class="container1 red ">
+          <a>Je m'appelle Antoine Riou, j'ai 20 ans et je suis passioné par le cinéma, le dessin et l'animation. Je vous propose de découvrir les différentes créations que j'ai pu réaliser durant mon parcours.
+          
+        </div>
 
-    <section class="content">
-<!-- CONTENT -->
-			<div class="cata" id="cata">
-				<p> Catalogue </p>
-			</div>		
-	
-			   
-			    <div class="movie-list">
-			        <div class="movie-card" >
-			        	<a href="Animation2D.html">
-			            <img src="affiche1.png" alt="movie poster" class="movie-poster">
-			        	</a>
-			        </div>
-			        <div class="movie-card">
-			        	<a href="Illustration.html">
-			            <img src="affiche2.png" alt="movie poster" class="movie-poster">
-			        	</a>
-			        </div>
-			        <div class="movie-card">
-			        	<a href="logo.html">
-			            <img src="affiche3.png" alt="movie poster" class="movie-poster">
-			            </a>
-			        </div>
-			    </div>
-			     
-
-			     <div class="movie-list2">
-			        <div class="movie-card2" >
-			        	<a href="CourtMetrage.html">
-			            <img src="affiche4.png" alt="movie poster" class="movie-poster">
-			        	</a>
-			        </div>
-			        <div class="movie-card2">
-			        	<a href="Modelisation3D.html">
-			            <img src="affiche5.png" alt="movie poster" class="movie-poster">
-			        	</a>
-			        </div>
-			        <div class="movie-card2">
-			        	<a href="Photographie.html">
-			            <img src="affiche6.png" alt="movie poster" class="movie-poster">
-			        	</a>
-			        </div>
-			    </div>
+        <div class="container purple ">
+          <a href="animation2D.html">Animation 2D</a>
+          <a href="illustration.html">Illustration</a>
+          <a href="logo.html">Logo</a>
+          <a href="video.html">Vidéo</a>
+          <a href="photo.html">Photo</a>
+          <a href="modelisation3D.html">Modélisation 3D</a>
+        </div>
 			
-		
-<!-- END CONTENT -->
   
      </section>
 
-      
-      <div class="draft" id="brouillons">
-      	<img src="draft.gif"/>
-
-      </div>
   	  
 
       <footer>
@@ -98,9 +44,10 @@
       			<p class="certif"> © 2019-2021 Antoine Riou</p>
 
       </footer>
-      <p id="apropos"></p>
+      
     </div>
  
+  <!-- loader -->
 
    <div class="loader-wrapper">
      <svg
@@ -148,10 +95,16 @@
 
   
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-  <script  src="script.js"></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/velocity/1.1.0/velocity.min.js'></script>
   <script  src="loading.js"></script>
 
+  <script language="javascript">
+  if(!window.location.search.substring(1) == "full=true") { // do not redirect if querystring is ?full=true
+    if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/Blackberry/i) || navigator.userAgent.match(/WebOs/i)) { // detect mobile browser
+      window.location.replace("mobile.html"); // redirect if mobile browser detected
+    }
+  }
+
+</script>
  
 
 </body>
