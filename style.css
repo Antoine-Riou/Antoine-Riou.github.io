@@ -39,7 +39,7 @@ html, body
 header
 {
   margin: 0 auto;
-	padding: 15vh;
+	padding: 100px;
 	text-align: center;
 	background-color: #4d4d4d;
   background-image: url('');
@@ -64,7 +64,7 @@ header span
 div.container1
 {
     margin: 0 auto;
-	padding: 10vh;
+	padding: 70px;
 	text-align: center;
 	width: 60%;
 
@@ -84,7 +84,7 @@ div.container1 a
 div.container
 {
     margin: 0 auto;
-	padding: 12vh;
+	padding: 65px;
 	text-align: center;
 
 }
