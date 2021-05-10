@@ -67,7 +67,7 @@ header span
 
 div.container1
 {
-  margin: 100px auto;
+  margin: 25vh auto;
 	height: auto;
 	text-align: center;
 	width: 60%;
@@ -256,4 +256,15 @@ footer p {
   0% { opacity: 0; }
   10% { transform: translateY(0); opacity: 1; }
   100% { transform: translateY(15px); opacity: 0;}
+}
+
+
+/* MOBILE */
+
+.visibledevice {display:none;}
+.visibledesktop {display:display;}
+
+@media (max-width : 320px) {
+    .visibledevice {display:block;}
+    .visibledesktop {display:none;}
 }
