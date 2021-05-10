@@ -264,7 +264,7 @@ footer p {
 .visibledevice {display:none;}
 .visibledesktop {display:display;}
 
-@media (max-width : 320px) {
+@media (max-width : 450px) {
     .visibledevice {display:block;}
     .visibledesktop {display:none;}
 }
