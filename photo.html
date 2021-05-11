@@ -16,6 +16,8 @@
 <h1 class="titre_logo">PHOTO</h1>
 
 <div class="galery">
+
+  <div class="cell"><img class="cover" src="nbalegends.png"/> <button id="myBtn5" class="btn5"> ? </button> </div>
   
   <div class="cell"><img class="cover" src="ayrton.png"/> <button id="myBtn" class="btn"> ? </button> </div>
 
@@ -37,7 +39,6 @@
 
 
 <!-- BOXES -->
-
 
 <div id="myModal" class="modal">
 
@@ -101,6 +102,23 @@
 
     <div class="modal-body">
       <img src="chat.png"/>
+    </div>
+    
+  </div>
+
+</div>
+
+<div id="myModal5" class="modal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2> NBA legends <span>  </span></h2>
+    </div>
+
+    <div class="modal-body">
+      <img src="nbalegends.png"/>
     </div>
     
   </div>
@@ -188,6 +206,26 @@ span4.onclick = function() {
 window.onclick = function(event) {
   if (event.target == modal4) {
     modal4.style.display = "none";
+  }
+}
+
+var modal5 = document.getElementById("myModal5");
+
+var btn5 = document.getElementById("myBtn5");
+
+var span5 = document.getElementsByClassName("close")[4];
+
+btn5.onclick = function() {
+  modal5.style.display = "block";
+}
+
+span5.onclick = function() {
+  modal5.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal5) {
+    modal5.style.display = "none";
   }
 }
 
