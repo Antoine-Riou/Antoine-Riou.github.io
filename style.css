@@ -67,7 +67,7 @@ header span
 
 div.container1
 {
-  margin: 25vh auto;
+  margin: 20vh auto;
 	height: auto;
 	text-align: center;
 	width: 60%;
@@ -86,9 +86,12 @@ div.container1 a
 
 div.container
 { 
-  padding-top: 58px;
-	height: 100px;
+  padding-top: 80px;
+	height: 125px;
 	text-align: center;
+  background-image: url('categories.png');
+ background-repeat: no-repeat;
+ background-size: cover;
 
 
 }
@@ -107,7 +110,7 @@ div.container a
 
 div.container a:hover {
 
-	color: #202020;
+	color: #d6d6d6;
 	transition-duration: 0.3s;
 }
 
@@ -132,7 +135,7 @@ footer img{
   display: block;
   width: 110px;
   height: auto;
-  margin-top: 100px;
+  margin-top: 150px;
   margin-left: auto;
   margin-right: auto;
 }
