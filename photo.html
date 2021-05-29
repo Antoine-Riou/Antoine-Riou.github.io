@@ -17,6 +17,10 @@
 
 <div class="galery">
 
+  <div class="cell"><img class="cover" src="JO.png"/> <button id="myBtn7" class="btn7"> ? </button> </div>
+
+  <div class="cell"><img class="cover" src="wimbledon.png"/> <button id="myBtn6" class="btn6"> ? </button> </div>
+
   <div class="cell"><img class="cover" src="nbalegends.png"/> <button id="myBtn5" class="btn5"> ? </button> </div>
   
   <div class="cell"><img class="cover" src="ayrton.png"/> <button id="myBtn" class="btn"> ? </button> </div>
@@ -114,11 +118,45 @@
 
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2> NBA legends <span>  </span></h2>
+      <h2> NBA Legends <span> (stage communication audiovisuel)  </span></h2>
     </div>
 
     <div class="modal-body">
       <img src="nbalegends.png"/>
+    </div>
+    
+  </div>
+
+</div>
+
+<div id="myModal6" class="modal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2> Favoris Wimbledon 2021 <span> (stage communication audiovisuel)  </span></h2>
+    </div>
+
+    <div class="modal-body">
+      <img src="wimbledon.png"/>
+    </div>
+    
+  </div>
+
+</div>
+
+<div id="myModal7" class="modal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2> Favoris Jeux Olympiques 2021 <span> (stage communication audiovisuel)  </span></h2>
+    </div>
+
+    <div class="modal-body">
+      <img src="JO.png"/>
     </div>
     
   </div>
@@ -228,6 +266,47 @@ window.onclick = function(event) {
     modal5.style.display = "none";
   }
 }
+
+var modal6 = document.getElementById("myModal6");
+
+var btn6 = document.getElementById("myBtn6");
+
+var span6 = document.getElementsByClassName("close")[5];
+
+btn6.onclick = function() {
+  modal6.style.display = "block";
+}
+
+span6.onclick = function() {
+  modal6.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal6) {
+    modal6.style.display = "none";
+  }
+}
+
+var modal7 = document.getElementById("myModal7");
+
+var btn7 = document.getElementById("myBtn7");
+
+var span7 = document.getElementsByClassName("close")[6];
+
+btn7.onclick = function() {
+  modal7.style.display = "block";
+}
+
+span7.onclick = function() {
+  modal7.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal7) {
+    modal7.style.display = "none";
+  }
+}
+
 
 </script>
   

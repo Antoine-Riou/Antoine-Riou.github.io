@@ -28,10 +28,6 @@
   <div class="cell"><img class="cover" src="NB10.png"/> <button id="myBtn5" class="btn5"> ? </button> </div>
 
   <div class="cell"><img class="cover" src="NB15.png"/> <button id="myBtn6" class="btn6"> ? </button> </div>
-
-  <div class="cell"><img class="cover" src="NB12.png"/> <button id="myBtn7" class="btn7"> ? </button> </div>
-
-  <div class="cell"><img class="cover" src="NB14.png"/> <button id="myBtn8" class="btn8"> ? </button> </div>
   
 </div>
 
@@ -148,41 +144,6 @@
   </div>
 
 </div>
-
-<div id="myModal7" class="modal">
-
-  <div class="modal-content">
-
-    <div class="modal-header">
-      <span class="close">&times;</span>
-      <h2> Prévention COVID <span> (devoir cours d'esthétique) </span></h2>
-    </div>
-
-    <div class="modal-body1">
-      <img src="Corona.png"/>
-    </div>
-    
-  </div>
-
-</div>
-
-<div id="myModal8" class="modal">
-
-  <div class="modal-content">
-
-    <div class="modal-header">
-      <span class="close">&times;</span>
-      <h2> Big Data <span> (devoir cours de marketing) </span></h2>
-    </div>
-
-    <div class="modal-body">
-      <img src="Bigdata.png"/>
-    </div>
-    
-  </div>
-
-</div>
-
 
 <script>
 
@@ -307,49 +268,6 @@ window.onclick = function(event) {
     modal6.style.display = "none";
   }
 }
-
-var modal7 = document.getElementById("myModal7");
-
-var btn7 = document.getElementById("myBtn7");
-
-var span7 = document.getElementsByClassName("close")[6];
-
-btn7.onclick = function() {
-  modal7.style.display = "block";
-}
-
-span7.onclick = function() {
-  modal7.style.display = "none";
-}
-
-window.onclick = function(event) {
-  if (event.target == modal7) {
-    modal7.style.display = "none";
-  }
-}
-
-var modal8 = document.getElementById("myModal8");
-
-var btn8 = document.getElementById("myBtn8");
-
-var span8 = document.getElementsByClassName("close")[7];
-
-btn8.onclick = function() {
-  modal8.style.display = "block";
-}
-
-span8.onclick = function() {
-  modal8.style.display = "none";
-}
-
-window.onclick = function(event) {
-  if (event.target == modal8) {
-    modal8.style.display = "none";
-  }
-}
-
-
-
 
 </script>
   

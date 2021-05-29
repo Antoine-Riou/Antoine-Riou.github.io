@@ -17,6 +17,8 @@
 
 <div class="galery">
 
+  <div class="cell"><img class="cover" src="NB27.png"/> <button id="myBtn11" class="btn11"> ? </button> </div>
+
   <div class="cell"><img class="cover" src="NB16.png"/> <button id="myBtn" class="btn"> ? </button> </div>
   
   <div class="cell"><img class="cover" src="NB4.png"/> <button id="myBtn2" class="btn2"> ? </button> </div>
@@ -36,6 +38,8 @@
   <div class="cell"><img class="cover" src="NB23.png"/> <button id="myBtn9" class="btn9"> ? </button> </div>
 
   <div class="cell"><img class="cover" src="NB22.png"/> <button id="myBtn10" class="btn10"> ? </button> </div>
+
+
   
 </div>
 
@@ -219,6 +223,24 @@
   </div>
 
 </div>
+
+<div id="myModal11" class="modal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2> Présentation MMI <span> (projet tutoré animation 2D) </span> &nbsp;  [non fini !]</h2>
+    </div>
+
+    <div class="modal-body2">
+      <video src="test.mp4" controls></video>
+    </div>
+    
+  </div>
+
+</div>
+
 
 
 
@@ -425,6 +447,27 @@ window.onclick = function(event) {
     modal10.style.display = "none";
   }
 }
+
+var modal11 = document.getElementById("myModal11");
+
+var btn11 = document.getElementById("myBtn11");
+
+var span11 = document.getElementsByClassName("close")[10];
+
+btn11.onclick = function() {
+  modal11.style.display = "block";
+}
+
+span11.onclick = function() {
+  modal11.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal11) {
+    modal11.style.display = "none";
+  }
+}
+
 
 </script>
   
