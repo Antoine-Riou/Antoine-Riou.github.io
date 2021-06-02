@@ -20,6 +20,8 @@
   <div class="cell"><img class="cover" src="NB25.jpg"/> <button id="myBtn" class="btn"> ? </button> </div>
 
   <div class="cell"><img class="cover" src="NB26.jpg"/> <button id="myBtn2" class="btn2"> ? </button> </div>
+
+  <div class="cell"><img class="cover" src="NB28.jpg"/> <button id="myBtn3" class="btn3"> ? </button> </div>
   
 </div>
 
@@ -69,6 +71,23 @@
 
 </div>
 
+<div id="myModal3" class="modal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2> Portraits <span> (15-20mins/portrait) </span></h2>
+    </div>
+
+    <div class="modal-body">
+      <img src="C3.jpg"/>
+    </div>
+    
+  </div>
+
+</div>
+
 <script>
 
 var modal = document.getElementById("myModal");
@@ -111,6 +130,27 @@ window.onclick = function(event) {
     modal2.style.display = "none";
   }
 }
+
+var modal3 = document.getElementById("myModal3");
+
+var btn3 = document.getElementById("myBtn3");
+
+var span3 = document.getElementsByClassName("close")[2];
+
+btn3.onclick = function() {
+  modal3.style.display = "block";
+}
+
+span3.onclick = function() {
+  modal3.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal3) {
+    modal3.style.display = "none";
+  }
+}
+
 
 
 </script>
