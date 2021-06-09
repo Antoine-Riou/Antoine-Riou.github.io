@@ -17,6 +17,8 @@
 
 <div class="galery">
 
+  <div class="cell"><img class="cover" src="NB31.jpg"/> <button id="myBtn6" class="btn6"> ? </button> </div>
+
   <div class="cell"><img class="cover" src="NB30.jpg"/> <button id="myBtn5" class="btn5"> ? </button> </div>
 
   <div class="cell"><img class="cover" src="NB29.jpg"/> <button id="myBtn4" class="btn4"> ? </button> </div>
@@ -127,6 +129,23 @@
 
 </div>
 
+<div id="myModal6" class="modal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2> Cobra <span> (5h) </span></h2>
+    </div>
+
+    <div class="modal-body">
+      <img src="D6.jpg"/>
+    </div>
+    
+  </div>
+
+</div>
+
 
 <script>
 
@@ -231,6 +250,25 @@ window.onclick = function(event) {
   }
 }
 
+var modal6 = document.getElementById("myModal6");
+
+var btn6 = document.getElementById("myBtn6");
+
+var span6 = document.getElementsByClassName("close")[5];
+
+btn6.onclick = function() {
+  modal6.style.display = "block";
+}
+
+span6.onclick = function() {
+  modal6.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal5) {
+    modal6.style.display = "none";
+  }
+}
 </script>
   
 </body>
