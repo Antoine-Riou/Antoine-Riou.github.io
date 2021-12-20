@@ -16,6 +16,8 @@
 <h1 class="titre_logo">VIDEO</h1>
 
 <div class="galery">
+
+  <div class="cell"><img class="cover" src="NB32.jpg"/> <button id="myBtn4" class="btn4"> ? </button> </div>
   
   <div class="cell"><img class="cover" src="NB17.jpg"/> <button id="myBtn" class="btn"> ? </button> </div>
 
@@ -89,6 +91,24 @@
 
 </div>
 
+<div id="myModal4" class="modal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2> Thriller Mashup <span> (devoir cours de production audiovisuel ) </span></h2>
+    </div>
+
+    <div class="modal-body2">
+       <video src="thriller.mp4" controls></video>
+    </div>
+    
+  </div>
+
+</div>
+
+
 <script>
 
 var modal = document.getElementById("myModal");
@@ -149,6 +169,26 @@ span3.onclick = function() {
 window.onclick = function(event) {
   if (event.target == modal3) {
     modal3.style.display = "none";
+  }
+}
+
+var modal4 = document.getElementById("myModal4");
+
+var btn4 = document.getElementById("myBtn4");
+
+var span4 = document.getElementsByClassName("close")[3];
+
+btn4.onclick = function() {
+  modal4.style.display = "block";
+}
+
+span4.onclick = function() {
+  modal4.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal4) {
+    modal4.style.display = "none";
   }
 }
 
