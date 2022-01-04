@@ -178,6 +178,15 @@ button:hover {
   width: 19%;
  }
 
+.modal-body4 video {
+  padding-top: 7%;
+  padding-right: 20%;
+  padding-left: 20%;
+  display: inline-block;
+  height: auto;
+  width: 60%;
+ }
+
 .modal-header {
   padding: 2px 16px;
   background-color: #202020;
@@ -199,6 +208,13 @@ button:hover {
 }
 
 .modal-body3 {
+  position: absolute;
+  height: auto;
+  width: 100%; 
+  padding-bottom: 20px;
+}
+
+.modal-body4 {
   position: absolute;
   height: auto;
   width: 100%; 

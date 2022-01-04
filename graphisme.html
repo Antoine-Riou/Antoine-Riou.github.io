@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Antoine Riou - GRAPHISME</title>
+<link rel="stylesheet" href="graphisme.css">
+<link href='https://css.gg/chevron-up.css' rel='stylesheet'>
+<link rel="icon" href="favicon.ico" />
+
+</head>
+<body>
+
+
+<a href="index.html" class="go-back-link"></a>
+
+<h1 class="titre_logo">GRAPHISME</h1>
+
+<div class="galery">
+
+  <div class="cell"><img class="cover" src="JO.jpg"/> <button id="myBtn6" class="btn6"> ? </button> </div>
+
+  <div class="cell"><img class="cover" src="wimbledon.jpg"/> <button id="myBtn5" class="btn5"> ? </button> </div>
+
+  <div class="cell"><img class="cover" src="nbalegends.jpg"/> <button id="myBtn4" class="btn4"> ? </button> </div>
+  
+  <div class="cell"><img class="cover" src="ayrton.jpg"/> <button id="myBtn" class="btn"> ? </button> </div>
+
+  <div class="cell"><img class="cover" src="f1.jpg"/> <button id="myBtn2" class="btn2"> ? </button> </div>
+  
+  <div class="cell"><img class="cover" src="NB40.jpg"/> <button id="myBtn3" class="btn3"> ? </button> </div>
+
+  
+  
+</div>
+
+
+<div class='back-to-top' id='back-to-top'><i class="gg-chevron-up"></i></div>
+
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="script.js"></script>
+
+<p class="certif"> © 2019-2022 Antoine Riou</p>
+
+
+<!-- BOXES -->
+
+<div id="myModal" class="modal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2> Hommage Ayrton Senna <span> (stage communication audiovisuel) </span></h2>
+    </div>
+
+    <div class="modal-body">
+      <img src="ayrton.jpg"/>
+    </div>
+    
+  </div>
+
+</div>
+
+<div id="myModal2" class="modal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2> Max Verstappen <span> (stage communication audiovisuel) </span></h2>
+    </div>
+
+    <div class="modal-body">
+      <img src="f1.jpg"/>
+    </div>
+    
+  </div>
+
+</div>
+
+<div id="myModal3" class="modal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2> Plaquette Commerciale <span> (stage communication audiovisuel) </span></h2>
+    </div>
+
+    <div class="modal-body2">
+      <img src="plaquette_deen.jpg"/>
+    </div>
+    
+  </div>
+
+</div>
+
+<div id="myModal4" class="modal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2> NBA Legends <span> (stage communication audiovisuel)  </span></h2>
+    </div>
+
+    <div class="modal-body">
+      <img src="nbalegends.jpg"/>
+    </div>
+    
+  </div>
+
+</div>
+
+<div id="myModal5" class="modal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2> Favoris Wimbledon 2021 <span> (stage communication audiovisuel)  </span></h2>
+    </div>
+
+    <div class="modal-body">
+      <img src="wimbledon.jpg"/>
+    </div>
+    
+  </div>
+
+</div>
+
+<div id="myModal6" class="modal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2> Favoris Jeux Olympiques 2021 <span> (stage communication audiovisuel)  </span></h2>
+    </div>
+
+    <div class="modal-body">
+      <img src="JO.jpg"/>
+    </div>
+    
+  </div>
+
+</div>
+
+<script>
+
+var modal = document.getElementById("myModal");
+
+var btn = document.getElementById("myBtn");
+
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+var modal2 = document.getElementById("myModal2");
+
+var btn2 = document.getElementById("myBtn2");
+
+var span2 = document.getElementsByClassName("close")[1];
+
+btn2.onclick = function() {
+  modal2.style.display = "block";
+}
+
+span2.onclick = function() {
+  modal2.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal2) {
+    modal2.style.display = "none";
+  }
+}
+
+
+var modal3 = document.getElementById("myModal3");
+
+var btn3 = document.getElementById("myBtn3");
+
+var span3 = document.getElementsByClassName("close")[2];
+
+btn3.onclick = function() {
+  modal3.style.display = "block";
+}
+
+span3.onclick = function() {
+  modal3.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal3) {
+    modal3.style.display = "none";
+  }
+}
+
+var modal4 = document.getElementById("myModal4");
+
+var btn4 = document.getElementById("myBtn4");
+
+var span4 = document.getElementsByClassName("close")[3];
+
+btn4.onclick = function() {
+  modal4.style.display = "block";
+}
+
+span4.onclick = function() {
+  modal4.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal4) {
+    modal4.style.display = "none";
+  }
+}
+
+var modal5 = document.getElementById("myModal5");
+
+var btn5 = document.getElementById("myBtn5");
+
+var span5 = document.getElementsByClassName("close")[4];
+
+btn5.onclick = function() {
+  modal5.style.display = "block";
+}
+
+span5.onclick = function() {
+  modal5.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal5) {
+    modal5.style.display = "none";
+  }
+}
+
+var modal6 = document.getElementById("myModal6");
+
+var btn6 = document.getElementById("myBtn6");
+
+var span6 = document.getElementsByClassName("close")[5];
+
+btn6.onclick = function() {
+  modal6.style.display = "block";
+}
+
+span6.onclick = function() {
+  modal6.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal6) {
+    modal6.style.display = "none";
+  }
+}
+
+var modal7 = document.getElementById("myModal7");
+
+var btn7 = document.getElementById("myBtn7");
+
+var span7 = document.getElementsByClassName("close")[6];
+
+btn7.onclick = function() {
+  modal7.style.display = "block";
+}
+
+span7.onclick = function() {
+  modal7.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal7) {
+    modal7.style.display = "none";
+  }
+}
+
+
+</script>
+  
+</body>
+</html>
