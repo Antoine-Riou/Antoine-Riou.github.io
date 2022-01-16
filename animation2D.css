@@ -111,6 +111,35 @@ button:hover {
   width: 90px;
 }
 
+button span {
+  transition-duration: 0.2s;
+  opacity: 1;
+  color: #ad2831;
+  background-color: #202020;
+  font-size: 50px;
+  font-family: 'Hind-Bold', sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: none;
+  text-decoration: none;
+  transform: translate(-50%, -50%);
+  outline: none;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+}
+
+button span:hover {
+  background-color: #202020;
+  transition-duration: 0.2s;
+  color: #d6d6d6;
+  cursor: pointer;
+  font-size: 61px;
+  height: 90px;
+  width: 90px;
+}
+
 @-webkit-keyframes animatetop {
   from {top:-300px; opacity:0} 
   to {top:0; opacity:1}
@@ -234,12 +263,20 @@ button:hover {
    margin-left: 2%;
 }
 
-.modal-header h2 span {
+.modal-header h2 a {
    font-family: 'Spartan-Light', sans-serif;
    color: #ffd100;
    margin-left: 1%;
    font-size: 20px;
+   text-decoration:none; 
 }
+
+.modal-header h2 a:hover{
+   color: #4d4d4d;
+   transition-duration: 0.3s;
+   
+}
+
 
 .l1 {
   vertical-align: middle;

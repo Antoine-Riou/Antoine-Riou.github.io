@@ -17,9 +17,11 @@
 
 <div class="galery">
 
+  <div class="cell"><img class="cover" src="NB41.jpg"/> <button id="myBtn12" class="btn12"> ? </button> </div>
+
   <div class="cell"><img class="cover" src="NB16.jpg"/> <button id="myBtn" class="btn"> ? </button> </div>
 
-  <div class="cell"><img class="cover" src="NB27.jpg"/> <button id="myBtn11" class="btn11"> ? </button> </div>
+  <div class="cell"><img class="cover" src="NB27.jpg"/> <button id="myBtn11" class="btn11"> <span> ? </span></button> </div>
   
   <div class="cell"><img class="cover" src="NB4.jpg"/> <button id="myBtn2" class="btn2"> ? </button> </div>
 
@@ -38,6 +40,8 @@
   <div class="cell"><img class="cover" src="NB23.jpg"/> <button id="myBtn9" class="btn9"> ? </button> </div>
 
   <div class="cell"><img class="cover" src="NB22.jpg"/> <button id="myBtn10" class="btn10"> ? </button> </div>
+
+
 
 
   
@@ -60,7 +64,7 @@
 
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2> Teaser Chelsea vs Real <span> (stage communication audiovisuel) </span></h2>
+      <h2> Teaser Chelsea vs Real <a> </a></h2>
     </div>
 
     <div class="modal-body3">
@@ -77,7 +81,7 @@
 
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2> Nike <span> (devoir cours d'infogaphie) </span></h2>
+      <h2> Nike <a> </a></h2>
     </div>
 
     <div class="modal-body1">
@@ -94,7 +98,7 @@
 
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2> Effondrement <span> (devoir cours d'esthétique) </span></h2>
+      <h2> Effondrement <a> </a></h2>
     </div>
 
     <div class="modal-body2">
@@ -111,7 +115,7 @@
 
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2> WalkCycle <span> (devoir cours d'infographie) </span></h2>
+      <h2> WalkCycle <a> </a></h2>
     </div>
 
     <div class="modal-body">
@@ -128,7 +132,7 @@
 
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2> Google <span> (devoir cours d'infographie) </span></h2>
+      <h2> Google <a>  </a></h2>
     </div>
 
     <div class="modal-body2">
@@ -145,7 +149,7 @@
 
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2> Roses <span> (devoir cours d'esthétique) </span></h2>
+      <h2> Roses <a>  </a></h2>
     </div>
 
     <div class="modal-body2">
@@ -162,7 +166,7 @@
 
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2> Dévidoir de cônes <span> (projet final STI2D) </span></h2>
+      <h2> Dévidoir de cônes <a> </a></h2>
     </div>
 
     <div class="modal-body2">
@@ -179,7 +183,7 @@
 
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2> Uno Reverse Card <span> </span></h2>
+      <h2> Uno Reverse Card <a> </a></h2>
     </div>
 
     <div class="modal-body2">
@@ -196,7 +200,7 @@
 
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2> Papillon R.I.P <span> </span></h2>
+      <h2> Papillon R.I.P <a> </a></h2>
     </div>
 
     <div class="modal-body2">
@@ -213,7 +217,7 @@
 
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2> Fiat Panda <span> </span></h2>
+      <h2> Fiat Panda <a> </a></h2>
     </div>
 
     <div class="modal-body2">
@@ -230,11 +234,29 @@
 
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2> Présentation MMI <span> (projet tutoré animation 2D) </span> </h2>
+      <h2> Présentation MMI <a href='fiche_presentationmmi.html'> en savoir plus</a> </h2>
     </div>
 
     <div class="modal-body2">
       <video src="mmi.mp4" controls></video>
+    </div>
+    
+  </div>
+
+</div>
+
+
+<div id="myModal12" class="modal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2> Teaser NFT <a> </a> </h2>
+    </div>
+
+    <div class="modal-body2">
+      <video src="nft.mp4" controls></video>
     </div>
     
   </div>
@@ -468,6 +490,25 @@ window.onclick = function(event) {
   }
 }
 
+var modal12 = document.getElementById("myModal12");
+
+var btn12 = document.getElementById("myBtn12");
+
+var span12 = document.getElementsByClassName("close")[11];
+
+btn12.onclick = function() {
+  modal12.style.display = "block";
+}
+
+span12.onclick = function() {
+  modal12.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal12) {
+    modal12.style.display = "none";
+  }
+}
 
 </script>
   
