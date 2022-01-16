@@ -17,7 +17,9 @@
 
 <div class="galery">
 
-  <div class="cell"><img class="cover" src="NB33.jpg"/> <button id="myBtn7" class="btn7"> ? </button> </div>
+  <div class="cell"><img class="cover" src="NB43.jpg"/> <button id="myBtn8" class="btn8"> ? </button> </div>
+
+  <div class="cell"><img class="cover" src="NB42.jpg"/> <button id="myBtn7" class="btn7"> ? </button> </div>
 
   <div class="cell"><img class="cover" src="NB39.jpg"/> <button id="myBtn6" class="btn6"> ? </button> </div>
 
@@ -157,6 +159,23 @@
 
     <div class="modal-body2">
       <img src="pirhana.jpg"/>
+    </div>
+    
+  </div>
+
+</div>
+
+<div id="myModal8" class="modal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2> SinCity <a> </a></h2>
+    </div>
+
+    <div class="modal-body2">
+      <img src="sincity.jpg"/>
     </div>
     
   </div>
@@ -306,6 +325,27 @@ window.onclick = function(event) {
     modal7.style.display = "none";
   }
 }
+
+var modal8 = document.getElementById("myModal8");
+
+var btn8 = document.getElementById("myBtn8");
+
+var span8 = document.getElementsByClassName("close")[7];
+
+btn8.onclick = function() {
+  modal8.style.display = "block";
+}
+
+span8.onclick = function() {
+  modal8.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal8) {
+    modal8.style.display = "none";
+  }
+}
+
 
 
 </script>
