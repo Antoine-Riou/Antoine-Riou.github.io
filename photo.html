@@ -10,6 +10,7 @@
 </head>
 <body>
 
+<body id="top" onselectstart="return false" oncontextmenu="return false" ondragstart="return false" onMouseOver="window.status='Il est strictement interdit de copier les images sur ce site'; return true;">
 
 <a href="index.html" class="go-back-link"></a>
 
@@ -17,7 +18,11 @@
 
 <div class="galery">
 
-  <div class="cell"><img class="cover" src="NB43.jpg"/> <button id="myBtn8" class="btn8"> ? </button> </div>
+  <div class="cell"><img class="cover" src="NB45.jpg"/> <button id="myBtn10" class="btn10"> ? </button> </div>
+
+  <div class="cell"><img class="cover" src="NB46.jpg"/> <button id="myBtn9" class="btn9"> ? </button> </div>
+
+  <div class="cell"><img class="cover" src="NB47.jpg"/> <button id="myBtn8" class="btn8"> ? </button> </div>
 
   <div class="cell"><img class="cover" src="NB42.jpg"/> <button id="myBtn7" class="btn7"> ? </button> </div>
 
@@ -171,11 +176,45 @@
 
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2> Sin City <a> </a></h2>
+      <h2> Serpent <a> </a></h2>
     </div>
 
     <div class="modal-body2">
-      <img src="sincity.jpg"/>
+      <img src="serpent3.jpg"/>
+    </div>
+    
+  </div>
+
+</div>
+
+<div id="myModal9" class="modal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2> Serpent <a> </a></h2>
+    </div>
+
+    <div class="modal-body2">
+      <img src="serpent2.jpg"/>
+    </div>
+    
+  </div>
+
+</div>
+
+<div id="myModal10" class="modal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2> Serpent <a> </a></h2>
+    </div>
+
+    <div class="modal-body2">
+      <img src="serpent1.jpg"/>
     </div>
     
   </div>
@@ -345,6 +384,48 @@ window.onclick = function(event) {
     modal8.style.display = "none";
   }
 }
+
+var modal9 = document.getElementById("myModal9");
+
+var btn9 = document.getElementById("myBtn9");
+
+var span9 = document.getElementsByClassName("close")[8];
+
+btn9.onclick = function() {
+  modal9.style.display = "block";
+}
+
+span9.onclick = function() {
+  modal9.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal9) {
+    modal9.style.display = "none";
+  }
+}
+
+
+var modal10 = document.getElementById("myModal10");
+
+var btn10 = document.getElementById("myBtn10");
+
+var span10 = document.getElementsByClassName("close")[9];
+
+btn10.onclick = function() {
+  modal10.style.display = "block";
+}
+
+span10.onclick = function() {
+  modal10.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal10) {
+    modal10.style.display = "none";
+  }
+}
+
 
 
 
