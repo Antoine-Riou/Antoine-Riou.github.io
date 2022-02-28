@@ -18,25 +18,29 @@
 
 <div class="galery">
 
+  <div class="cell"><img class="cover" src="NB50.jpg"/> <button id="myBtn12" class="btn12"> ? </button> </div>
+
+  <div class="cell"><img class="cover" src="NB49.jpg"/> <button id="myBtn11" class="btn11"> ? </button> </div>
+
+  <div class="cell"><img class="cover" src="NB48.jpg"/> <button id="myBtn4" class="btn4"> ? </button> </div>
+
+  <div class="cell"><img class="cover" src="NB53.jpg"/> <button id="myBtn" class="btn"> ? </button> </div>
+
   <div class="cell"><img class="cover" src="NB45.jpg"/> <button id="myBtn10" class="btn10"> ? </button> </div>
 
   <div class="cell"><img class="cover" src="NB46.jpg"/> <button id="myBtn9" class="btn9"> ? </button> </div>
 
   <div class="cell"><img class="cover" src="NB47.jpg"/> <button id="myBtn8" class="btn8"> ? </button> </div>
 
+  <div class="cell"><img class="cover" src="NB51.jpg"/> <button id="myBtn5" class="btn5"> ? </button> </div>
+
   <div class="cell"><img class="cover" src="NB42.jpg"/> <button id="myBtn7" class="btn7"> ? </button> </div>
 
   <div class="cell"><img class="cover" src="NB39.jpg"/> <button id="myBtn6" class="btn6"> ? </button> </div>
 
-  <div class="cell"><img class="cover" src="NB35.jpg"/> <button id="myBtn5" class="btn5"> ? </button> </div>
-  
-  <div class="cell"><img class="cover" src="NB37.jpg"/> <button id="myBtn" class="btn"> ? </button> </div>
+  <div class="cell"><img class="cover" src="NB52.jpg"/> <button id="myBtn3" class="btn3"> ? </button> </div>
 
   <div class="cell"><img class="cover" src="NB38.jpg"/> <button id="myBtn2" class="btn2"> ? </button> </div>
-  
-  <div class="cell"><img class="cover" src="NB34.jpg"/> <button id="myBtn3" class="btn3"> ? </button> </div>
-
-  <div class="cell"><img class="cover" src="NB36.jpg"/> <button id="myBtn4" class="btn4"> ? </button> </div>
   
 </div>
 
@@ -57,11 +61,11 @@
 
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2> Porte Sanatorium <a></a></h2>
+      <h2> Banc <a></a></h2>
     </div>
 
-    <div class="modal-body">
-      <img src="sana3.jpg"/>
+    <div class="modal-body2">
+      <img src="banc.jpg"/>
     </div>
     
   </div>
@@ -74,7 +78,7 @@
 
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2> Fenêtre Sanatorium <a>  </a></h2>
+      <h2> Sanatorium <a>  </a></h2>
     </div>
 
     <div class="modal-body">
@@ -91,11 +95,11 @@
 
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2> Sanatorium <a>  </a></h2>
+      <h2> Cygne <a>  </a></h2>
     </div>
 
-    <div class="modal-body2">
-      <img src="sana5.jpg"/>
+    <div class="modal-body">
+      <img src="cygne.jpg"/>
     </div>
     
   </div>
@@ -108,11 +112,11 @@
 
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2> Couloir Sanatorium <a>  </a></h2>
+      <h2> Corvette <a>  </a></h2>
     </div>
 
-    <div class="modal-body">
-      <img src="sana4.jpg"/>
+    <div class="modal-body2">
+      <img src="zr3.jpg"/>
     </div>
     
   </div>
@@ -125,11 +129,11 @@
 
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2> Barrière <a>  </a></h2>
+      <h2> Chat  <a>  </a></h2>
     </div>
 
-    <div class="modal-body">
-      <img src="sana1.jpg"/>
+    <div class="modal-body2">
+      <img src="chat2.jpg"/>
     </div>
     
   </div>
@@ -142,7 +146,7 @@
 
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2> Mon Chat <a>  </a></h2>
+      <h2> Chat <a>  </a></h2>
     </div>
 
     <div class="modal-body2">
@@ -215,6 +219,40 @@
 
     <div class="modal-body2">
       <img src="serpent1.jpg"/>
+    </div>
+    
+  </div>
+
+</div>
+
+<div id="myModal11" class="modal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2> Corvette <a> </a></h2>
+    </div>
+
+    <div class="modal-body2">
+      <img src="zr2.jpg"/>
+    </div>
+    
+  </div>
+
+</div>
+
+<div id="myModal12" class="modal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2> Corvette <a> </a></h2>
+    </div>
+
+    <div class="modal-body2">
+      <img src="zr1.jpg"/>
     </div>
     
   </div>
@@ -423,6 +461,46 @@ span10.onclick = function() {
 window.onclick = function(event) {
   if (event.target == modal10) {
     modal10.style.display = "none";
+  }
+}
+
+var modal11 = document.getElementById("myModal11");
+
+var btn11 = document.getElementById("myBtn11");
+
+var span11 = document.getElementsByClassName("close")[10];
+
+btn11.onclick = function() {
+  modal11.style.display = "block";
+}
+
+span11.onclick = function() {
+  modal11.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal11) {
+    modal11.style.display = "none";
+  }
+}
+
+var modal12 = document.getElementById("myModal12");
+
+var btn12 = document.getElementById("myBtn12");
+
+var span12 = document.getElementsByClassName("close")[11];
+
+btn12.onclick = function() {
+  modal12.style.display = "block";
+}
+
+span12.onclick = function() {
+  modal12.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal12) {
+    modal12.style.display = "none";
   }
 }
 
