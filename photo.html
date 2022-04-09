@@ -18,6 +18,10 @@
 
 <div class="galery">
 
+  <div class="cell"><img class="cover" src="NB57.jpg"/> <button id="myBtn14" class="btn14"> ? </button> </div>
+
+  <div class="cell"><img class="cover" src="NB58.jpg"/> <button id="myBtn13" class="btn13"> ? </button> </div>
+
   <div class="cell"><img class="cover" src="NB55.jpg"/> <button id="myBtn4" class="btn4"> ? </button> </div>
 
   <div class="cell"><img class="cover" src="NB56.jpg"/> <button id="myBtn12" class="btn12"> ? </button> </div>
@@ -253,6 +257,40 @@
 
     <div class="modal-body2">
       <img src="zr1.jpg"/>
+    </div>
+    
+  </div>
+
+</div>
+
+<div id="myModal13" class="modal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2> Araignée <a> </a></h2>
+    </div>
+
+    <div class="modal-body2">
+      <img src="spider.jpg"/>
+    </div>
+    
+  </div>
+
+</div>
+
+<div id="myModal14" class="modal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2> Bic <a> </a></h2>
+    </div>
+
+    <div class="modal-body">
+      <img src="bic.jpg"/>
     </div>
     
   </div>
@@ -505,6 +543,45 @@ window.onclick = function(event) {
 }
 
 
+var modal13 = document.getElementById("myModal13");
+
+var btn13 = document.getElementById("myBtn13");
+
+var span13 = document.getElementsByClassName("close")[12];
+
+btn13.onclick = function() {
+  modal13.style.display = "block";
+}
+
+span13.onclick = function() {
+  modal13.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal13) {
+    modal13.style.display = "none";
+  }
+}
+
+var modal14 = document.getElementById("myModal14");
+
+var btn14 = document.getElementById("myBtn14");
+
+var span14 = document.getElementsByClassName("close")[13];
+
+btn14.onclick = function() {
+  modal14.style.display = "block";
+}
+
+span14.onclick = function() {
+  modal14.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal14) {
+    modal14.style.display = "none";
+  }
+}
 
 
 </script>
