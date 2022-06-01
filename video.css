@@ -188,6 +188,15 @@ button:hover {
   width: 60%;
  }
 
+.modal-body3 iframe{
+  padding-top: 7%;
+  padding-right: 20%;
+  padding-left: 20%;
+  display: inline-block;
+  height: auto;
+  width: 60%;
+ }
+
 .modal-header {
   padding: 2px 16px;
   background-color: #202020;
