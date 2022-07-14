@@ -8,179 +8,45 @@
 <link rel="icon" href="favicon.ico" />
 
 </head>
-<body>
-
 <body id="top" onselectstart="return false" oncontextmenu="return false" ondragstart="return false" onMouseOver="window.status='Il est strictement interdit de copier les images sur ce site'; return true;">
-  
+
 <a href="index.html" class="go-back-link"></a>
 
 <h1 class="titre_logo">VIDEO</h1>
 
-<div class="galery">
+  <div class="container">
 
+    <div class="box">
+      
+      <div class="dream">
 
-  <div class="cell"><img class="cover" src="NB69.jpg"/> <a href="https://vimeo.com/710026399"> <button > ? </button> </a> </div> 
-  
-  <div class="cell"><img class="cover" src="NB54.jpg"/> <button id="myBtn" class="btn"> ? </button> </div>
+        <video  controls poster="poster/8.png"> <source src="VIDEO/make_difference.mp4" type="video/mp4"> </video>
+        
 
-  <div class="cell"><img class="cover" src="NB32.jpg"/> <button id="myBtn2" class="btn2"> ? </button> </div>
+      </div>
 
-    
-</div>
+      <div class="dream">
+       <div style="padding:50% 0 0 0 ;position:relative;"><iframe src="https://player.vimeo.com/video/710026399?h=d5d04b314c&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Ordalie.mp4"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>     
+       
+           
 
+      </div>
+
+      <div class="dream">
+      
+      <video  controls poster="poster/9.png"> <source src="VIDEO/thriller.mp4" type="video/mp4"> </video>
+        
+        
+     
+      </div>
+
+  </div>
 
 <div class='back-to-top' id='back-to-top'><i class="gg-chevron-up"></i></div>
 
-
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="script.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="script.js"></script>
 
 <p class="certif"> © 2019-2022 Antoine Riou</p>
 
-
-<!-- BOXES -->
-
-
-<div id="myModal" class="modal">
-
-  <div class="modal-content">
-
-    <div class="modal-header">
-      <span class="close">&times;</span>
-      <h2> Air Force 1 Publicité <a>  </a></h2>
-    </div>
-
-    <div class="modal-body2">
-      <video src="airforce1.mp4" controls></video>
-    </div>
-    
-  </div>
-
-</div>
-
-<div id="myModal2" class="modal">
-
-  <div class="modal-content">
-
-    <div class="modal-header">
-      <span class="close">&times;</span>
-      <h2> Thriller Mashup<a>  </a></h2>
-    </div>
-
-    <div class="modal-body4">
-       <video src="thriller.mp4" controls></video>
-    </div>
-    
-  </div>
-
-</div>
-
-<div id="myModal3" class="modal">
-
-  <div class="modal-content">
-
-    <div class="modal-header">
-      <span class="close">&times;</span>
-      <h2> Ordalie <a>  </a></h2>
-    </div>
-
-    <div class="modal-body3">
-       <iframe src="https://player.vimeo.com/video/710026399?h=d5d04b314c&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="1920" height="1080" frameborder="0" title="Ordalie.mp4"></iframe>
-    </div>
-    
-  </div>
-
-</div>
-
-
-
-
-
-<script>
-
-var modal = document.getElementById("myModal");
-
-var btn = document.getElementById("myBtn");
-
-var span = document.getElementsByClassName("close")[0];
-
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-
-
-var modal2 = document.getElementById("myModal2");
-
-var btn2 = document.getElementById("myBtn2");
-
-var span2 = document.getElementsByClassName("close")[1];
-
-btn2.onclick = function() {
-  modal2.style.display = "block";
-}
-
-span2.onclick = function() {
-  modal2.style.display = "none";
-}
-
-window.onclick = function(event) {
-  if (event.target == modal2) {
-    modal2.style.display = "none";
-  }
-}
-
-var modal3 = document.getElementById("myModal3");
-
-var btn3 = document.getElementById("myBtn3");
-
-var span3 = document.getElementsByClassName("close")[2];
-
-btn3.onclick = function() {
-  modal3.style.display = "block";
-}
-
-span3.onclick = function() {
-  modal3.style.display = "none";
-}
-
-window.onclick = function(event) {
-  if (event.target == modal3) {
-    modal3.style.display = "none";
-  }
-}
-
-var modal4 = document.getElementById("myModal4");
-
-var btn4 = document.getElementById("myBtn4");
-
-var span4 = document.getElementsByClassName("close")[3];
-
-btn4.onclick = function() {
-  modal4.style.display = "block";
-}
-
-span4.onclick = function() {
-  modal4.style.display = "none";
-}
-
-window.onclick = function(event) {
-  if (event.target == modal4) {
-    modal4.style.display = "none";
-  }
-}
-
-
-
-</script>
-  
 </body>
 </html>
