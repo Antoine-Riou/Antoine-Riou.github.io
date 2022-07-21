@@ -39,10 +39,17 @@ header
   width: 100%;
   height: 100vh;
   text-align: center;
-  background-color: #4d4d4d;
-  background: url('header.jpg') no-repeat center center;
-  background-size: cover;
+  background-color: white;
 }
+
+@media screen and (min-width: 913px) {
+       
+       header {
+          background: url('header.jpg') no-repeat center center;
+          background-size: cover;
+
+       }
+    }
 
 
 
@@ -70,7 +77,7 @@ html {
         float: left;
     }
 
-    @media screen and (min-width: 40em) {
+    @media screen and (min-width: 913px) {
         .tabs__item {
           display: table-cell; /* [4] */
           float: none;
@@ -96,14 +103,14 @@ html {
 
         .primary-nav a {
             background: rgba(0,0,0,.5);
-            padding: 2em 2em;
+            padding: 10vh 2em;
             background: #202020;
             color: #d6d6d6;
             text-decoration: none;
             font-family: 'Jost-VariableFont_wght', sans-serif;
             font-weight: 400;
             letter-spacing: 5px;
-            font-size: 1.3em;
+            font-size: 2vh;
         }
 
         .primary-nav a:hover {
@@ -111,6 +118,12 @@ html {
             background: #ffd100;
         }
 
+         @media screen and (max-width: 913px) {
+
+             .primary-nav a {
+            padding: 6vh 2em;
+        }
+          }
 /
 
 
@@ -122,9 +135,10 @@ html {
 .media2 {
   width: 100%;
  position: absolute;
- bottom: 50px;
+ bottom: 5vh;
 
 }
+  
 
 header i {
 

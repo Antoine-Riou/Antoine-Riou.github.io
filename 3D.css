@@ -82,28 +82,6 @@ h1 {
   padding-bottom: 5%;
 }
 
-@media only screen and (max-width: 769px){
-    .container .box{
-   flex-direction: column;
-  }
-
-.container .box .dream{
-  width: 100%;
-}
-
-}
-
-@media only screen and (max-width: 643px){
-.container .heading{
-  width: 100%;
-}
-.container .heading h3{
-  font-size: 1em;
-
-}
-
-}
-
 
 
 /* Back to top */
@@ -207,3 +185,44 @@ h1 {
   cursor: default;
 }
 
+@media only screen and (max-width: 913px){
+
+    .container .box{
+     flex-direction: column;
+    display: flex;
+     justify-content: space-between;
+    width: 80%;
+  }
+
+  .container .box .dream{
+    width: 100%;
+    margin-right: auto;
+
+  }
+
+  .go-back-link {
+  display: block;
+  margin: 0 50px;
+  margin-top: 50px;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #ffd100;
+  position: relative;
+}
+
+  h1 {
+    margin-top: 40px;
+    margin-bottom: 50px;
+    font-size: 2.2em;
+    text-align: center;
+  }
+
+  .container .heading{
+  width: 100%;
+}
+.container .heading h3{
+  font-size: 1em;
+
+}
+
+}
