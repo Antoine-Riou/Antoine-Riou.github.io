@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Calque_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 205.26 58.2">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: 0em;
+      }
+
+      .cls-2 {
+        font-family: DrukWideTrial-Heavy, 'Druk Wide Trial';
+        font-size: 29.52px;
+        font-weight: 800;
+      }
+    </style>
+  </defs>
+  <polygon points="43.98 31.41 37.17 38.12 30.36 31.41 34.88 31.41 34.88 16.19 39.45 16.19 39.45 31.41 43.98 31.41"/>
+  <text class="cls-2" transform="translate(75.28 38.18)"><tspan class="cls-1" x="0" y="0">L</tspan><tspan x="27.07" y="0">ABO</tspan></text>
+</svg>
