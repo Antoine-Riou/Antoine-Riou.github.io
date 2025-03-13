@@ -32,6 +32,10 @@
     font-family: "Oswald-VariableFont_wght";
     src: url("fonts/Oswald-VariableFont_wght.ttf");
 }
+@font-face {
+    font-family: "Gilroy-Regular";
+    src: url("fonts/Gilroy-Regular.ttf");
+}
 
 body.lock {
     overflow: hidden;
@@ -41,7 +45,7 @@ body.lock {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: gilroy;
+    font-family: 'Gilroy-Regular', sans-serif;
 }
 
 html,
