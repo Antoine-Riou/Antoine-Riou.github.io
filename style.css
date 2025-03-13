@@ -16,7 +16,6 @@
     src: url("fonts/DrukWide-Heavy-Trial.ttf");
 }
 
-
 @font-face {
     font-family: "DrukWide-HeavyItalic-Trial";
     src: url("fonts/DrukWide-HeavyItalic-Trial.otf");
@@ -438,16 +437,36 @@ body:has(#myvideo7:hover) #categorie7 {
     border-width: 0;
     max-width: none;
     width: 100%;
+    height: 100%;
+    position: fixed; /* Placer la vidéo en position fixe pour qu'elle reste en plein écran */
+    top: 0;
+    left: 0;
+    z-index: 9999; /* S'assurer que la vidéo est au premier plan */
+    display: flex;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
 }
 
 .player:-webkit-full-screen {
     border-width: 0;
     max-width: none;
     width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
 }
 
 .player__video {
-    width: 100%;
+    width: 100%; /* La vidéo occupe toute la largeur */
+    height: auto; /* Laisser la hauteur se calculer en fonction de la largeur */
+    max-height: 100%; /* Limite la hauteur maximale à la taille de l'écran */
+    object-fit: contain; /* Garder les proportions sans distorsion */
+    object-position: center; /* Centrer la vidéo dans l'écran */
 }
 
 .player__button {
@@ -509,8 +528,10 @@ body:has(#myvideo7:hover) #categorie7 {
     width: 0%;
     background: #e73b52;
     flex: 0;
-    flex-basis: 0%;
+    flex-basis: 0;
 }
+
+
 
 
 /*//////////////    FOOTER    /////////////// */
