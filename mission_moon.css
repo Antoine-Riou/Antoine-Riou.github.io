@@ -14,25 +14,14 @@
     font-family: "DrukWide-Bold-Trial";
     src: url("fonts/DrukWide-Bold-Trial.otf");
 }
-<<<<<<< HEAD
-=======
-
-@font-face {
-    font-family: "Oswald-VariableFont_wght";
-    src: url("fonts/Oswald-VariableFont_wght.ttf");
-}
->>>>>>> 15aa98b2e51d9f05b395e149ed168e4051ba83cd
 @font-face {
     font-family: "DrukWide-BoldItalic-Trial";
     src: url("fonts/DrukWide-BoldItalic-Trial.otf");
 }
-<<<<<<< HEAD
 @font-face {
     font-family: "Gilroy-SemiBold";
     src: url("fonts/Gilroy-SemiBold.ttf");
 }
-=======
->>>>>>> 15aa98b2e51d9f05b395e149ed168e4051ba83cd
 
 * {
     margin: 0;
@@ -87,10 +76,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .video-container {
-<<<<<<< HEAD
     background-color: black;
-=======
->>>>>>> 15aa98b2e51d9f05b395e149ed168e4051ba83cd
     box-shadow: 0 0 0 2px white;
     width: 100%;
     height: auto;
@@ -112,7 +98,6 @@ body::-webkit-scrollbar-thumb {
 
 .text-explanation {
     color: white;
-<<<<<<< HEAD
     font-family: "Gilroy-SemiBold", sans-serif;
     font-size: 14px;
     width: 100%;
@@ -121,9 +106,6 @@ body::-webkit-scrollbar-thumb {
 .text-explanation span {
     color: #e73b52;
     font-family: "Gilroy-SemiBold", sans-serif;
-=======
-    font-family: "Oswald-VariableFont_wght", sans-serif;
->>>>>>> 15aa98b2e51d9f05b395e149ed168e4051ba83cd
     font-size: 14px;
     width: 100%;
 }
@@ -161,7 +143,6 @@ body::-webkit-scrollbar-thumb {
     padding-right: 20px;
 }
 
-<<<<<<< HEAD
 .button:hover{
     color: #0c1514;
     background-color: white;
@@ -199,8 +180,6 @@ body::-webkit-scrollbar-thumb {
     background-color: #0c1514; 
 }
 
-=======
->>>>>>> 15aa98b2e51d9f05b395e149ed168e4051ba83cd
 .button2 {
     position: relative;
     display: flex; 
@@ -226,55 +205,6 @@ body::-webkit-scrollbar-thumb {
     opacity: .5;
 }
 
-<<<<<<< HEAD
-=======
-.button:hover{
-    color: #0c1514;
-    background-color: white;
-}
-
-.desktop-button {
-    display: block;
-}
-
-.responsive-button {
-    display: none; 
-}
-
-.button::before {
-    content: ""; 
-    position: absolute;
-    top: 50%; 
-    left: 10px; 
-    transform: translateY(-50%) scale(1); 
-    border-style: solid;
-    border-width: 8px 9px 8px 0; 
-    border-color: transparent #0c1514 transparent transparent; 
-    transition: border-color 0.5s ease-in-out;
-}
-
-.button::after {
-    content: ""; 
-    position: absolute;
-    top: 50%; 
-    left: 15px;
-    transform: translateY(-50%);
-    height: 5px; 
-    width: calc(100% - 200px); 
-    background-color: #0c1514; 
-    transition: opacity 0.5s ease-in-out, color 0.5s ease-in-out, background-color 0.5s ease-in-out;
-}
-
-.button:hover::before {
-    border-color: transparent #0c1514 transparent transparent; 
-}
-
-.button:hover::after {
-    background-color: #0c1514; 
-}
-
-
->>>>>>> 15aa98b2e51d9f05b395e149ed168e4051ba83cd
 .button2::before {
     content: ""; 
     position: absolute;
@@ -294,11 +224,7 @@ body::-webkit-scrollbar-thumb {
     right: 15px; 
     transform: translateY(-50%);
     height: 5px; 
-<<<<<<< HEAD
     width: calc(100% - 270px); 
-=======
-    width: calc(100% - 250px); 
->>>>>>> 15aa98b2e51d9f05b395e149ed168e4051ba83cd
     background-color: #0c1514; 
     transition: opacity 0.5s ease-in-out, color 0.5s ease-in-out, background-color 0.5s ease-in-out;
 }
@@ -311,7 +237,6 @@ body::-webkit-scrollbar-thumb {
     background-color: #0c1514; 
 }
 
-<<<<<<< HEAD
 .desktop-button {
     display: block;
 }
@@ -319,8 +244,6 @@ body::-webkit-scrollbar-thumb {
 .responsive-button {
     display: none; 
 }
-=======
->>>>>>> 15aa98b2e51d9f05b395e149ed168e4051ba83cd
 
 @media (max-width: 980px) {
     .first-box {
@@ -415,10 +338,6 @@ body::-webkit-scrollbar-thumb {
     text-align: center;
     color: white;
     font-size: 12px;
-<<<<<<< HEAD
-=======
-    text-decoration: underline;
->>>>>>> 15aa98b2e51d9f05b395e149ed168e4051ba83cd
     margin-bottom: 130px;
 }
 
@@ -545,17 +464,10 @@ footer {
     
 
     .button::after {
-<<<<<<< HEAD
         width: calc(100% - 190px); 
     }
     .button2::after {
         width: calc(100% - 300px); 
-=======
-        width: calc(100% - 220px); 
-    }
-    .button2::after {
-        width: calc(100% - 275px); 
->>>>>>> 15aa98b2e51d9f05b395e149ed168e4051ba83cd
     }
 
     .logo-container {

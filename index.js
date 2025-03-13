@@ -1,6 +1,5 @@
 /*//////////////    SCROLL APRES VIDEO   /////////////// */
 
-<<<<<<< HEAD
 document.addEventListener("DOMContentLoaded", function () {
     const introVideo = document.getElementById("intro");
     const introLoopVideo = document.getElementById("introLoop");
@@ -68,30 +67,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-=======
-document.addEventListener("DOMContentLoaded", function() {
-    var introVideo = document.querySelector(".intro");
-    var playButton = document.getElementById("playButton");
-    var hasScrolled = false; 
-
-    if (introVideo && playButton) {
-        playButton.addEventListener("click", function() {
-            introVideo.style.display = "block";
-            introVideo.play();
-            playButton.style.display = "none"; 
-        });
-
-        introVideo.addEventListener("timeupdate", function() {
-            if (!hasScrolled && introVideo.currentTime >= introVideo.duration - 0.1) {
-                hasScrolled = true;
-                document.getElementById("margin_p2").scrollIntoView({ behavior: "smooth" });
-            }
-        });
-    }
-});
-
-
->>>>>>> 15aa98b2e51d9f05b395e149ed168e4051ba83cd
 /*//////////////    NO SMOOTH LANDING   /////////////// */
 
 const margin_p2 = document.querySelector('#margin_p2');
@@ -129,11 +104,8 @@ video.addEventListener('mouseleave', () => {
     mediaElement.load();
     var mediaElement = document.getElementById("myvideo6");
     mediaElement.load();
-<<<<<<< HEAD
     var mediaElement = document.getElementById("myvideo7");
     mediaElement.load();
-=======
->>>>>>> 15aa98b2e51d9f05b395e149ed168e4051ba83cd
     
 });
 });
@@ -157,7 +129,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-<<<<<<< HEAD
 /*//////////////   FORCE NO SMOOTH  /////////////// */
 
 
@@ -191,31 +162,6 @@ document.addEventListener('DOMContentLoaded', function () {
 //             body.classList.remove('lock'); 
 //         }
 //     });
-=======
-
-
-/*//////////////   LOCK SCROLL FIRST TIME  /////////////// */
-
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const introVideo = document.getElementById('intro');
-        const body = document.body;
-
-    //      Vérifie si c'est la première visite
-        if (!localStorage.getItem('videoWatched')) {
-            body.classList.add('lock');
-
-            introVideo.addEventListener('ended', function() {
-                body.classList.remove('lock');
-                localStorage.setItem('videoWatched', 'true'); 
-            });
-
-            introVideo.play();
-        } else {
-            body.classList.remove('lock'); 
-        }
-    });
->>>>>>> 15aa98b2e51d9f05b395e149ed168e4051ba83cd
 
 
 //     /*//////////////    MODALS    /////////////// */

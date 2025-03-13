@@ -14,25 +14,14 @@
     font-family: "DrukWide-Bold-Trial";
     src: url("fonts/DrukWide-Bold-Trial.otf");
 }
-<<<<<<< HEAD
-=======
-
-@font-face {
-    font-family: "Oswald-VariableFont_wght";
-    src: url("fonts/Oswald-VariableFont_wght.ttf");
-}
->>>>>>> 15aa98b2e51d9f05b395e149ed168e4051ba83cd
 @font-face {
     font-family: "DrukWide-BoldItalic-Trial";
     src: url("fonts/DrukWide-BoldItalic-Trial.otf");
 }
-<<<<<<< HEAD
 @font-face {
     font-family: "Gilroy-SemiBold";
     src: url("fonts/Gilroy-SemiBold.ttf");
 }
-=======
->>>>>>> 15aa98b2e51d9f05b395e149ed168e4051ba83cd
 
 * {
     margin: 0;
@@ -87,10 +76,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .video-container {
-<<<<<<< HEAD
     background-color: black;
-=======
->>>>>>> 15aa98b2e51d9f05b395e149ed168e4051ba83cd
     box-shadow: 0 0 0 2px white;
     width: 100%;
     height: auto;
@@ -112,7 +98,6 @@ body::-webkit-scrollbar-thumb {
 
 .text-explanation {
     color: white;
-<<<<<<< HEAD
     font-family: "Gilroy-SemiBold", sans-serif;
     font-size: 14px;
     width: 100%;
@@ -121,9 +106,6 @@ body::-webkit-scrollbar-thumb {
 .text-explanation span {
     color: #e73b52;
     font-family: "Gilroy-SemiBold", sans-serif;
-=======
-    font-family: "Oswald-VariableFont_wght", sans-serif;
->>>>>>> 15aa98b2e51d9f05b395e149ed168e4051ba83cd
     font-size: 14px;
     width: 100%;
 }
@@ -218,11 +200,7 @@ body::-webkit-scrollbar-thumb {
     left: 15px;
     transform: translateY(-50%);
     height: 5px; 
-<<<<<<< HEAD
     width: calc(100% - 175px); 
-=======
-    width: calc(100% - 200px); 
->>>>>>> 15aa98b2e51d9f05b395e149ed168e4051ba83cd
     background-color: #0c1514; 
     transition: opacity 0.5s ease-in-out, color 0.5s ease-in-out, background-color 0.5s ease-in-out;
 }
@@ -255,11 +233,7 @@ body::-webkit-scrollbar-thumb {
     right: 15px; 
     transform: translateY(-50%);
     height: 5px; 
-<<<<<<< HEAD
     width: calc(100% - 270px); 
-=======
-    width: calc(100% - 250px); 
->>>>>>> 15aa98b2e51d9f05b395e149ed168e4051ba83cd
     background-color: #0c1514; 
     transition: opacity 0.5s ease-in-out, color 0.5s ease-in-out, background-color 0.5s ease-in-out;
 }
@@ -366,10 +340,6 @@ body::-webkit-scrollbar-thumb {
     text-align: center;
     color: white;
     font-size: 12px;
-<<<<<<< HEAD
-=======
-    text-decoration: underline;
->>>>>>> 15aa98b2e51d9f05b395e149ed168e4051ba83cd
     margin-bottom: 130px;
 }
 
@@ -496,17 +466,10 @@ footer {
     
 
     .button::after {
-<<<<<<< HEAD
         width: calc(100% - 190px); 
     }
     .button2::after {
         width: calc(100% - 300px); 
-=======
-        width: calc(100% - 220px); 
-    }
-    .button2::after {
-        width: calc(100% - 275px); 
->>>>>>> 15aa98b2e51d9f05b395e149ed168e4051ba83cd
     }
 
     .logo-container {
