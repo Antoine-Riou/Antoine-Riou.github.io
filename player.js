@@ -9,6 +9,12 @@ const skipButtons = player.querySelectorAll('[data-skip]');
 const ranges = player.querySelectorAll('.player__slider');
 const fullscreen = player.querySelector('.fullscreen');
 
+// Empêcher l'autoplay si smooth=no
+if (smooth === 'no') {
+    video.removeAttribute('autoplay'); // Supprime l'autoplay si présent
+    video.pause(); // Met la vidéo en pause au cas où elle démarre
+}
+
 // build functions
 
 function togglePlay() {
