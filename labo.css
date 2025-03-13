@@ -459,7 +459,11 @@ footer {
         line-height: 40px;
         margin-left: 10px;
         margin-right: 10px;
+<<<<<<< HEAD
         padding: 0 20px;
+=======
+        padding: 0 18px;
+>>>>>>> 15aa98b2e51d9f05b395e149ed168e4051ba83cd
         font-size: 18px;
     }
     .nav_text2 {

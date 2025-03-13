@@ -26,7 +26,11 @@ document.addEventListener('DOMContentLoaded', function () {
             footerLinks.forEach(link => link.classList.add('active')); // Ajoute une classe active aux liens du footer
             navText2Links.forEach(link => link.classList.add('active'));
         } else {
+<<<<<<< HEAD
             footer.style.bottom = '-115px';
+=======
+            footer.style.bottom = '-90px';
+>>>>>>> 15aa98b2e51d9f05b395e149ed168e4051ba83cd
             footerLinks.forEach(link => link.classList.remove('active')); // Retire la classe active
             navText2Links.forEach(link => link.classList.remove('active'));
         }
@@ -35,9 +39,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const observer = new IntersectionObserver(handleIntersection, observerOptions);
 
     // Observer les éléments déclencheurs si nécessaires
+<<<<<<< HEAD
     // const autoGrid = document.querySelector('.auto-grid');
     const page2 = document.getElementById('page2');
     // if (autoGrid) observer.observe(autoGrid);
+=======
+    const autoGrid = document.querySelector('.auto-grid');
+    const page2 = document.getElementById('page2');
+    if (autoGrid) observer.observe(autoGrid);
+>>>>>>> 15aa98b2e51d9f05b395e149ed168e4051ba83cd
     if (page2) observer.observe(page2);
 });
 
