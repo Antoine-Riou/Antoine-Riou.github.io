@@ -44,33 +44,40 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-/*//////////////   SMOOTH ANIMATION PAGE2  /////////////// */
+// Fonction pour vérifier si l'utilisateur est sur mobile
+function isMobile() {
+    return window.innerWidth <= 768; // Taille de l'écran pour considérer mobile
+}
 
-let lastScrollPosition = 0;
+/*//////////////   SMOOTH ANIMATION PAGE2 (Désactivé sur Mobile) /////////////// */
 
-window.addEventListener('scroll', () => {
-    const currentScrollPosition = window.scrollY;
+if (!isMobile()) {  // Appliquer le smooth scroll uniquement si l'on n'est pas sur mobile
+    let lastScrollPosition = 0;
 
-    const page2 = document.querySelector('#page2');
-    const headerHeight = document.querySelector('header')?.offsetHeight || 0;
-    const page2OffsetTop = page2.offsetTop - headerHeight;
+    window.addEventListener('scroll', () => {
+        const currentScrollPosition = window.scrollY;
 
-    // Scrolling down from the top to #page2
-    if (currentScrollPosition > lastScrollPosition && lastScrollPosition === 0) {
-        window.scrollTo({
-            top: page2OffsetTop,
-            behavior: 'smooth'
-        });
-    }
+        const page2 = document.querySelector('#page2');
+        const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+        const page2OffsetTop = page2.offsetTop - headerHeight;
 
-    // // Scrolling up from #page2 to the top of the page
-    // if (currentScrollPosition < lastScrollPosition && currentScrollPosition <= page2OffsetTop) {
-    //     window.scrollTo({
-    //         top: 0,
-    //         behavior: 'smooth'
-    //     });
-    // }
+        // Scrolling down from the top to #page2
+        if (currentScrollPosition > lastScrollPosition && lastScrollPosition === 0) {
+            window.scrollTo({
+                top: page2OffsetTop,
+                behavior: 'smooth'
+            });
+        }
 
-    lastScrollPosition = currentScrollPosition;
-});
+        // // Scrolling up from #page2 to the top of the page
+        // if (currentScrollPosition < lastScrollPosition && currentScrollPosition <= page2OffsetTop) {
+        //     window.scrollTo({
+        //         top: 0,
+        //         behavior: 'smooth'
+        //     });
+        // }
+
+        lastScrollPosition = currentScrollPosition;
+    });
+}
 
