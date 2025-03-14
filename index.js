@@ -1,11 +1,10 @@
+/*//////////////    SCROLL APRES VIDEO   /////////////// */
+
 document.addEventListener("DOMContentLoaded", function () {
     const introVideo = document.getElementById("intro");
     const introLoopVideo = document.getElementById("introLoop");
     const marginP2 = document.getElementById("margin_p2");
     let hasScrolled = false;
-
-    // Précharger la vidéo introLoop avant qu'elle ne soit nécessaire
-    introLoopVideo.load();
 
     // Vérifier si c'est la première visite
     if (!localStorage.getItem("hasVisited")) {
@@ -23,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Masquer la vidéo INTRO
             introVideo.style.display = "none";
 
-            // Assurer que la vidéo INTRO loop soit prête
+            // Afficher et jouer la vidéo INTRO loop
             introLoopVideo.style.display = "block";
             introLoopVideo.play().catch((err) => {
                 console.error("Erreur de lecture de la vidéo INTRO loop:", err);
@@ -50,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Masquer la vidéo INTRO
             introVideo.style.display = "none";
 
-            // Assurer que la vidéo INTRO loop soit prête
+            // Afficher et jouer la vidéo INTRO loop
             introLoopVideo.style.display = "block";
             introLoopVideo.play().catch((err) => {
                 console.error("Erreur de lecture de la vidéo INTRO loop:", err);
@@ -63,8 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
         introLoopVideo.play(); // Rejouer la vidéo en boucle
     });
 });
-
-
 
 
 
@@ -85,83 +82,33 @@ if (smooth === 'no') {
 
 /*//////////////    MINIATURES    /////////////// */
 
-/*//////////////    MINIATURES    /////////////// */
-
-// Fonction pour détecter si un élément est au centre de l'écran
-function isElementInView(element) {
-    const rect = element.getBoundingClientRect();
-    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-
-    // Vérifier si l'élément est dans la zone centrale de l'écran (50% de la hauteur de la fenêtre)
-    return rect.top >= (windowHeight * 0.25) && rect.bottom <= (windowHeight * 0.75);
-}
-
-// Fonction pour appliquer l'effet de survol (hover) uniquement sur mobile
-function applyHoverEffect() {
-    // Vérifier si l'on est sur un appareil mobile
-    if (!isMobile()) {
-        return; // Ne pas appliquer l'effet sur desktop
-    }
-
-    const videos = document.querySelectorAll('.video'); // Récupérer toutes les vidéos
-
-    videos.forEach((video) => {
-        const item = video.closest('.item'); // Récupérer l'élément parent contenant la vidéo
-        const text = item.querySelector('p'); // Récupérer le texte associé à la vidéo
-
-        if (isElementInView(video)) {
-            // Lorsque l'élément est au centre de l'écran, ajouter la classe hover
-            item.classList.add('hovered'); 
-
-            // Assurez-vous que la vidéo ne soit pas lue
-            video.pause();
-            video.currentTime = 0;
-        } else {
-            // Lorsque l'élément n'est plus au centre, enlever la classe hover
-            item.classList.remove('hovered'); 
-        }
-    });
-}
-
-// Appliquer l'effet lors du scroll
-window.addEventListener('scroll', applyHoverEffect);
-
-// Appliquer l'effet lors du chargement de la page
-window.addEventListener('load', applyHoverEffect);
-
-// Appliquer l'effet lors du redimensionnement de la fenêtre
-window.addEventListener('resize', applyHoverEffect);
-
-// Vérifier si l'utilisateur est sur mobile
-function isMobile() {
-    return window.innerWidth <= 768; // Taille de l'écran pour considérer mobile
-}
-
-// Appliquer l'effet uniquement sur mobile
-if (isMobile()) {
-    applyHoverEffect();
-}
-
-// Fonction pour activer/désactiver la vidéo sur desktop via hover
 const videos = document.querySelectorAll('.video');
 
 videos.forEach(video => {
-    video.addEventListener('mouseenter', () => {
-        if (!isMobile()) {  // Ne jouer la vidéo que si ce n'est pas mobile
-            video.play();
-        }
-    });
-
-    video.addEventListener('mouseleave', () => {
-        if (!isMobile()) {  // Ne pas mettre en pause si ce n'est pas mobile
-            video.pause();
-            video.currentTime = 0;
-        }
-    });
+video.addEventListener('mouseenter', () => {
+    video.play();
 });
 
-
-
+video.addEventListener('mouseleave', () => {
+    video.pause();
+    video.currentTime = 0;
+    // var mediaElement = document.getElementById("myvideo1");
+    // mediaElement.load();
+    var mediaElement = document.getElementById("myvideo2");
+    mediaElement.load();
+    var mediaElement = document.getElementById("myvideo3");
+    mediaElement.load();
+    var mediaElement = document.getElementById("myvideo4");
+    mediaElement.load();
+    var mediaElement = document.getElementById("myvideo5");
+    mediaElement.load();
+    var mediaElement = document.getElementById("myvideo6");
+    mediaElement.load();
+    var mediaElement = document.getElementById("myvideo7");
+    mediaElement.load();
+    
+});
+});
 
 
 
