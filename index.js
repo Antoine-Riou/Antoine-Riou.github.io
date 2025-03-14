@@ -1,10 +1,11 @@
-/*//////////////    SCROLL APRES VIDEO   /////////////// */
-
 document.addEventListener("DOMContentLoaded", function () {
     const introVideo = document.getElementById("intro");
     const introLoopVideo = document.getElementById("introLoop");
     const marginP2 = document.getElementById("margin_p2");
     let hasScrolled = false;
+
+    // Précharger la vidéo introLoop avant qu'elle ne soit nécessaire
+    introLoopVideo.load();
 
     // Vérifier si c'est la première visite
     if (!localStorage.getItem("hasVisited")) {
@@ -22,24 +23,20 @@ document.addEventListener("DOMContentLoaded", function () {
             // Masquer la vidéo INTRO
             introVideo.style.display = "none";
 
-            // Afficher la vidéo INTRO loop
+            // Assurer que la vidéo INTRO loop soit prête
             introLoopVideo.style.display = "block";
-
-            // S'assurer que la vidéo introLoop est bien prête à être lue
             introLoopVideo.play().catch((err) => {
                 console.error("Erreur de lecture de la vidéo INTRO loop:", err);
             });
 
-            // Attendre que la vidéo soit prête avant de déclencher le scroll
-            introLoopVideo.onplay = function() {
-                setTimeout(function () {
-                    // Scroll automatique vers page2 après 2 secondes de délai
-                    if (!hasScrolled) {
-                        hasScrolled = true; // Empêcher plusieurs défilements
-                        marginP2.scrollIntoView({ behavior: "smooth" });
-                    }
-                }, 2000); // Délai de 2000ms (2 secondes)
-            };
+            // Attendre 2 secondes avant de défiler vers margin_p2
+            setTimeout(function () {
+                // Scroll automatique vers page2 après 2 secondes de délai
+                if (!hasScrolled) {
+                    hasScrolled = true; // Empêcher plusieurs défilements
+                    marginP2.scrollIntoView({ behavior: "smooth" });
+                }
+            }, 2000); // Délai de 2000ms (2 secondes)
         });
     } else {
         // Si ce n'est pas la première visite, on joue d'abord INTRO.mp4, puis INTRO loop
@@ -53,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Masquer la vidéo INTRO
             introVideo.style.display = "none";
 
-            // Afficher et jouer la vidéo INTRO loop
+            // Assurer que la vidéo INTRO loop soit prête
             introLoopVideo.style.display = "block";
             introLoopVideo.play().catch((err) => {
                 console.error("Erreur de lecture de la vidéo INTRO loop:", err);
@@ -66,6 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
         introLoopVideo.play(); // Rejouer la vidéo en boucle
     });
 });
+
 
 
 
