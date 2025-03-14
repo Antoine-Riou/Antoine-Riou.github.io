@@ -85,11 +85,13 @@ if (smooth === 'no') {
 
 /*//////////////    MINIATURES    /////////////// */
 
+/*//////////////    MINIATURES    /////////////// */
+
 // Fonction pour détecter si un élément est au centre de l'écran
 function isElementInView(element) {
     const rect = element.getBoundingClientRect();
     const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-    
+
     // Vérifier si l'élément est dans la zone centrale de l'écran (50% de la hauteur de la fenêtre)
     return rect.top >= (windowHeight * 0.25) && rect.bottom <= (windowHeight * 0.75);
 }
@@ -105,15 +107,18 @@ function applyHoverEffect() {
 
     videos.forEach((video) => {
         const item = video.closest('.item'); // Récupérer l'élément parent contenant la vidéo
+        const text = item.querySelector('p'); // Récupérer le texte associé à la vidéo
 
         if (isElementInView(video)) {
-            item.classList.add('hovered'); // Ajouter la classe 'hovered' si l'élément est au centre
-            video.play(); // Jouer la vidéo si l'élément est au centre
-            video.loop = true; // Assurer que la vidéo boucle
+            // Lorsque l'élément est au centre de l'écran, ajouter la classe hover
+            item.classList.add('hovered'); 
+
+            // Assurez-vous que la vidéo ne soit pas lue
+            video.pause();
+            video.currentTime = 0;
         } else {
-            item.classList.remove('hovered'); // Retirer la classe 'hovered' si l'élément n'est pas au centre
-            video.pause(); // Mettre la vidéo en pause
-            video.currentTime = 0; // Réinitialiser la position de la vidéo
+            // Lorsque l'élément n'est plus au centre, enlever la classe hover
+            item.classList.remove('hovered'); 
         }
     });
 }
