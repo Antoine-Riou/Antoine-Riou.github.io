@@ -1,69 +1,52 @@
 /*//////////////    MINIATURES - Mobile uniquement  /////////////// */
 
-// Fonction pour détecter si un élément est au centre de l'écran (zone plus haute sur l'écran)
+// Fonction pour vérifier si un élément est dans la zone de détection
 function isElementInView(element, isBox2) {
     const rect = element.getBoundingClientRect();
     const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-    
-    // Pour box2 et box1, la zone de détection commence plus haut sur l'écran à 5% (ou 10%)
-    // La zone se termine à 85% de la hauteur de la fenêtre pour un meilleur effet
+
     if (isBox2) {
-        return rect.top >= (windowHeight * 0.05) && rect.bottom <= (windowHeight * 0.85); // Zone commencant à 5% pour .box2
+        return rect.top >= (windowHeight * 0.02) && rect.bottom <= (windowHeight * 0.85); // Détection plus haute pour .box2
     } else {
-        return rect.top >= (windowHeight * 0.05) && rect.bottom <= (windowHeight * 0.70); // Zone commencant à 5% pour .box1 aussi
+        return rect.top >= (windowHeight * 0.02) && rect.bottom <= (windowHeight * 0.75); // Détection plus haute pour .box1
     }
 }
 
-// Fonction pour appliquer l'effet de survol (hover) sur l'image uniquement
+// Fonction pour gérer l'effet de survol des images sur mobile
 function applyHoverEffectOnImage() {
-    // Vérifier si l'on est sur un appareil mobile
-    if (!isMobile()) {
-        return; // Ne pas appliquer l'effet sur desktop
-    }
+    if (!isMobile()) return; // Ne rien faire sur desktop
 
-    const items = document.querySelectorAll('.item'); // Récupérer tous les éléments contenant les images
-    let selectedItem = null; // Variable pour suivre l'élément actuellement sélectionné
+    const items = document.querySelectorAll('.item');
+    let selectedItem = null; // Variable pour stocker l'élément qui doit être en hovered
 
     items.forEach((item) => {
-        const imgBox1 = item.querySelector('.box1 img'); // Récupérer l'image dans box1
-        const imgBox2 = item.querySelector('.box2 img'); // Récupérer l'image dans box2
+        const imgBox1 = item.querySelector('.box1 img');
+        const imgBox2 = item.querySelector('.box2 img');
 
-        // Vérifier si l'image dans .box1 est au centre de l'écran
-        if (imgBox1 && isElementInView(imgBox1, false)) {
-            // Ajouter la classe hovered pour agrandir et changer l'apparence
-            item.classList.add('hovered');
-            selectedItem = item; // Marquer cet élément comme sélectionné
-        }
-        // Vérifier si l'image dans .box2 est au centre de l'écran avec zone élargie
-        else if (imgBox2 && isElementInView(imgBox2, true)) {
-            item.classList.add('hovered');
-            selectedItem = item; // Marquer cet élément comme sélectionné
-        } else {
-            // Si l'élément n'est pas au centre, enlever la classe hovered
-            item.classList.remove('hovered');
+        if (!selectedItem && imgBox1 && isElementInView(imgBox1, false)) {
+            selectedItem = item;
+        } 
+        else if (!selectedItem && imgBox2 && isElementInView(imgBox2, true)) {
+            selectedItem = item;
         }
     });
 
-    // Si un élément est sélectionné, enlever les autres éléments de la classe hovered
-    if (selectedItem) {
-        items.forEach((item) => {
-            if (item !== selectedItem) {
-                item.classList.remove('hovered');
-            }
-        });
-    }
+    // Mise à jour des classes : une seule image en hovered
+    items.forEach((item) => {
+        if (item === selectedItem) {
+            item.classList.add('hovered');
+        } else {
+            item.classList.remove('hovered');
+        }
+    });
 }
 
-// Appliquer l'effet lors du scroll
-window.addEventListener('scroll', applyHoverEffectOnImage);
-
-// Appliquer l'effet lors du chargement de la page
+// Appliquer l'effet lors du chargement, du scroll et du redimensionnement
 window.addEventListener('load', applyHoverEffectOnImage);
-
-// Appliquer l'effet lors du redimensionnement de la fenêtre
+window.addEventListener('scroll', applyHoverEffectOnImage);
 window.addEventListener('resize', applyHoverEffectOnImage);
 
 // Vérifier si l'utilisateur est sur mobile
 function isMobile() {
-    return window.innerWidth <= 768; // Taille de l'écran pour considérer mobile
+    return window.innerWidth <= 768;
 }

@@ -92,7 +92,6 @@ if (isMobile()) {
 }
 
 
-
 /*//////////////    NO SMOOTH LANDING   /////////////// */
 
 const margin_p2 = document.querySelector('#margin_p2');
@@ -142,9 +141,9 @@ video.addEventListener('mouseleave', () => {
 function isElementInView(element) {
     const rect = element.getBoundingClientRect();
     const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-    
-    // Vérifier si l'élément est dans la zone centrale de l'écran (50% de la hauteur de la fenêtre)
-    return rect.top >= (windowHeight * 0.25) && rect.bottom <= (windowHeight * 0.75);
+
+    // Vérifier si l'élément est bien visible dans une zone élargie au centre
+    return rect.top >= (windowHeight * 0.10) && rect.bottom <= (windowHeight * 0.80);
 }
 
 // Fonction pour appliquer l'effet de survol (hover) sur le texte uniquement sur mobile
@@ -155,34 +154,40 @@ function applyHoverEffectOnText() {
     }
 
     const items = document.querySelectorAll('.item'); // Récupérer tous les éléments contenant des vidéos
+    let selectedItem = null; // Variable pour stocker l'élément sélectionné
 
     items.forEach((item) => {
-        const video = item.querySelector('.video'); // Récupérer la vidéo
-        const text = item.querySelector('p'); // Récupérer le texte associé à la vidéo
+        const video = item.querySelector('.video'); // Récupérer la vidéo dans chaque item
 
-        if (isElementInView(video)) {
-            // Si l'élément (la vidéo) est au centre de l'écran, appliquer les styles de hover au texte
-            item.classList.add('hovered'); // Ajouter la classe hovered sur l'élément parent pour le texte
+        if (video && isElementInView(video)) {
+            selectedItem = item; // Définir cet élément comme sélectionné
+        }
+    });
+
+    // Appliquer l'effet uniquement à l'élément sélectionné
+    items.forEach((item) => {
+        if (item === selectedItem) {
+            item.classList.add('hovered'); // Ajouter la classe hovered
         } else {
-            // Si l'élément n'est pas au centre, enlever la classe hovered
-            item.classList.remove('hovered');
+            item.classList.remove('hovered'); // Retirer la classe des autres
         }
     });
 }
 
-// Appliquer l'effet lors du scroll
-window.addEventListener('scroll', applyHoverEffectOnText);
-
 // Appliquer l'effet lors du chargement de la page
 window.addEventListener('load', applyHoverEffectOnText);
+
+// Appliquer l'effet lors du scroll
+window.addEventListener('scroll', applyHoverEffectOnText);
 
 // Appliquer l'effet lors du redimensionnement de la fenêtre
 window.addEventListener('resize', applyHoverEffectOnText);
 
 // Vérifier si l'utilisateur est sur mobile
 function isMobile() {
-    return window.innerWidth <= 768; // Taille de l'écran pour considérer mobile
+    return window.innerWidth <= 768; // Considérer mobile si largeur <= 768px
 }
+
 
 // Appliquer l'effet uniquement sur mobile
 if (isMobile()) {
