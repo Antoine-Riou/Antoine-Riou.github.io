@@ -6,7 +6,7 @@ function isElementInView(element, isBox2) {
     const windowHeight = window.innerHeight || document.documentElement.clientHeight;
 
     if (isBox2) {
-        return rect.top >= (windowHeight * 0.02) && rect.bottom <= (windowHeight * 0.85); // Détection plus haute pour .box2
+        return rect.top >= (windowHeight * 0.02) && rect.bottom <= (windowHeight * 0.95); // Détection plus haute pour .box2
     } else {
         return rect.top >= (windowHeight * 0.02) && rect.bottom <= (windowHeight * 0.75); // Détection plus haute pour .box1
     }
