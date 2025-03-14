@@ -1,69 +1,95 @@
-/*//////////////    SCROLL APRES VIDEO   /////////////// */
+// Fonction pour vérifier si l'utilisateur est sur mobile
+function isMobile() {
+    return window.innerWidth <= 768; // Taille de l'écran pour considérer mobile
+}
 
-document.addEventListener("DOMContentLoaded", function () {
-    const introVideo = document.getElementById("intro");
-    const introLoopVideo = document.getElementById("introLoop");
-    const marginP2 = document.getElementById("margin_p2");
-    let hasScrolled = false;
+/*//////////////    SCROLL APRES VIDEO - Desktop /////////////// */
 
-    // Vérifier si c'est la première visite
-    if (!localStorage.getItem("hasVisited")) {
-        // C'est la première visite, on marque la visite
-        localStorage.setItem("hasVisited", "true");
+if (!isMobile()) {
+    // Si l'utilisateur est sur un appareil Desktop
+    document.addEventListener("DOMContentLoaded", function () {
+        const introVideo = document.getElementById("intro");
+        const introLoopVideo = document.getElementById("introLoop");
+        const marginP2 = document.getElementById("margin_p2");
+        let hasScrolled = false;
 
-        // Lancer automatiquement la vidéo INTRO.mp4
-        introVideo.style.display = "block"; // Afficher la vidéo d'introduction
-        introVideo.play().catch((err) => {
-            console.error("Erreur de lecture de la vidéo INTRO.mp4:", err);
-        });
+        // Vérifier si c'est la première visite
+        if (!localStorage.getItem("hasVisited")) {
+            // C'est la première visite, on marque la visite
+            localStorage.setItem("hasVisited", "true");
 
-        // Gestion de la fin de la vidéo INTRO.mp4
-        introVideo.addEventListener("ended", function () {
-            // Masquer la vidéo INTRO
-            introVideo.style.display = "none";
-
-            // Afficher et jouer la vidéo INTRO loop
-            introLoopVideo.style.display = "block";
-            introLoopVideo.play().catch((err) => {
-                console.error("Erreur de lecture de la vidéo INTRO loop:", err);
+            // Lancer automatiquement la vidéo INTRO.mp4
+            introVideo.style.display = "block"; // Afficher la vidéo d'introduction
+            introVideo.play().catch((err) => {
+                console.error("Erreur de lecture de la vidéo INTRO.mp4:", err);
             });
 
-            // Attendre 2 secondes avant de défiler vers margin_p2
-            setTimeout(function () {
-                // Scroll automatique vers page2 après 2 secondes de délai
-                if (!hasScrolled) {
-                    hasScrolled = true; // Empêcher plusieurs défilements
-                    marginP2.scrollIntoView({ behavior: "smooth" });
-                }
-            }, 2000); // Délai de 2000ms (2 secondes)
-        });
-    } else {
-        // Si ce n'est pas la première visite, on joue d'abord INTRO.mp4, puis INTRO loop
-        introVideo.style.display = "block"; // Afficher la vidéo INTRO.mp4
-        introVideo.play().catch((err) => {
-            console.error("Erreur de lecture de la vidéo INTRO.mp4:", err);
-        });
+            // Gestion de la fin de la vidéo INTRO.mp4
+            introVideo.addEventListener("ended", function () {
+                // Masquer la vidéo INTRO
+                introVideo.style.display = "none";
 
-        // Gestion de la fin de la vidéo INTRO.mp4 (sur les visites suivantes)
-        introVideo.addEventListener("ended", function () {
-            // Masquer la vidéo INTRO
-            introVideo.style.display = "none";
+                // Afficher et jouer la vidéo INTRO loop
+                introLoopVideo.style.display = "block";
+                introLoopVideo.play().catch((err) => {
+                    console.error("Erreur de lecture de la vidéo INTRO loop:", err);
+                });
 
-            // Afficher et jouer la vidéo INTRO loop
-            introLoopVideo.style.display = "block";
-            introLoopVideo.play().catch((err) => {
-                console.error("Erreur de lecture de la vidéo INTRO loop:", err);
+                // Attendre 2 secondes avant de défiler vers margin_p2
+                setTimeout(function () {
+                    // Scroll automatique vers page2 après 2 secondes de délai
+                    if (!hasScrolled) {
+                        hasScrolled = true; // Empêcher plusieurs défilements
+                        marginP2.scrollIntoView({ behavior: "smooth" });
+                    }
+                }, 2000); // Délai de 2000ms (2 secondes)
             });
-        });
-    }
+        } else {
+            // Si ce n'est pas la première visite, on joue d'abord INTRO.mp4, puis INTRO loop
+            introVideo.style.display = "block"; // Afficher la vidéo INTRO.mp4
+            introVideo.play().catch((err) => {
+                console.error("Erreur de lecture de la vidéo INTRO.mp4:", err);
+            });
 
-    // Continuer à jouer la vidéo en boucle même après plusieurs visites
-    introLoopVideo.addEventListener("ended", function () {
-        introLoopVideo.play(); // Rejouer la vidéo en boucle
+            // Gestion de la fin de la vidéo INTRO.mp4 (sur les visites suivantes)
+            introVideo.addEventListener("ended", function () {
+                // Masquer la vidéo INTRO
+                introVideo.style.display = "none";
+
+                // Afficher et jouer la vidéo INTRO loop
+                introLoopVideo.style.display = "block";
+                introLoopVideo.play().catch((err) => {
+                    console.error("Erreur de lecture de la vidéo INTRO loop:", err);
+                });
+            });
+        }
+
+        // Continuer à jouer la vidéo en boucle même après plusieurs visites
+        introLoopVideo.addEventListener("ended", function () {
+            introLoopVideo.play(); // Rejouer la vidéo en boucle
+        });
     });
-});
+}
 
+/*//////////////    SCROLL APRES VIDEO - Mobile /////////////// */
 
+if (isMobile()) {
+    // Si l'utilisateur est sur un appareil Mobile
+    document.addEventListener("DOMContentLoaded", function () {
+        const introLoopVideo = document.getElementById("introLoop");
+
+        // Lancer directement la vidéo INTRO loop en boucle
+        introLoopVideo.style.display = "block";
+        introLoopVideo.play().catch((err) => {
+            console.error("Erreur de lecture de la vidéo INTRO loop:", err);
+        });
+
+        // Continuer à jouer la vidéo en boucle même après plusieurs visites
+        introLoopVideo.addEventListener("ended", function () {
+            introLoopVideo.play(); // Rejouer la vidéo en boucle
+        });
+    });
+}
 
 
 
