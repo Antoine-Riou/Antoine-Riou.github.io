@@ -5,7 +5,10 @@ document.addEventListener("DOMContentLoaded", function () {
     let hasScrolled = false;
 
     // Précharger la vidéo introLoop avant qu'elle ne soit nécessaire
-    introLoopVideo.load();
+    introLoopVideo.load(); // Précharger la vidéo en boucle
+
+    // Définir l'attribut "preload" pour charger la vidéo suivante plus rapidement
+    introLoopVideo.preload = "auto"; 
 
     // Vérifier si c'est la première visite
     if (!localStorage.getItem("hasVisited")) {
@@ -23,15 +26,19 @@ document.addEventListener("DOMContentLoaded", function () {
             // Masquer la vidéo INTRO
             introVideo.style.display = "none";
 
-            // Assurer que la vidéo INTRO loop soit prête
+            // Préparer la vidéo introLoop (masquée) pour qu'elle se lance immédiatement
             introLoopVideo.style.display = "block";
             introLoopVideo.play().catch((err) => {
                 console.error("Erreur de lecture de la vidéo INTRO loop:", err);
             });
 
+            // Attendre 1 seconde pour s'assurer que la vidéo est bien prête et commencer la transition sans écran noir
+            setTimeout(function () {
+                introLoopVideo.style.display = "block"; // Rendre visible la vidéo en boucle
+            }, 1000); // Délai d'une seconde pour que la vidéo soit totalement prête
+
             // Attendre 2 secondes avant de défiler vers margin_p2
             setTimeout(function () {
-                // Scroll automatique vers page2 après 2 secondes de délai
                 if (!hasScrolled) {
                     hasScrolled = true; // Empêcher plusieurs défilements
                     marginP2.scrollIntoView({ behavior: "smooth" });
@@ -50,11 +57,16 @@ document.addEventListener("DOMContentLoaded", function () {
             // Masquer la vidéo INTRO
             introVideo.style.display = "none";
 
-            // Assurer que la vidéo INTRO loop soit prête
+            // Préparer la vidéo introLoop (masquée) pour qu'elle se lance immédiatement
             introLoopVideo.style.display = "block";
             introLoopVideo.play().catch((err) => {
                 console.error("Erreur de lecture de la vidéo INTRO loop:", err);
             });
+
+            // Attendre 1 seconde pour s'assurer que la vidéo est bien prête et commencer la transition sans écran noir
+            setTimeout(function () {
+                introLoopVideo.style.display = "block"; // Rendre visible la vidéo en boucle
+            }, 1000); // Délai d'une seconde pour que la vidéo soit totalement prête
         });
     }
 
@@ -63,6 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
         introLoopVideo.play(); // Rejouer la vidéo en boucle
     });
 });
+
 
 
 
