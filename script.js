@@ -48,29 +48,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
 let lastScrollPosition = 0;
 
-window.addEventListener('scroll', () => {
-    const currentScrollPosition = window.scrollY;
+// Fonction pour détecter si l'utilisateur est sur mobile
+function isMobile() {
+    return window.innerWidth <= 768; // Si la largeur de l'écran est inférieure ou égale à 768px (mobile/tablette)
+}
 
-    const page2 = document.querySelector('#page2');
-    const headerHeight = document.querySelector('header')?.offsetHeight || 0;
-    const page2OffsetTop = page2.offsetTop - headerHeight;
+if (!isMobile()) {  // Activer le script seulement si ce n'est pas un appareil mobile
+    window.addEventListener('scroll', () => {
+        const currentScrollPosition = window.scrollY;
 
-    // Scrolling down from the top to #page2
-    if (currentScrollPosition > lastScrollPosition && lastScrollPosition === 0) {
-        window.scrollTo({
-            top: page2OffsetTop,
-            behavior: 'smooth'
-        });
-    }
+        const page2 = document.querySelector('#page2');
+        const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+        const page2OffsetTop = page2.offsetTop - headerHeight;
 
-    // // Scrolling up from #page2 to the top of the page
-    // if (currentScrollPosition < lastScrollPosition && currentScrollPosition <= page2OffsetTop) {
-    //     window.scrollTo({
-    //         top: 0,
-    //         behavior: 'smooth'
-    //     });
-    // }
+        // Scrolling down from the top to #page2
+        if (currentScrollPosition > lastScrollPosition && lastScrollPosition === 0) {
+            window.scrollTo({
+                top: page2OffsetTop,
+                behavior: 'smooth'
+            });
+        }
 
-    lastScrollPosition = currentScrollPosition;
-});
+        lastScrollPosition = currentScrollPosition;
+    });
+}
 
