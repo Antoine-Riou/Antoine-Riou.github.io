@@ -110,6 +110,58 @@ video.addEventListener('mouseleave', () => {
 });
 });
 
+/*//////////////    MINIATURES - Mobile uniquement /////////////// */
+
+// Fonction pour détecter si un élément est au centre de l'écran
+function isElementInView(element) {
+    const rect = element.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    
+    // Vérifier si l'élément est dans la zone centrale de l'écran (50% de la hauteur de la fenêtre)
+    return rect.top >= (windowHeight * 0.25) && rect.bottom <= (windowHeight * 0.75);
+}
+
+// Fonction pour appliquer l'effet de survol (hover) sur le texte uniquement sur mobile
+function applyHoverEffectOnText() {
+    // Vérifier si l'on est sur un appareil mobile
+    if (!isMobile()) {
+        return; // Ne pas appliquer l'effet sur desktop
+    }
+
+    const items = document.querySelectorAll('.item'); // Récupérer tous les éléments contenant des vidéos
+
+    items.forEach((item) => {
+        const video = item.querySelector('.video'); // Récupérer la vidéo
+        const text = item.querySelector('p'); // Récupérer le texte associé à la vidéo
+
+        if (isElementInView(video)) {
+            // Si l'élément (la vidéo) est au centre de l'écran, appliquer les styles de hover au texte
+            item.classList.add('hovered'); // Ajouter la classe hovered sur l'élément parent pour le texte
+        } else {
+            // Si l'élément n'est pas au centre, enlever la classe hovered
+            item.classList.remove('hovered');
+        }
+    });
+}
+
+// Appliquer l'effet lors du scroll
+window.addEventListener('scroll', applyHoverEffectOnText);
+
+// Appliquer l'effet lors du chargement de la page
+window.addEventListener('load', applyHoverEffectOnText);
+
+// Appliquer l'effet lors du redimensionnement de la fenêtre
+window.addEventListener('resize', applyHoverEffectOnText);
+
+// Vérifier si l'utilisateur est sur mobile
+function isMobile() {
+    return window.innerWidth <= 768; // Taille de l'écran pour considérer mobile
+}
+
+// Appliquer l'effet uniquement sur mobile
+if (isMobile()) {
+    applyHoverEffectOnText();
+}
 
 
 /*//////////////   INTRO TEXT DISPARAIT  /////////////// */
