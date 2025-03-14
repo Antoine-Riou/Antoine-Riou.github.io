@@ -322,6 +322,24 @@ header {
     filter: grayscale(0%) contrast(100%);
 }
 
+/* Lorsqu'un élément (image) dans .hovered est au centre de l'écran, applique l'effet */
+.hovered .box1 img {
+    box-shadow: 0 0 0 10px white;
+    transform: scale(0.95);
+    cursor: pointer;
+    filter: none;
+    filter: grayscale(0%) contrast(100%);
+}
+
+.hovered .box2 img {
+    box-shadow: 0 0 0 10px white;
+    transform: scale(0.96);
+    cursor: pointer;
+    filter: none;
+    filter: grayscale(0%) contrast(100%);
+}
+
+
 .mentions {
     margin-bottom: 130px;
     margin-top: 0px;
