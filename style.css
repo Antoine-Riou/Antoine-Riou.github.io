@@ -371,6 +371,30 @@ body:has(#myvideo7:hover) #categorie7 {
     opacity: 1;
 }
 
+/* Les transitions lors du survol (hover) */
+.hovered #mytext1,
+.hovered #mytext2,
+.hovered #mytext3,
+.hovered #mytext4,
+.hovered #mytext5,
+.hovered #mytext6,
+.hovered #mytext7 {
+    color: white;
+    margin-left: 10px;
+}
+
+.hovered #categorie1,
+.hovered #categorie2,
+.hovered #categorie3,
+.hovered #categorie4,
+.hovered #categorie5,
+.hovered #categorie6,
+.hovered #categorie7 {
+    padding-right: 20px;
+    opacity: 1;
+}
+
+
 #categorie1,
 #categorie2,
 #categorie3,

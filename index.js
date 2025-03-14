@@ -5,10 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let hasScrolled = false;
 
     // Précharger la vidéo introLoop avant qu'elle ne soit nécessaire
-    introLoopVideo.load(); // Précharger la vidéo en boucle
-
-    // Définir l'attribut "preload" pour charger la vidéo suivante plus rapidement
-    introLoopVideo.preload = "auto"; 
+    introLoopVideo.load();
 
     // Vérifier si c'est la première visite
     if (!localStorage.getItem("hasVisited")) {
@@ -26,19 +23,15 @@ document.addEventListener("DOMContentLoaded", function () {
             // Masquer la vidéo INTRO
             introVideo.style.display = "none";
 
-            // Préparer la vidéo introLoop (masquée) pour qu'elle se lance immédiatement
+            // Assurer que la vidéo INTRO loop soit prête
             introLoopVideo.style.display = "block";
             introLoopVideo.play().catch((err) => {
                 console.error("Erreur de lecture de la vidéo INTRO loop:", err);
             });
 
-            // Attendre 1 seconde pour s'assurer que la vidéo est bien prête et commencer la transition sans écran noir
-            setTimeout(function () {
-                introLoopVideo.style.display = "block"; // Rendre visible la vidéo en boucle
-            }, 1000); // Délai d'une seconde pour que la vidéo soit totalement prête
-
             // Attendre 2 secondes avant de défiler vers margin_p2
             setTimeout(function () {
+                // Scroll automatique vers page2 après 2 secondes de délai
                 if (!hasScrolled) {
                     hasScrolled = true; // Empêcher plusieurs défilements
                     marginP2.scrollIntoView({ behavior: "smooth" });
@@ -57,16 +50,11 @@ document.addEventListener("DOMContentLoaded", function () {
             // Masquer la vidéo INTRO
             introVideo.style.display = "none";
 
-            // Préparer la vidéo introLoop (masquée) pour qu'elle se lance immédiatement
+            // Assurer que la vidéo INTRO loop soit prête
             introLoopVideo.style.display = "block";
             introLoopVideo.play().catch((err) => {
                 console.error("Erreur de lecture de la vidéo INTRO loop:", err);
             });
-
-            // Attendre 1 seconde pour s'assurer que la vidéo est bien prête et commencer la transition sans écran noir
-            setTimeout(function () {
-                introLoopVideo.style.display = "block"; // Rendre visible la vidéo en boucle
-            }, 1000); // Délai d'une seconde pour que la vidéo soit totalement prête
         });
     }
 
@@ -75,7 +63,6 @@ document.addEventListener("DOMContentLoaded", function () {
         introLoopVideo.play(); // Rejouer la vidéo en boucle
     });
 });
-
 
 
 
@@ -98,33 +85,78 @@ if (smooth === 'no') {
 
 /*//////////////    MINIATURES    /////////////// */
 
+// Fonction pour détecter si un élément est au centre de l'écran
+function isElementInView(element) {
+    const rect = element.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    
+    // Vérifier si l'élément est dans la zone centrale de l'écran (50% de la hauteur de la fenêtre)
+    return rect.top >= (windowHeight * 0.25) && rect.bottom <= (windowHeight * 0.75);
+}
+
+// Fonction pour appliquer l'effet de survol (hover) uniquement sur mobile
+function applyHoverEffect() {
+    // Vérifier si l'on est sur un appareil mobile
+    if (!isMobile()) {
+        return; // Ne pas appliquer l'effet sur desktop
+    }
+
+    const videos = document.querySelectorAll('.video'); // Récupérer toutes les vidéos
+
+    videos.forEach((video) => {
+        const item = video.closest('.item'); // Récupérer l'élément parent contenant la vidéo
+
+        if (isElementInView(video)) {
+            item.classList.add('hovered'); // Ajouter la classe 'hovered' si l'élément est au centre
+            video.play(); // Jouer la vidéo si l'élément est au centre
+            video.loop = true; // Assurer que la vidéo boucle
+        } else {
+            item.classList.remove('hovered'); // Retirer la classe 'hovered' si l'élément n'est pas au centre
+            video.pause(); // Mettre la vidéo en pause
+            video.currentTime = 0; // Réinitialiser la position de la vidéo
+        }
+    });
+}
+
+// Appliquer l'effet lors du scroll
+window.addEventListener('scroll', applyHoverEffect);
+
+// Appliquer l'effet lors du chargement de la page
+window.addEventListener('load', applyHoverEffect);
+
+// Appliquer l'effet lors du redimensionnement de la fenêtre
+window.addEventListener('resize', applyHoverEffect);
+
+// Vérifier si l'utilisateur est sur mobile
+function isMobile() {
+    return window.innerWidth <= 768; // Taille de l'écran pour considérer mobile
+}
+
+// Appliquer l'effet uniquement sur mobile
+if (isMobile()) {
+    applyHoverEffect();
+}
+
+// Fonction pour activer/désactiver la vidéo sur desktop via hover
 const videos = document.querySelectorAll('.video');
 
 videos.forEach(video => {
-video.addEventListener('mouseenter', () => {
-    video.play();
+    video.addEventListener('mouseenter', () => {
+        if (!isMobile()) {  // Ne jouer la vidéo que si ce n'est pas mobile
+            video.play();
+        }
+    });
+
+    video.addEventListener('mouseleave', () => {
+        if (!isMobile()) {  // Ne pas mettre en pause si ce n'est pas mobile
+            video.pause();
+            video.currentTime = 0;
+        }
+    });
 });
 
-video.addEventListener('mouseleave', () => {
-    video.pause();
-    video.currentTime = 0;
-    // var mediaElement = document.getElementById("myvideo1");
-    // mediaElement.load();
-    var mediaElement = document.getElementById("myvideo2");
-    mediaElement.load();
-    var mediaElement = document.getElementById("myvideo3");
-    mediaElement.load();
-    var mediaElement = document.getElementById("myvideo4");
-    mediaElement.load();
-    var mediaElement = document.getElementById("myvideo5");
-    mediaElement.load();
-    var mediaElement = document.getElementById("myvideo6");
-    mediaElement.load();
-    var mediaElement = document.getElementById("myvideo7");
-    mediaElement.load();
-    
-});
-});
+
+
 
 
 
