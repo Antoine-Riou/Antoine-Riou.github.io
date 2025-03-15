@@ -1065,7 +1065,7 @@ footer {
 
 @media (max-width: 768px) {
     .video {
-        transform: scale(0.5);
+        transform: scale(0.1);
     }
 }
 /*
@@ -1110,7 +1110,6 @@ footer {
     .box_p2 {
         margin-bottom: 40px;
     }
-   
 
     .container_p2 {
         height: 90px;
@@ -1129,7 +1128,6 @@ footer {
     .container_p2 img {
         height: 90px;
     }
-   
     .auto-grid {
         grid-gap: 10px 25px;
         margin-top: 25px;
@@ -1151,7 +1149,6 @@ footer {
     .mentions {
         font-size: 13px;
     }
-  
     footer {
         bottom: -90px;
         height: 90px;
