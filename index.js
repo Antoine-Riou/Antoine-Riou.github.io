@@ -267,6 +267,39 @@ window.addEventListener('load', manageVideosOnScroll);
 window.addEventListener('resize', manageVideosOnScroll);
 
 
+/*//////////////   PAUSE/UNPAUSE INTRO_LOOP WHEN OUT/IN OF VIEW /////////////// */
+
+// Intersection Observer to pause/unpause introLoop when it is out/in of view
+document.addEventListener('DOMContentLoaded', function() {
+    const introLoopVideo = document.getElementById('introLoop');
+
+    // Fonction de callback pour l'IntersectionObserver
+    const handleIntersection = (entries, observer) => {
+        entries.forEach(entry => {
+            // Si la vidéo n'est pas visible (hors de l'écran), on la met en pause
+            if (!entry.isIntersecting) {
+                introLoopVideo.pause();
+            } else {
+                // Si la vidéo devient visible (dans l'écran), on la relance
+                introLoopVideo.play().catch((err) => console.error("Erreur de lecture de la vidéo INTRO loop:", err));
+            }
+        });
+    };
+
+    // Créer l'observateur avec les options
+    const observer = new IntersectionObserver(handleIntersection, {
+        root: null, // Utilise la fenêtre du navigateur comme root
+        rootMargin: '0px', // Aucun décalage
+        threshold: 0.8 // La vidéo est considérée comme "hors écran" si 10% de sa surface est hors de l'écran
+    });
+
+    // Observer la vidéo introLoop
+    observer.observe(introLoopVideo);
+});
+
+
+
+
 
 
 /*//////////////   LAZY LOAD /////////////// */
@@ -289,9 +322,9 @@ function lazyLoadVideo() {
     });
 }
 
-// Toggle Play/Pause
-function togglePlayPause() {
-    const player = this.closest('.player');
+// Fonction pour jouer ou mettre en pause la vidéo
+function togglePlayPause(event) {
+    const player = event.currentTarget.closest('.player');
     const video = player.querySelector('video');
     const playButton = player.querySelector('.player__button.toggle');
 
@@ -316,6 +349,8 @@ function updateProgressBar() {
         progressFilled.style.flexBasis = `${percent}%`;
         progressFilled.style.width = `${percent}%`;
     }
+
+    showControlsTemporarily(player);
 }
 
 // Permet de cliquer sur la barre de progression pour aller à un moment précis
@@ -352,6 +387,32 @@ function toggleFullScreen() {
     showControlsTemporarily(player);
 }
 
+// Double-clic sur la vidéo pour passer en plein écran
+function handleDoubleClick(event) {
+    const player = this.closest('.player');
+    const video = player.querySelector('video');
+
+    // Si la vidéo n'est pas déjà en plein écran, on l'active
+    if (!document.fullscreenElement) {
+        if (player.requestFullscreen) {
+            player.requestFullscreen();
+        } else if (player.mozRequestFullScreen) { // Firefox
+            player.mozRequestFullScreen();
+        } else if (player.webkitRequestFullscreen) { // Chrome et Safari
+            player.webkitRequestFullscreen();
+        } else if (player.msRequestFullscreen) { // IE/Edge
+            player.msRequestFullscreen();
+        }
+    } else {
+        document.exitFullscreen(); // Quitter le plein écran
+    }
+}
+
+// Détection si l'utilisateur est sur mobile
+function isMobile() {
+    return /Mobi|Android|iPhone/i.test(navigator.userAgent);
+}
+
 // Fonction pour cacher les contrôles après 2 secondes sur mobile
 function hideControls(player) {
     if (isMobile()) {
@@ -359,19 +420,19 @@ function hideControls(player) {
     }
 }
 
-// Fonction pour afficher temporairement les contrôles
+// Fonction pour afficher temporairement les contrôles et relancer le timer
 function showControlsTemporarily(player) {
     player.classList.add('show-controls');
 
-    if (isMobile()) {
-        clearTimeout(player.hideControlsTimeout);
-        player.hideControlsTimeout = setTimeout(() => hideControls(player), 2000);
-    }
-}
+    // Supprime le timer précédent pour éviter qu'il se relance inutilement
+    clearTimeout(player.hideControlsTimeout);
 
-// Détection si l'utilisateur est sur mobile
-function isMobile() {
-    return /Mobi|Android/i.test(navigator.userAgent);
+    // **Force la disparition après 2 secondes sur mobile**
+    if (isMobile()) {
+        player.hideControlsTimeout = setTimeout(() => {
+            hideControls(player);
+        }, 2000);
+    }
 }
 
 // Initialisation des événements
@@ -402,8 +463,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Sur Mobile : afficher les contrôles au toucher
-            video.addEventListener('touchstart', () => showControlsTemporarily(player));
+            // Sur Mobile : cacher les contrôles après 2s d'inactivité
+            video.addEventListener('touchstart', () => {
+                showControlsTemporarily(player);
+            });
+
+            video.addEventListener('play', () => showControlsTemporarily(player));
+
+            // Double-clic pour passer en plein écran
+            video.addEventListener('dblclick', handleDoubleClick);
         }
 
         if (progress) {
@@ -423,34 +491,3 @@ document.addEventListener('DOMContentLoaded', () => {
 // Mise à jour lors du scroll et du resize
 window.addEventListener('scroll', lazyLoadVideo);
 window.addEventListener('resize', lazyLoadVideo);
-
-
-/*//////////////   PAUSE/UNPAUSE INTRO_LOOP WHEN OUT/IN OF VIEW /////////////// */
-
-// Intersection Observer to pause/unpause introLoop when it is out/in of view
-document.addEventListener('DOMContentLoaded', function() {
-    const introLoopVideo = document.getElementById('introLoop');
-
-    // Fonction de callback pour l'IntersectionObserver
-    const handleIntersection = (entries, observer) => {
-        entries.forEach(entry => {
-            // Si la vidéo n'est pas visible (hors de l'écran), on la met en pause
-            if (!entry.isIntersecting) {
-                introLoopVideo.pause();
-            } else {
-                // Si la vidéo devient visible (dans l'écran), on la relance
-                introLoopVideo.play().catch((err) => console.error("Erreur de lecture de la vidéo INTRO loop:", err));
-            }
-        });
-    };
-
-    // Créer l'observateur avec les options
-    const observer = new IntersectionObserver(handleIntersection, {
-        root: null, // Utilise la fenêtre du navigateur comme root
-        rootMargin: '0px', // Aucun décalage
-        threshold: 0.8 // La vidéo est considérée comme "hors écran" si 10% de sa surface est hors de l'écran
-    });
-
-    // Observer la vidéo introLoop
-    observer.observe(introLoopVideo);
-});
