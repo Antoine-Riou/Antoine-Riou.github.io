@@ -252,8 +252,6 @@ if (isMobile()) {
 }
 
 
-
-
 /*//////////////   LAZY LOAD /////////////// */
 
 function isElementInView(element) {
@@ -293,3 +291,32 @@ const playButton = document.querySelector('.player__button.toggle');
 playButton.addEventListener('click', togglePlayPause);
 
 
+/*//////////////   PAUSE/UNPAUSE INTRO_LOOP WHEN OUT/IN OF VIEW /////////////// */
+
+// Intersection Observer to pause/unpause introLoop when it is out/in of view
+document.addEventListener('DOMContentLoaded', function() {
+    const introLoopVideo = document.getElementById('introLoop');
+
+    // Fonction de callback pour l'IntersectionObserver
+    const handleIntersection = (entries, observer) => {
+        entries.forEach(entry => {
+            // Si la vidéo n'est pas visible (hors de l'écran), on la met en pause
+            if (!entry.isIntersecting) {
+                introLoopVideo.pause();
+            } else {
+                // Si la vidéo devient visible (dans l'écran), on la relance
+                introLoopVideo.play().catch((err) => console.error("Erreur de lecture de la vidéo INTRO loop:", err));
+            }
+        });
+    };
+
+    // Créer l'observateur avec les options
+    const observer = new IntersectionObserver(handleIntersection, {
+        root: null, // Utilise la fenêtre du navigateur comme root
+        rootMargin: '0px', // Aucun décalage
+        threshold: 0.8 // La vidéo est considérée comme "hors écran" si 10% de sa surface est hors de l'écran
+    });
+
+    // Observer la vidéo introLoop
+    observer.observe(introLoopVideo);
+});
