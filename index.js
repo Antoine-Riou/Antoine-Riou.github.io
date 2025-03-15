@@ -200,56 +200,63 @@ videos.forEach(video => {
         video.currentTime = 0;
     });
 });
+
 /*//////////////   HOVERED - mobile  /////////////// */
 
-function isElementInView(element) {
+let activeVideo = null; // Variable pour suivre la vidéo active
+
+// Fonction pour vérifier si un élément est exactement au centre de l'écran
+function isElementAtCenter(element) {
     const rect = element.getBoundingClientRect();
     const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-    return rect.top >= (windowHeight * 0.10) && rect.bottom <= (windowHeight * 0.80);
+
+    // Centre de l'écran : Calcul de la position exacte du centre
+    const center = windowHeight / 2;
+    
+    // Vérifier si le centre de l'élément est égal au centre de l'écran
+    return Math.abs((rect.top + rect.bottom) / 2 - center) < 5; // 5 pixels de marge pour de la précision
 }
 
-function applyHoverEffectOnText() {
-    if (!isMobile()) return;
-
+function manageVideosOnScroll() {
     const items = document.querySelectorAll('.item');
-    let selectedItem = null;
-
-    // On vérifie quel item est au centre de l'écran
-    for (let item of items) {
-        const video = item.querySelector('.video');
-        if (video && isElementInView(video)) {
-            selectedItem = item;
-            break;
-        }
-    }
 
     items.forEach((item) => {
         const video = item.querySelector('.video');
-        
-        if (item === selectedItem) {
-            // Si l'élément est celui sélectionné, on active la lecture de la vidéo
-            item.classList.add('hovered');
-            if (video.paused || video.currentTime === 0) {
-                // Si la vidéo est en pause ou a été réinitialisée, on la relance
-                video.load(); // Recharge la vidéo (évite de charger plusieurs fois)
+
+        if (video && isElementAtCenter(item)) {
+            // Si l'élément est exactement au centre, on joue la vidéo si ce n'est pas déjà la vidéo active
+            if (video.paused && activeVideo !== video) {
+                if (activeVideo) {
+                    activeVideo.pause(); // Met en pause la vidéo précédente
+                    activeVideo.currentTime = 0; // Réinitialise la vidéo précédente
+                    activeVideo.closest('.item').classList.remove('hovered'); // Enlève la classe hovered de la vidéo précédente
+                }
                 video.play();
+                item.classList.add('hovered');
+                activeVideo = video; // Marque cette vidéo comme étant active
             }
         } else {
-            // Si l'élément n'est pas sélectionné, on met la vidéo en pause et on réinitialise
-            item.classList.remove('hovered');
-            if (video) {
+            // Si l'élément n'est pas au centre, on met la vidéo en pause si elle est active et ne l'a pas encore été
+            if (video !== activeVideo && !video.paused) {
                 video.pause();
-                video.currentTime = 0;  // Réinitialise la vidéo
+                video.currentTime = 0; // Réinitialise la vidéo
+                item.classList.remove('hovered');
             }
         }
     });
 }
 
-if (isMobile()) {
-    window.addEventListener('load', applyHoverEffectOnText);
-    window.addEventListener('scroll', applyHoverEffectOnText);
-    window.addEventListener('resize', applyHoverEffectOnText);
-}
+// Appeler la fonction pour gérer les vidéos lors du scroll
+window.addEventListener('scroll', manageVideosOnScroll);
+
+// Appeler la fonction pour gérer les vidéos lorsque la page se charge
+window.addEventListener('load', manageVideosOnScroll);
+
+// Appeler la fonction lors du redimensionnement
+window.addEventListener('resize', manageVideosOnScroll);
+
+
+
 
 
 /*//////////////   LAZY LOAD /////////////// */
