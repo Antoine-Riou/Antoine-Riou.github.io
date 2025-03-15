@@ -397,7 +397,6 @@ body:has(#myvideo7:hover) #categorie7 {
 .hovered video {
     box-shadow: 0 0 0 10px white;
     transform: scale(0.95);
-    cursor: pointer;
 }
 
 #categorie1,
@@ -1063,11 +1062,7 @@ footer {
 
 /* tablet */
 
-@media (max-width: 768px) {
-    .video {
-        transform: scale(0.1);
-    }
-}
+
 /*
 @media only screen and (min-width: 1920px) {
 

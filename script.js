@@ -1,18 +1,16 @@
 /*//////////////   APPARITION TEXT + FOOTER   /////////////// */
 
-
 document.addEventListener('DOMContentLoaded', function () {
     const footer = document.getElementById('footer');
-    const footerLinks = footer.querySelectorAll('a'); // Sélectionne tous les liens dans le footer
+    const footerLinks = footer.querySelectorAll('a');
     const navText2Links = document.querySelectorAll('.nav a');
 
-    // Vérification des éléments nécessaires
     if (!footer || footerLinks.length === 0) return;
 
     const observerOptions = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.1 // Déclenchement à 10% de visibilité
+        threshold: 0.1
     };
 
     const handleIntersection = (entries) => {
@@ -23,35 +21,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (isVisible) {
             footer.style.bottom = '0';
-            footerLinks.forEach(link => link.classList.add('active')); // Ajoute une classe active aux liens du footer
+            footerLinks.forEach(link => link.classList.add('active'));
             navText2Links.forEach(link => link.classList.add('active'));
         } else {
             footer.style.bottom = '-115px';
-            footerLinks.forEach(link => link.classList.remove('active')); // Retire la classe active
+            footerLinks.forEach(link => link.classList.remove('active'));
             navText2Links.forEach(link => link.classList.remove('active'));
         }
     };
 
     const observer = new IntersectionObserver(handleIntersection, observerOptions);
 
-    // Observer les éléments déclencheurs si nécessaires
-    // const autoGrid = document.querySelector('.auto-grid');
     const page2 = document.getElementById('page2');
-    // if (autoGrid) observer.observe(autoGrid);
     if (page2) observer.observe(page2);
 });
 
-
-
-
-// Fonction pour vérifier si l'utilisateur est sur mobile
-function isMobile() {
-    return window.innerWidth <= 768; // Taille de l'écran pour considérer mobile
-}
-
 /*//////////////   SMOOTH ANIMATION PAGE2 (Désactivé sur Mobile) /////////////// */
 
-if (!isMobile()) {  // Appliquer le smooth scroll uniquement si l'on n'est pas sur mobile
+if (!isMobile()) {
     let lastScrollPosition = 0;
 
     window.addEventListener('scroll', () => {
@@ -61,7 +48,6 @@ if (!isMobile()) {  // Appliquer le smooth scroll uniquement si l'on n'est pas s
         const headerHeight = document.querySelector('header')?.offsetHeight || 0;
         const page2OffsetTop = page2.offsetTop - headerHeight;
 
-        // Scrolling down from the top to #page2
         if (currentScrollPosition > lastScrollPosition && lastScrollPosition === 0) {
             window.scrollTo({
                 top: page2OffsetTop,
@@ -69,15 +55,6 @@ if (!isMobile()) {  // Appliquer le smooth scroll uniquement si l'on n'est pas s
             });
         }
 
-        // // Scrolling up from #page2 to the top of the page
-        // if (currentScrollPosition < lastScrollPosition && currentScrollPosition <= page2OffsetTop) {
-        //     window.scrollTo({
-        //         top: 0,
-        //         behavior: 'smooth'
-        //     });
-        // }
-
         lastScrollPosition = currentScrollPosition;
     });
 }
-
