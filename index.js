@@ -105,94 +105,77 @@ if (smooth === 'no') {
 }
 
 
-/*//////////////    MINIATURES    /////////////// */
+/*//////////////    MINIATURES - Effet Hover sur Vidéo    /////////////// */
 
 const videos = document.querySelectorAll('.video');
 
 videos.forEach(video => {
-video.addEventListener('mouseenter', () => {
-    video.play();
+    video.addEventListener('mouseenter', () => {
+        video.play();
+    });
+
+    video.addEventListener('mouseleave', () => {
+        video.pause();
+        video.currentTime = 0; // Remettre à zéro
+    });
 });
 
-video.addEventListener('mouseleave', () => {
-    video.pause();
-    video.currentTime = 0;
-    // var mediaElement = document.getElementById("myvideo1");
-    // mediaElement.load();
-    var mediaElement = document.getElementById("myvideo2");
-    mediaElement.load();
-    var mediaElement = document.getElementById("myvideo3");
-    mediaElement.load();
-    var mediaElement = document.getElementById("myvideo4");
-    mediaElement.load();
-    var mediaElement = document.getElementById("myvideo5");
-    mediaElement.load();
-    var mediaElement = document.getElementById("myvideo6");
-    mediaElement.load();
-    var mediaElement = document.getElementById("myvideo7");
-    mediaElement.load();
-    
-});
-});
-
-/*//////////////    MINIATURES - Mobile uniquement /////////////// */
+/*//////////////    MINIATURES - Mobile uniquement    /////////////// */
 
 // Fonction pour détecter si un élément est au centre de l'écran
 function isElementInView(element) {
     const rect = element.getBoundingClientRect();
     const windowHeight = window.innerHeight || document.documentElement.clientHeight;
 
-    // Vérifier si l'élément est bien visible dans une zone élargie au centre
     return rect.top >= (windowHeight * 0.10) && rect.bottom <= (windowHeight * 0.80);
 }
 
-// Fonction pour appliquer l'effet de survol (hover) sur le texte uniquement sur mobile
+// Fonction pour appliquer l'effet hover sur mobile avec une seule vidéo active à la fois
 function applyHoverEffectOnText() {
-    // Vérifier si l'on est sur un appareil mobile
-    if (!isMobile()) {
-        return; // Ne pas appliquer l'effet sur desktop
-    }
+    if (!isMobile()) return;
 
-    const items = document.querySelectorAll('.item'); // Récupérer tous les éléments contenant des vidéos
-    let selectedItem = null; // Variable pour stocker l'élément sélectionné
+    const items = document.querySelectorAll('.item');
+    let selectedItem = null; // Stocke l'élément actuellement sélectionné
 
-    items.forEach((item) => {
-        const video = item.querySelector('.video'); // Récupérer la vidéo dans chaque item
+    // Vérifier chaque élément et sélectionner le premier visible
+    for (let item of items) {
+        const video = item.querySelector('.video');
 
         if (video && isElementInView(video)) {
-            selectedItem = item; // Définir cet élément comme sélectionné
+            selectedItem = item; // Définit l'élément actif
+            break; // On s'arrête dès qu'on trouve une vidéo visible
         }
-    });
+    }
 
     // Appliquer l'effet uniquement à l'élément sélectionné
     items.forEach((item) => {
+        const video = item.querySelector('.video');
+
         if (item === selectedItem) {
-            item.classList.add('hovered'); // Ajouter la classe hovered
+            item.classList.add('hovered');
+            video.play(); // Joue la vidéo sélectionnée
         } else {
-            item.classList.remove('hovered'); // Retirer la classe des autres
+            item.classList.remove('hovered');
+            if (video) {
+                video.pause(); // Stoppe toutes les autres vidéos
+                video.currentTime = 0; // Remet à zéro
+            }
         }
     });
 }
 
-// Appliquer l'effet lors du chargement de la page
-window.addEventListener('load', applyHoverEffectOnText);
-
-// Appliquer l'effet lors du scroll
-window.addEventListener('scroll', applyHoverEffectOnText);
-
-// Appliquer l'effet lors du redimensionnement de la fenêtre
-window.addEventListener('resize', applyHoverEffectOnText);
-
-// Vérifier si l'utilisateur est sur mobile
+// Détecter si l'utilisateur est sur mobile
 function isMobile() {
-    return window.innerWidth <= 768; // Considérer mobile si largeur <= 768px
+    return window.innerWidth <= 768;
 }
 
-
-// Appliquer l'effet uniquement sur mobile
+// Appliquer l'effet aux bons événements
 if (isMobile()) {
-    applyHoverEffectOnText();
+    window.addEventListener('load', applyHoverEffectOnText);
+    window.addEventListener('scroll', applyHoverEffectOnText);
+    window.addEventListener('resize', applyHoverEffectOnText);
 }
+
 
 
 /*//////////////   INTRO TEXT DISPARAIT  /////////////// */
