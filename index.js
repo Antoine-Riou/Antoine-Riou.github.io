@@ -205,6 +205,11 @@ videos.forEach(video => {
 
 let activeVideo = null; // Variable pour suivre la vidéo active
 
+// Fonction pour vérifier si l'on est sur mobile
+function isMobile() {
+    return window.innerWidth <= 768; // Considère les écrans de largeur <= 768px comme des mobiles
+}
+
 // Fonction pour vérifier si un élément est au centre de l'écran avec une plage d'épaisseur
 function isElementAtCenter(element) {
     const rect = element.getBoundingClientRect();
@@ -221,6 +226,9 @@ function isElementAtCenter(element) {
 }
 
 function manageVideosOnScroll() {
+    // Applique la logique uniquement sur mobile
+    if (!isMobile()) return;
+
     const items = document.querySelectorAll('.item');
 
     items.forEach((item) => {
