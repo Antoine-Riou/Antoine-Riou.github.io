@@ -200,7 +200,6 @@ videos.forEach(video => {
         video.currentTime = 0;
     });
 });
-
 /*//////////////   HOVERED - mobile  /////////////// */
 
 function isElementInView(element) {
@@ -230,7 +229,9 @@ function applyHoverEffectOnText() {
         if (item === selectedItem) {
             // Si l'élément est celui sélectionné, on active la lecture de la vidéo
             item.classList.add('hovered');
-            if (video.paused) {
+            if (video.paused || video.currentTime === 0) {
+                // Si la vidéo est en pause ou a été réinitialisée, on la relance
+                video.load(); // Recharge la vidéo (évite de charger plusieurs fois)
                 video.play();
             }
         } else {
@@ -249,6 +250,8 @@ if (isMobile()) {
     window.addEventListener('scroll', applyHoverEffectOnText);
     window.addEventListener('resize', applyHoverEffectOnText);
 }
+
+
 
 
 /*//////////////   LAZY LOAD /////////////// */
