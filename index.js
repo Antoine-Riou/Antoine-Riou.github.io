@@ -1,7 +1,7 @@
 /*//////////////   FUNCTION IS MOBILE  /////////////// */
 
 function isMobile() {
-    return window.innerWidth <= 768; // Taille de l'écran pour considérer mobile
+    return window.innerWidth <= 768; 
 }
 
 /*//////////////   SCROLL APRES VIDEO - Desktop /////////////// */
@@ -60,6 +60,91 @@ if (isMobile()) {
         });
     });
 }
+
+/*//////////////   APPARITION TEXT + FOOTER   /////////////// */
+
+document.addEventListener('DOMContentLoaded', function () {
+    const footer = document.getElementById('footer');
+    const footerLinks = footer.querySelectorAll('a');
+    const navText2Links = document.querySelectorAll('.nav a');
+
+    if (!footer || footerLinks.length === 0) return;
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const handleIntersection = (entries) => {
+        let isVisible = false;
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) isVisible = true;
+        });
+
+        if (isVisible) {
+            footer.style.bottom = '0';
+            footerLinks.forEach(link => link.classList.add('active'));
+            navText2Links.forEach(link => link.classList.add('active'));
+        } else {
+            footer.style.bottom = '-115px';
+            footerLinks.forEach(link => link.classList.remove('active'));
+            navText2Links.forEach(link => link.classList.remove('active'));
+        }
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+
+    const page2 = document.getElementById('page2');
+    if (page2) observer.observe(page2);
+});
+
+/*//////////////   SMOOTH ANIMATION PAGE2 (Désactivé sur Mobile) /////////////// */
+
+if (!isMobile()) {
+    let lastScrollPosition = 0;
+
+    window.addEventListener('scroll', () => {
+        const currentScrollPosition = window.scrollY;
+
+        const page2 = document.querySelector('#page2');
+        const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+        const page2OffsetTop = page2.offsetTop - headerHeight;
+
+        if (currentScrollPosition > lastScrollPosition && lastScrollPosition === 0) {
+            window.scrollTo({
+                top: page2OffsetTop,
+                behavior: 'smooth'
+            });
+        }
+
+        lastScrollPosition = currentScrollPosition;
+    });
+}
+
+/*//////////////   INTRO TEXT DISPARAIT  /////////////// */
+
+document.addEventListener('DOMContentLoaded', function() {
+    const playButton = document.getElementById('playButton');
+    const introText = document.getElementById('introText');
+
+    playButton.addEventListener('click', function() {
+        introText.style.opacity = '0';
+        introText.style.filter = 'blur(10px)';
+
+        introText.addEventListener('transitionend', function() {
+            introText.style.display = 'none';
+        });
+    });
+});
+
+/*//////////////   FORCE NO SMOOTH  /////////////// */
+
+document.addEventListener('DOMContentLoaded', function () {
+    if (window.location.href.includes('?smooth=no')) {
+        window.history.replaceState({}, document.title, 'index.html');
+    }
+});
 
 /*//////////////   NO SMOOTH LANDING   /////////////// */
 
@@ -127,71 +212,40 @@ if (isMobile()) {
     window.addEventListener('resize', applyHoverEffectOnText);
 }
 
-/*//////////////   INTRO TEXT DISPARAIT  /////////////// */
-
-document.addEventListener('DOMContentLoaded', function() {
-    const playButton = document.getElementById('playButton');
-    const introText = document.getElementById('introText');
-
-    playButton.addEventListener('click', function() {
-        introText.style.opacity = '0';
-        introText.style.filter = 'blur(10px)';
-
-        introText.addEventListener('transitionend', function() {
-            introText.style.display = 'none';
-        });
-    });
-});
-
-/*//////////////   FORCE NO SMOOTH  /////////////// */
-
-document.addEventListener('DOMContentLoaded', function () {
-    if (window.location.href.includes('?smooth=no')) {
-        window.history.replaceState({}, document.title, 'index.html');
-    }
-});
-
 /*//////////////   LAZY LOAD /////////////// */
 
-// Fonction qui vérifie si l'élément est visible dans la fenêtre (viewport)
 function isElementInView(element) {
     const rect = element.getBoundingClientRect();
     const windowHeight = window.innerHeight || document.documentElement.clientHeight;
     return rect.top >= 0 && rect.bottom <= windowHeight;
 }
 
-// Fonction qui gère le lazy loading de la vidéo
 function lazyLoadVideo() {
-    const videos = document.querySelectorAll('video[data-src]'); // Sélectionne toutes les vidéos avec data-src
+    const videos = document.querySelectorAll('video[data-src]');
     videos.forEach((video) => {
-        // Si la vidéo est visible dans la fenêtre du navigateur et que la source n'est pas encore chargée
         if (isElementInView(video) && !video.src) {
-            const src = video.getAttribute('data-src');  // Récupère l'URL de la vidéo
-            video.src = src;  // Définit la source de la vidéo
-            video.load();  // Charge la vidéo
+            const src = video.getAttribute('data-src');
+            video.src = src;
+            video.load();
         }
     });
 }
 
-// Fonction qui gère le bouton play/pause
 function togglePlayPause() {
-    const video = this.closest('.player').querySelector('video'); // Trouve la vidéo associée
+    const video = this.closest('.player').querySelector('video');
     if (video.paused) {
         video.play();
-        this.textContent = '❚❚';  // Change le bouton en "Pause"
+        this.textContent = '❚❚';
     } else {
         video.pause();
-        this.textContent = '►';  // Change le bouton en "Play"
+        this.textContent = '►';
     }
 }
 
-// Ajouter un événement pour écouter les défilements et redimensionnements de la page
 window.addEventListener('scroll', lazyLoadVideo);
 window.addEventListener('resize', lazyLoadVideo);
 
-// Exécuter le lazy load au moment où la page est complètement chargée
 document.addEventListener('DOMContentLoaded', lazyLoadVideo);
 
-// Ajouter l'événement de lecture/pause au bouton
 const playButton = document.querySelector('.player__button.toggle');
 playButton.addEventListener('click', togglePlayPause);
