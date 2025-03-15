@@ -183,6 +183,7 @@ function applyHoverEffectOnText() {
     const items = document.querySelectorAll('.item');
     let selectedItem = null;
 
+    // On vérifie quel item est au centre de l'écran
     for (let item of items) {
         const video = item.querySelector('.video');
         if (video && isElementInView(video)) {
@@ -193,14 +194,19 @@ function applyHoverEffectOnText() {
 
     items.forEach((item) => {
         const video = item.querySelector('.video');
+        
         if (item === selectedItem) {
+            // Si l'élément est celui sélectionné, on active la lecture de la vidéo
             item.classList.add('hovered');
-            video.play();
+            if (video.paused) {
+                video.play();
+            }
         } else {
+            // Si l'élément n'est pas sélectionné, on met la vidéo en pause et on réinitialise
             item.classList.remove('hovered');
             if (video) {
                 video.pause();
-                video.currentTime = 0;
+                video.currentTime = 0;  // Réinitialise la vidéo
             }
         }
     });
@@ -211,6 +217,7 @@ if (isMobile()) {
     window.addEventListener('scroll', applyHoverEffectOnText);
     window.addEventListener('resize', applyHoverEffectOnText);
 }
+
 
 /*//////////////   LAZY LOAD /////////////// */
 
