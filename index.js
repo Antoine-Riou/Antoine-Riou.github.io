@@ -205,7 +205,7 @@ videos.forEach(video => {
 
 let activeVideo = null; // Variable pour suivre la vidéo active
 
-// Fonction pour vérifier si un élément est exactement au centre de l'écran
+// Fonction pour vérifier si un élément est au centre de l'écran avec une plage d'épaisseur
 function isElementAtCenter(element) {
     const rect = element.getBoundingClientRect();
     const windowHeight = window.innerHeight || document.documentElement.clientHeight;
@@ -213,8 +213,11 @@ function isElementAtCenter(element) {
     // Centre de l'écran : Calcul de la position exacte du centre
     const center = windowHeight / 2;
     
-    // Vérifier si le centre de l'élément est égal au centre de l'écran
-    return Math.abs((rect.top + rect.bottom) / 2 - center) < 5; // 5 pixels de marge pour de la précision
+    // Augmenter la tolérance à 50 pixels pour rendre la zone plus épaisse
+    const tolerance = 50;
+
+    // Vérifier si l'élément est dans la plage d'épaisseur du centre
+    return Math.abs((rect.top + rect.bottom) / 2 - center) < tolerance;
 }
 
 function manageVideosOnScroll() {
@@ -224,7 +227,7 @@ function manageVideosOnScroll() {
         const video = item.querySelector('.video');
 
         if (video && isElementAtCenter(item)) {
-            // Si l'élément est exactement au centre, on joue la vidéo si ce n'est pas déjà la vidéo active
+            // Si l'élément est au centre de l'écran, on joue la vidéo si ce n'est pas déjà la vidéo active
             if (video.paused && activeVideo !== video) {
                 if (activeVideo) {
                     activeVideo.pause(); // Met en pause la vidéo précédente
@@ -254,7 +257,6 @@ window.addEventListener('load', manageVideosOnScroll);
 
 // Appeler la fonction lors du redimensionnement
 window.addEventListener('resize', manageVideosOnScroll);
-
 
 
 
