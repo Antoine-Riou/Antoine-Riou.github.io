@@ -84,7 +84,7 @@ videos.forEach(video => {
     });
 });
 
-/*//////////////   MINIATURES - Mobile uniquement    /////////////// */
+/*//////////////   HOVERED - mobile  /////////////// */
 
 function isElementInView(element) {
     const rect = element.getBoundingClientRect();
@@ -153,4 +153,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /*//////////////   LAZY LOAD /////////////// */
 
+// Fonction qui vérifie si l'élément est visible dans la fenêtre (viewport)
+function isElementInView(element) {
+    const rect = element.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    return rect.top >= 0 && rect.bottom <= windowHeight;
+}
 
+// Fonction qui gère le lazy loading de la vidéo
+function lazyLoadVideo() {
+    const videos = document.querySelectorAll('video[data-src]'); // Sélectionne toutes les vidéos avec data-src
+    videos.forEach((video) => {
+        // Si la vidéo est visible dans la fenêtre du navigateur et que la source n'est pas encore chargée
+        if (isElementInView(video) && !video.src) {
+            const src = video.getAttribute('data-src');  // Récupère l'URL de la vidéo
+            video.src = src;  // Définit la source de la vidéo
+            video.load();  // Charge la vidéo
+        }
+    });
+}
+
+// Fonction qui gère le bouton play/pause
+function togglePlayPause() {
+    const video = this.closest('.player').querySelector('video'); // Trouve la vidéo associée
+    if (video.paused) {
+        video.play();
+        this.textContent = '❚❚';  // Change le bouton en "Pause"
+    } else {
+        video.pause();
+        this.textContent = '►';  // Change le bouton en "Play"
+    }
+}
+
+// Ajouter un événement pour écouter les défilements et redimensionnements de la page
+window.addEventListener('scroll', lazyLoadVideo);
+window.addEventListener('resize', lazyLoadVideo);
+
+// Exécuter le lazy load au moment où la page est complètement chargée
+document.addEventListener('DOMContentLoaded', lazyLoadVideo);
+
+// Ajouter l'événement de lecture/pause au bouton
+const playButton = document.querySelector('.player__button.toggle');
+playButton.addEventListener('click', togglePlayPause);
