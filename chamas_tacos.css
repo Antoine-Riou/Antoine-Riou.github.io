@@ -378,7 +378,7 @@ footer {
 .footer_text {
     background-color: #0c1514;
     line-height: 35px;
-    margin-right: 10px;
+    margin-right: 5px;
     display: block;
     float: right;
     color: #e73b52;
@@ -496,7 +496,7 @@ footer {
     }
     .footer_text {
         line-height: 35px;
-        margin-right: 10px;
+        margin-right: 5px;
         font-size: 18px;
     }
     .footer_insta {
