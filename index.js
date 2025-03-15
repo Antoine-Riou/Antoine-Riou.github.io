@@ -4,6 +4,38 @@ function isMobile() {
     return window.innerWidth <= 768; 
 }
 
+/*//////////////   CHANGE VIDEO SOURCES FOR MOBILE  /////////////// */
+
+// Fonction qui change les sources des vidéos en fonction du type d'appareil (mobile ou non)
+function changeVideoSourcesForMobile() {
+    if (isMobile()) {
+        // Sélectionne toutes les vidéos avec la classe '.video'
+        const videos = document.querySelectorAll('.video');
+
+        // Change la source de chaque vidéo pour la version basse résolution
+        videos.forEach((video) => {
+            const currentSrc = video.src;
+
+            // Si la vidéo n'est pas encore une version basse résolution
+            if (currentSrc.indexOf('preview') !== -1) {
+                // Remplace 'preview' par 'low' dans le nom du fichier
+                const lowResolutionSrc = currentSrc.replace('preview', 'low');
+
+                // Met à jour la source de la vidéo
+                video.src = lowResolutionSrc;
+                video.load(); // Recharge la vidéo avec la nouvelle source
+            }
+        });
+    }
+}
+
+// Exécute la fonction pour changer les sources lorsque la page est chargée
+document.addEventListener('DOMContentLoaded', changeVideoSourcesForMobile);
+
+// Optionnel : Exécute la fonction de nouveau lorsque la taille de la fenêtre change (si l'utilisateur redimensionne)
+window.addEventListener('resize', changeVideoSourcesForMobile);
+
+
 /*//////////////   SCROLL APRES VIDEO - Desktop /////////////// */
 
 if (!isMobile()) {
@@ -256,3 +288,5 @@ document.addEventListener('DOMContentLoaded', lazyLoadVideo);
 
 const playButton = document.querySelector('.player__button.toggle');
 playButton.addEventListener('click', togglePlayPause);
+
+
