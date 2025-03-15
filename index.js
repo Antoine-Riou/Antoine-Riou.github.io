@@ -280,32 +280,149 @@ function isElementInView(element) {
 function lazyLoadVideo() {
     const videos = document.querySelectorAll('video[data-src]');
     videos.forEach((video) => {
-        if (isElementInView(video) && !video.src) {
+        if (isElementInView(video) && !video.dataset.loaded) {
             const src = video.getAttribute('data-src');
-            video.src = src;
+            video.querySelector('source').setAttribute('src', src);
             video.load();
+            video.dataset.loaded = "true";
         }
     });
 }
 
+// Toggle Play/Pause
 function togglePlayPause() {
-    const video = this.closest('.player').querySelector('video');
+    const player = this.closest('.player');
+    const video = player.querySelector('video');
+    const playButton = player.querySelector('.player__button.toggle');
+
     if (video.paused) {
         video.play();
-        this.textContent = '❚❚';
+        playButton.textContent = '❚❚';
     } else {
         video.pause();
-        this.textContent = '►';
+        playButton.textContent = '►';
+    }
+
+    showControlsTemporarily(player);
+}
+
+// Met à jour la barre de progression
+function updateProgressBar() {
+    const player = this.closest('.player');
+    const progressFilled = player.querySelector('.progress__filled');
+    const percent = (this.currentTime / this.duration) * 100;
+
+    if (progressFilled) {
+        progressFilled.style.flexBasis = `${percent}%`;
+        progressFilled.style.width = `${percent}%`;
     }
 }
 
+// Permet de cliquer sur la barre de progression pour aller à un moment précis
+function handleScrub(event) {
+    const player = this.closest('.player');
+    const video = player.querySelector('video');
+    const progress = player.querySelector('.progress');
+
+    const scrubTime = (event.offsetX / progress.offsetWidth) * video.duration;
+    video.currentTime = scrubTime;
+
+    showControlsTemporarily(player);
+}
+
+// Fonction pour gérer le volume
+function handleVolumeChange() {
+    const player = this.closest('.player');
+    const video = player.querySelector('video');
+    video.volume = this.value;
+
+    showControlsTemporarily(player);
+}
+
+// Fonction pour gérer le mode plein écran
+function toggleFullScreen() {
+    const player = this.closest('.player');
+
+    if (!document.fullscreenElement) {
+        player.requestFullscreen().catch(err => console.log(err));
+    } else {
+        document.exitFullscreen();
+    }
+
+    showControlsTemporarily(player);
+}
+
+// Fonction pour cacher les contrôles après 2 secondes sur mobile
+function hideControls(player) {
+    if (isMobile()) {
+        player.classList.remove('show-controls');
+    }
+}
+
+// Fonction pour afficher temporairement les contrôles
+function showControlsTemporarily(player) {
+    player.classList.add('show-controls');
+
+    if (isMobile()) {
+        clearTimeout(player.hideControlsTimeout);
+        player.hideControlsTimeout = setTimeout(() => hideControls(player), 2000);
+    }
+}
+
+// Détection si l'utilisateur est sur mobile
+function isMobile() {
+    return /Mobi|Android/i.test(navigator.userAgent);
+}
+
+// Initialisation des événements
+document.addEventListener('DOMContentLoaded', () => {
+    lazyLoadVideo();
+
+    const players = document.querySelectorAll('.player');
+
+    players.forEach((player) => {
+        const video = player.querySelector('video');
+        const playButton = player.querySelector('.player__button.toggle');
+        const progress = player.querySelector('.progress');
+        const volumeSlider = player.querySelector('.player__slider');
+        const fullscreenButton = player.querySelector('.player__button.fullscreen');
+
+        if (playButton) {
+            playButton.addEventListener('click', togglePlayPause);
+        }
+
+        if (video) {
+            video.addEventListener('timeupdate', updateProgressBar);
+            video.addEventListener('click', togglePlayPause);
+
+            // Sur Desktop : cacher les contrôles quand la souris quitte la vidéo
+            video.addEventListener('mouseleave', () => {
+                if (!isMobile()) {
+                    hideControls(player);
+                }
+            });
+
+            // Sur Mobile : afficher les contrôles au toucher
+            video.addEventListener('touchstart', () => showControlsTemporarily(player));
+        }
+
+        if (progress) {
+            progress.addEventListener('click', handleScrub);
+        }
+
+        if (volumeSlider) {
+            volumeSlider.addEventListener('input', handleVolumeChange);
+        }
+
+        if (fullscreenButton) {
+            fullscreenButton.addEventListener('click', toggleFullScreen);
+        }
+    });
+});
+
+// Mise à jour lors du scroll et du resize
 window.addEventListener('scroll', lazyLoadVideo);
 window.addEventListener('resize', lazyLoadVideo);
-
-document.addEventListener('DOMContentLoaded', lazyLoadVideo);
-
-const playButton = document.querySelector('.player__button.toggle');
-playButton.addEventListener('click', togglePlayPause);
 
 
 /*//////////////   PAUSE/UNPAUSE INTRO_LOOP WHEN OUT/IN OF VIEW /////////////// */
