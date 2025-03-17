@@ -1,3 +1,4 @@
+
 /*//////////////   FUNCTION IS MOBILE  /////////////// */
 
 function isMobile() {
@@ -6,35 +7,21 @@ function isMobile() {
 
 /*//////////////   CHANGE VIDEO SOURCES FOR MOBILE  /////////////// */
 
-// Fonction qui change les sources des vidéos en fonction du type d'appareil (mobile ou non)
 function changeVideoSourcesForMobile() {
     if (isMobile()) {
-        // Sélectionne toutes les vidéos avec la classe '.video'
-        const videos = document.querySelectorAll('.video');
-
-        // Change la source de chaque vidéo pour la version basse résolution
-        videos.forEach((video) => {
+        document.querySelectorAll('.video').forEach((video) => {
             const currentSrc = video.src;
-
-            // Si la vidéo n'est pas encore une version basse résolution
             if (currentSrc.indexOf('preview') !== -1) {
-                // Remplace 'preview' par 'low' dans le nom du fichier
                 const lowResolutionSrc = currentSrc.replace('preview', 'low');
-
-                // Met à jour la source de la vidéo
                 video.src = lowResolutionSrc;
-                video.load(); // Recharge la vidéo avec la nouvelle source
+                video.load();
             }
         });
     }
 }
 
-// Exécute la fonction pour changer les sources lorsque la page est chargée
 document.addEventListener('DOMContentLoaded', changeVideoSourcesForMobile);
-
-// Optionnel : Exécute la fonction de nouveau lorsque la taille de la fenêtre change (si l'utilisateur redimensionne)
 window.addEventListener('resize', changeVideoSourcesForMobile);
-
 
 /*//////////////   SCROLL APRES VIDEO - Desktop /////////////// */
 
@@ -126,7 +113,6 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     const observer = new IntersectionObserver(handleIntersection, observerOptions);
-
     const page2 = document.getElementById('page2');
     if (page2) observer.observe(page2);
 });
@@ -135,10 +121,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 if (!isMobile()) {
     let lastScrollPosition = 0;
-
     window.addEventListener('scroll', () => {
         const currentScrollPosition = window.scrollY;
-
         const page2 = document.querySelector('#page2');
         const headerHeight = document.querySelector('header')?.offsetHeight || 0;
         const page2OffsetTop = page2.offsetTop - headerHeight;
@@ -192,7 +176,6 @@ if (smooth === 'no') {
 /*//////////////   MINIATURES - Effet Hover sur Vidéo    /////////////// */
 
 const videos = document.querySelectorAll('.video');
-
 videos.forEach(video => {
     video.addEventListener('mouseenter', () => video.play());
     video.addEventListener('mouseleave', () => {
@@ -203,104 +186,73 @@ videos.forEach(video => {
 
 /*//////////////   HOVERED - mobile  /////////////// */
 
-let activeVideo = null; // Variable pour suivre la vidéo active
+let activeVideo = null;
 
-// Fonction pour vérifier si l'on est sur mobile
-function isMobile() {
-    return window.innerWidth <= 768; // Considère les écrans de largeur <= 768px comme des mobiles
-}
-
-// Fonction pour vérifier si un élément est au centre de l'écran avec une plage d'épaisseur
 function isElementAtCenter(element) {
     const rect = element.getBoundingClientRect();
     const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-
-    // Centre de l'écran : Calcul de la position exacte du centre
     const center = windowHeight / 2;
-    
-    // Augmenter la tolérance à 50 pixels pour rendre la zone plus épaisse
     const tolerance = 50;
-
-    // Vérifier si l'élément est dans la plage d'épaisseur du centre
     return Math.abs((rect.top + rect.bottom) / 2 - center) < tolerance;
 }
 
 function manageVideosOnScroll() {
-    // Applique la logique uniquement sur mobile
     if (!isMobile()) return;
 
     const items = document.querySelectorAll('.item');
-
     items.forEach((item) => {
         const video = item.querySelector('.video');
-
         if (video && isElementAtCenter(item)) {
-            // Si l'élément est au centre de l'écran, on joue la vidéo si ce n'est pas déjà la vidéo active
             if (video.paused && activeVideo !== video) {
                 if (activeVideo) {
-                    activeVideo.pause(); // Met en pause la vidéo précédente
-                    activeVideo.currentTime = 0; // Réinitialise la vidéo précédente
-                    activeVideo.closest('.item').classList.remove('hovered'); // Enlève la classe hovered de la vidéo précédente
+                    activeVideo.pause();
+                    activeVideo.currentTime = 0;
+                    activeVideo.closest('.item').classList.remove('hovered');
+                    activeVideo.setAttribute('poster', activeVideo.getAttribute('data-poster'));
                 }
                 video.play();
                 item.classList.add('hovered');
-                activeVideo = video; // Marque cette vidéo comme étant active
+                video.removeAttribute('poster');
+                activeVideo = video;
             }
         } else {
-            // Si l'élément n'est pas au centre, on met la vidéo en pause si elle est active et ne l'a pas encore été
             if (video !== activeVideo && !video.paused) {
                 video.pause();
-                video.currentTime = 0; // Réinitialise la vidéo
+                video.currentTime = 0;
                 item.classList.remove('hovered');
+                video.setAttribute('poster', video.getAttribute('data-poster'));
             }
         }
     });
 }
 
-// Appeler la fonction pour gérer les vidéos lors du scroll
 window.addEventListener('scroll', manageVideosOnScroll);
-
-// Appeler la fonction pour gérer les vidéos lorsque la page se charge
 window.addEventListener('load', manageVideosOnScroll);
-
-// Appeler la fonction lors du redimensionnement
 window.addEventListener('resize', manageVideosOnScroll);
-
 
 /*//////////////   PAUSE/UNPAUSE INTRO_LOOP WHEN OUT/IN OF VIEW /////////////// */
 
-// Intersection Observer to pause/unpause introLoop when it is out/in of view
 document.addEventListener('DOMContentLoaded', function() {
     const introLoopVideo = document.getElementById('introLoop');
 
-    // Fonction de callback pour l'IntersectionObserver
-    const handleIntersection = (entries, observer) => {
+    const handleIntersection = (entries) => {
         entries.forEach(entry => {
-            // Si la vidéo n'est pas visible (hors de l'écran), on la met en pause
             if (!entry.isIntersecting) {
                 introLoopVideo.pause();
             } else {
-                // Si la vidéo devient visible (dans l'écran), on la relance
                 introLoopVideo.play().catch((err) => console.error("Erreur de lecture de la vidéo INTRO loop:", err));
             }
         });
     };
 
-    // Créer l'observateur avec les options
     const observer = new IntersectionObserver(handleIntersection, {
-        root: null, // Utilise la fenêtre du navigateur comme root
-        rootMargin: '0px', // Aucun décalage
-        threshold: 0.8 // La vidéo est considérée comme "hors écran" si 10% de sa surface est hors de l'écran
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.8
     });
 
-    // Observer la vidéo introLoop
     observer.observe(introLoopVideo);
 });
-
-
-
-
-
 
 /*//////////////   LAZY LOAD /////////////// */
 
@@ -322,7 +274,6 @@ function lazyLoadVideo() {
     });
 }
 
-// Fonction pour jouer ou mettre en pause la vidéo
 function togglePlayPause(event) {
     const player = event.currentTarget.closest('.player');
     const video = player.querySelector('video');
@@ -339,7 +290,6 @@ function togglePlayPause(event) {
     showControlsTemporarily(player);
 }
 
-// Met à jour la barre de progression
 function updateProgressBar() {
     const player = this.closest('.player');
     const progressFilled = player.querySelector('.progress__filled');
@@ -353,81 +303,64 @@ function updateProgressBar() {
     showControlsTemporarily(player);
 }
 
-// Permet de cliquer sur la barre de progression pour aller à un moment précis
 function handleScrub(event) {
     const player = this.closest('.player');
     const video = player.querySelector('video');
     const progress = player.querySelector('.progress');
-
     const scrubTime = (event.offsetX / progress.offsetWidth) * video.duration;
     video.currentTime = scrubTime;
-
     showControlsTemporarily(player);
 }
 
-// Fonction pour gérer le volume
 function handleVolumeChange() {
     const player = this.closest('.player');
     const video = player.querySelector('video');
     video.volume = this.value;
-
     showControlsTemporarily(player);
 }
 
-// Fonction pour gérer le mode plein écran
 function toggleFullScreen() {
     const player = this.closest('.player');
-
     if (!document.fullscreenElement) {
         player.requestFullscreen().catch(err => console.log(err));
     } else {
         document.exitFullscreen();
     }
-
     showControlsTemporarily(player);
 }
 
-// Double-clic sur la vidéo pour passer en plein écran
 function handleDoubleClick(event) {
     const player = this.closest('.player');
     const video = player.querySelector('video');
 
-    // Si la vidéo n'est pas déjà en plein écran, on l'active
     if (!document.fullscreenElement) {
         if (player.requestFullscreen) {
             player.requestFullscreen();
-        } else if (player.mozRequestFullScreen) { // Firefox
+        } else if (player.mozRequestFullScreen) {
             player.mozRequestFullScreen();
-        } else if (player.webkitRequestFullscreen) { // Chrome et Safari
+        } else if (player.webkitRequestFullscreen) {
             player.webkitRequestFullscreen();
-        } else if (player.msRequestFullscreen) { // IE/Edge
+        } else if (player.msRequestFullscreen) {
             player.msRequestFullscreen();
         }
     } else {
-        document.exitFullscreen(); // Quitter le plein écran
+        document.exitFullscreen();
     }
 }
 
-// Détection si l'utilisateur est sur mobile
 function isMobile() {
     return /Mobi|Android|iPhone/i.test(navigator.userAgent);
 }
 
-// Fonction pour cacher les contrôles après 2 secondes sur mobile
 function hideControls(player) {
     if (isMobile()) {
         player.classList.remove('show-controls');
     }
 }
 
-// Fonction pour afficher temporairement les contrôles et relancer le timer
 function showControlsTemporarily(player) {
     player.classList.add('show-controls');
-
-    // Supprime le timer précédent pour éviter qu'il se relance inutilement
     clearTimeout(player.hideControlsTimeout);
-
-    // **Force la disparition après 2 secondes sur mobile**
     if (isMobile()) {
         player.hideControlsTimeout = setTimeout(() => {
             hideControls(player);
@@ -435,12 +368,10 @@ function showControlsTemporarily(player) {
     }
 }
 
-// Initialisation des événements
 document.addEventListener('DOMContentLoaded', () => {
     lazyLoadVideo();
 
     const players = document.querySelectorAll('.player');
-
     players.forEach((player) => {
         const video = player.querySelector('video');
         const playButton = player.querySelector('.player__button.toggle');
@@ -455,22 +386,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (video) {
             video.addEventListener('timeupdate', updateProgressBar);
             video.addEventListener('click', togglePlayPause);
-
-            // Sur Desktop : cacher les contrôles quand la souris quitte la vidéo
             video.addEventListener('mouseleave', () => {
                 if (!isMobile()) {
                     hideControls(player);
                 }
             });
-
-            // Sur Mobile : cacher les contrôles après 2s d'inactivité
             video.addEventListener('touchstart', () => {
                 showControlsTemporarily(player);
             });
-
             video.addEventListener('play', () => showControlsTemporarily(player));
-
-            // Double-clic pour passer en plein écran
             video.addEventListener('dblclick', handleDoubleClick);
         }
 
@@ -488,6 +412,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Mise à jour lors du scroll et du resize
 window.addEventListener('scroll', lazyLoadVideo);
 window.addEventListener('resize', lazyLoadVideo);

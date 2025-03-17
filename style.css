@@ -422,6 +422,7 @@ body:has(#myvideo7:hover) #categorie7 {
     font-size: 12px;
 }
 
+
 /*//////////////    SHOWREEL    /////////////// */
 
 
@@ -563,8 +564,6 @@ body:has(#myvideo7:hover) #categorie7 {
     flex: 0;
     flex-basis: 0;
 }
-
-
 
 
 /*//////////////    FOOTER    /////////////// */
