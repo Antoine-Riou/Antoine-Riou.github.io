@@ -373,9 +373,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // CURSOR
-const cursor = document.getElementById('custom-cursor');
+document.addEventListener('DOMContentLoaded', () => {
+  const cursor = document.getElementById('custom-cursor');
+  const isMobile = window.matchMedia('(pointer: coarse)').matches;
 
-document.addEventListener('mousemove', (e) => {
-  cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+  if (isMobile) {
+    cursor.style.display = 'none'; // désactive le curseur custom sur mobile
+    return;
+  }
+
+  // Curseur actif sur desktop
+  document.addEventListener('mousemove', (e) => {
+    cursor.style.transform = `translate(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%)) scale(1)`;
+  });
 });
-

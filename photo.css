@@ -145,31 +145,6 @@ header {
     color: white;
 }
 
-/* .nav_text2.active {
-    opacity: 1;
-    color: #ef3869;
-    background-color: #0c1514;
-}
-
-.nav_text2:hover {
-    background-color: white;
-    color: #0c1514;
-    opacity: 1;
-    text-decoration: none;
-    transition: opacity 0.5s ease-in-out, color 0.5s ease-in-out, background-color 0.5s ease-in-out;
-    font-size: 18px;
-    font-family: 'DrukWide-Heavy-Trial', sans-serif;
-    border-radius: 0px;
-    opacity: 0.5;
-}
-
-
-.nav_text2:hover {
-    background-color: white;
-    color: #0c1514;
-    opacity: 1;
-} */
-
 .nav-mobile {
     display: none;
 }
@@ -180,16 +155,12 @@ header {
     position: relative;
     overflow: hidden;
 }
-
-
-
 /*//////////////    PAGE2    /////////////// */
 
 #page2 {
     z-index: 2;
     position: relative;
     width: 100%;
-    min-height: 100vh;
     background-color: #0c1514;
     border-top: 2px solid white;
     border-bottom: 2px solid white;
@@ -262,7 +233,17 @@ header {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 15px 25px;
     margin-top: 25px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
+}
+@media (max-width: 1024px) {
+    .auto-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 480px) {
+    .auto-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
 .auto-grid p {
@@ -342,10 +323,8 @@ header {
     filter: none;
     filter: grayscale(0%) contrast(100%);
 }
-
-
 .mentions {
-    margin-bottom: 140px;
+    margin-bottom: 120px;
     margin-top: 0px;
     text-align: center;
     color: white;
@@ -519,10 +498,6 @@ footer {
 .margin_p2 {
     height: 125px;
 }
-.margin_p3 {
-    height: 50px;
-    margin-top: 25px;
-}
 .box_p2 {
     width: 90vw;
     margin-bottom: 90px;
@@ -550,7 +525,7 @@ footer {
 .auto-grid {
     grid-gap: 20px 30px;
     margin-top: 30px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 .auto-grid p {
     font-size: 19px;
@@ -567,7 +542,8 @@ footer {
     font-size: 19px;
 }
 .mentions {
-    font-size: 17px;
+    margin-bottom: 160px;
+    font-size: 14px;
 }
 /* SHOWREEL */
 .video-container {
@@ -632,10 +608,6 @@ footer {
         height: 75px;
         margin-top: 15px;
     }
-    .margin_p3 {
-        height: 75px;
-        margin-top: 0px;
-    }
     .box_p2 {
         width: 88vw;
         margin-bottom: 20px;
@@ -663,7 +635,7 @@ footer {
     .auto-grid {
         grid-gap: 10px 20px;
         margin-top: 20px;
-        margin-bottom: 30px;
+        margin-bottom: 15px;
     }
     
     #categorie1,
@@ -676,9 +648,8 @@ footer {
         font-size: 14px;
     }
     .mentions {
-        margin-top: 0px;
-        font-size: 12px;
-        margin-bottom: 55px;
+        font-size: 10px;
+        margin-bottom: 105px;
     }
     
     /* FOOTER */
@@ -700,7 +671,6 @@ footer {
         font-size: 20px;
     }
 }
-
 
 /* phone */
 
@@ -767,7 +737,6 @@ footer {
         height: 70px;
         width: 100%;
     }
-
     .nav_text, .nav_text2 {
         display: block;
         font-size: 18px;
@@ -775,7 +744,6 @@ footer {
         margin-left: 0px;
         margin-right: 0px;
     }
-
     #navLinks {
         position: absolute;
         top: 80px;
@@ -789,12 +757,10 @@ footer {
         overflow: hidden;
         transition: height 0.3s ease;
     }
-
     #navLinks.show {
         display: flex;
         height: 210px;
     }
-
     #page1 {
         z-index: 1;
         position: relative;
@@ -806,7 +772,6 @@ footer {
         background-size: cover;
         background-position: center;
     }
-
     #page2 {
         z-index: 2;
         position: relative;
@@ -814,19 +779,11 @@ footer {
         background-color: #0c1514;
         border-bottom: 2px solid white;
         margin-top: 80px;
-    }
-
-    
+    }   
     .margin_p2 {
         height: 0px;
         
     }
-
-    .margin_p3 {
-        height: 80px;
-        margin-top: 20px;
-    }
-    
     .container_p2 {
         background-color: white;
         display: block;
@@ -887,23 +844,11 @@ footer {
     }
 
     .mentions {
-        padding-bottom: 30px;
-        margin-bottom: 0px;
-        font-size: 8px;
+        margin-bottom: 100px;
+        font-size: 10px;
     }
 
 }
 
 
 
-@media (max-width: 1024px) {
-    .auto-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 480px) {
-    .auto-grid {
-        grid-template-columns: repeat(1, 1fr);
-    }
-}
