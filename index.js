@@ -23,99 +23,8 @@ function changeVideoSourcesForMobile() {
 document.addEventListener('DOMContentLoaded', changeVideoSourcesForMobile);
 window.addEventListener('resize', changeVideoSourcesForMobile);
 
-/*//////////////   SCROLL APRES VIDEO - Desktop /////////////// */
 
-if (!isMobile()) {
-    document.addEventListener("DOMContentLoaded", function () {
-        const introVideo = document.getElementById("intro");
-        const introLoopVideo = document.getElementById("introLoop");
-        const marginP2 = document.getElementById("margin_p2");
-        let hasScrolled = false;
 
-        if (!localStorage.getItem("hasVisited")) {
-            localStorage.setItem("hasVisited", "true");
-            introVideo.style.display = "block";
-            introVideo.play().catch((err) => console.error("Erreur de lecture de la vidéo INTRO.mp4:", err));
-
-            introVideo.addEventListener("ended", function () {
-                introVideo.style.display = "none";
-                introLoopVideo.style.display = "block";
-                introLoopVideo.play().catch((err) => console.error("Erreur de lecture de la vidéo INTRO loop:", err));
-
-                setTimeout(function () {
-                    if (!hasScrolled) {
-                        hasScrolled = true;
-                        marginP2.scrollIntoView({ behavior: "smooth" });
-                    }
-                }, 2000);
-            });
-        } else {
-            introVideo.style.display = "block";
-            introVideo.play().catch((err) => console.error("Erreur de lecture de la vidéo INTRO.mp4:", err));
-
-            introVideo.addEventListener("ended", function () {
-                introVideo.style.display = "none";
-                introLoopVideo.style.display = "block";
-                introLoopVideo.play().catch((err) => console.error("Erreur de lecture de la vidéo INTRO loop:", err));
-            });
-        }
-
-        introLoopVideo.addEventListener("ended", function () {
-            introLoopVideo.play();
-        });
-    });
-}
-
-/*//////////////   SCROLL APRES VIDEO - Mobile /////////////// */
-
-if (isMobile()) {
-    document.addEventListener("DOMContentLoaded", function () {
-        const introLoopVideo = document.getElementById("introLoop");
-        introLoopVideo.style.display = "block";
-        introLoopVideo.play().catch((err) => console.error("Erreur de lecture de la vidéo INTRO loop:", err));
-
-        introLoopVideo.addEventListener("ended", function () {
-            introLoopVideo.play();
-        });
-    });
-}
-
-/*//////////////   APPARITION TEXT + FOOTER   /////////////// */
-
-document.addEventListener('DOMContentLoaded', function () {
-    const footer = document.getElementById('footer');
-    const footerLinks = footer.querySelectorAll('a');
-    const navText2Links = document.querySelectorAll('.nav a');
-
-    if (!footer || footerLinks.length === 0) return;
-
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-
-    const handleIntersection = (entries) => {
-        let isVisible = false;
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) isVisible = true;
-        });
-
-        if (isVisible) {
-            footer.style.bottom = '0';
-            footerLinks.forEach(link => link.classList.add('active'));
-            navText2Links.forEach(link => link.classList.add('active'));
-        } else {
-            footer.style.bottom = '-115px';
-            footerLinks.forEach(link => link.classList.remove('active'));
-            navText2Links.forEach(link => link.classList.remove('active'));
-        }
-    };
-
-    const observer = new IntersectionObserver(handleIntersection, observerOptions);
-    const page2 = document.getElementById('page2');
-    if (page2) observer.observe(page2);
-});
 
 /*//////////////   SMOOTH ANIMATION PAGE2 (Désactivé sur Mobile) /////////////// */
 
@@ -138,21 +47,7 @@ if (!isMobile()) {
     });
 }
 
-/*//////////////   INTRO TEXT DISPARAIT  /////////////// */
 
-document.addEventListener('DOMContentLoaded', function() {
-    const playButton = document.getElementById('playButton');
-    const introText = document.getElementById('introText');
-
-    playButton.addEventListener('click', function() {
-        introText.style.opacity = '0';
-        introText.style.filter = 'blur(10px)';
-
-        introText.addEventListener('transitionend', function() {
-            introText.style.display = 'none';
-        });
-    });
-});
 
 /*//////////////   FORCE NO SMOOTH  /////////////// */
 
@@ -230,29 +125,7 @@ window.addEventListener('scroll', manageVideosOnScroll);
 window.addEventListener('load', manageVideosOnScroll);
 window.addEventListener('resize', manageVideosOnScroll);
 
-/*//////////////   PAUSE/UNPAUSE INTRO_LOOP WHEN OUT/IN OF VIEW /////////////// */
 
-document.addEventListener('DOMContentLoaded', function() {
-    const introLoopVideo = document.getElementById('introLoop');
-
-    const handleIntersection = (entries) => {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-                introLoopVideo.pause();
-            } else {
-                introLoopVideo.play().catch((err) => console.error("Erreur de lecture de la vidéo INTRO loop:", err));
-            }
-        });
-    };
-
-    const observer = new IntersectionObserver(handleIntersection, {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.8
-    });
-
-    observer.observe(introLoopVideo);
-});
 
 /*//////////////   LAZY LOAD /////////////// */
 
@@ -412,5 +285,97 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-window.addEventListener('scroll', lazyLoadVideo);
-window.addEventListener('resize', lazyLoadVideo);
+// LOGO PARALLAX
+
+document.addEventListener('DOMContentLoaded', () => {
+    const logo = document.getElementById('logo');
+    const logo2 = document.getElementById('logo2');
+    const page1 = document.getElementById('page1');
+    const header = document.querySelector('header');
+
+    let isMobile = window.matchMedia("(max-width: 480px)").matches;
+
+    function updateLogoBasePosition() {
+        if (isMobile) {
+            logo.style.top = '';
+            logo2.style.top = '';
+        } else {
+            const headerHeight = header.offsetHeight;
+            const page1Height = page1.offsetHeight;
+            const centerTop = `calc(${headerHeight}px + ${(page1Height - headerHeight) / 2}px)`;
+            logo.style.top = centerTop;
+            logo2.style.top = centerTop;
+        }
+    }
+
+    function handleMove(e) {
+        if (isMobile) return;
+
+        const centerX = window.innerWidth / 2;
+        const centerY = (page1.offsetHeight / 2) + header.offsetHeight;
+
+        const dx = e.clientX - centerX;
+        const dy = e.clientY - centerY;
+
+        const maxDistance = 80;
+        const influenceRadius = Math.sqrt(window.innerWidth ** 2 + window.innerHeight ** 2);
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        const t = 1 - (distance / influenceRadius);
+        const easing = Math.pow(t, 3);
+
+        const moveX = (dx / influenceRadius) * maxDistance * easing;
+        const moveY = (dy / influenceRadius) * maxDistance * easing;
+
+        // Facteurs de déplacement différents pour chaque logo
+        const factor1 = 1.0;  // logo principal
+        const factor2 = 1.12;  // logo secondaire (plus puissant)
+
+        logo.style.transform = `translate(calc(-50% + ${moveX * factor1}px), calc(-50% + ${moveY * factor1}px))`;
+        logo2.style.transform = `translate(calc(-50% + ${moveX * factor2}px), calc(-50% + ${moveY * factor2}px))`;
+    }
+
+    function handleLeave() {
+        if (isMobile) return;
+        logo.style.transform = 'translate(-50%, -50%)';
+        logo2.style.transform = 'translate(-50%, -50%)';
+    }
+
+    updateLogoBasePosition();
+
+    if (!isMobile) {
+        document.addEventListener('mousemove', handleMove);
+        document.addEventListener('mouseleave', handleLeave);
+        document.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0) {
+                const touch = e.touches[0];
+                handleMove({ clientX: touch.clientX, clientY: touch.clientY });
+            }
+        });
+        document.addEventListener('touchend', handleLeave);
+    }
+
+    window.addEventListener('resize', () => {
+        const wasMobile = isMobile;
+        isMobile = window.matchMedia("(max-width: 480px)").matches;
+
+        if (isMobile !== wasMobile) {
+            location.reload(); // reset comportement si switch mobile/desktop
+        } else {
+            updateLogoBasePosition();
+            if (!isMobile) {
+                logo.style.transform = 'translate(-50%, -50%)';
+                logo2.style.transform = 'translate(-50%, -50%)';
+            }
+        }
+    });
+});
+
+
+// CURSOR
+const cursor = document.getElementById('custom-cursor');
+
+document.addEventListener('mousemove', (e) => {
+  cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+});
+

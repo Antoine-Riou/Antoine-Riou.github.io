@@ -108,7 +108,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .text-explanation span {
-    color: #e73b52;
+    color: #ef3869;
     font-family: "Gilroy-SemiBold", sans-serif;
     font-size: 14px;
     width: 100%;
@@ -133,7 +133,7 @@ body::-webkit-scrollbar-thumb {
     display: flex; 
     justify-content: flex-end;
     align-items: center; 
-    background-color: #e73b52;
+    background-color: #ef3869;
     line-height: 35px;
     padding: 0 5px;
     color: #0c1514;
@@ -300,7 +300,7 @@ body::-webkit-scrollbar-thumb {
 #categorie2, #mytext2{
     position: relative;
     font-size: 13px;
-    color: #e73b52;
+    color: #ef3869;
     float: right;
     font-family: 'DrukWide-BoldItalic-Trial', sans-serif;
 }
@@ -381,7 +381,7 @@ footer {
     margin-right: 5px;
     display: block;
     float: right;
-    color: #e73b52;
+    color: #ef3869;
     text-decoration: none;
     transition: .5s;
     font-size: 16px;
@@ -411,7 +411,7 @@ footer {
 
 .footer_insta:hover {
     background-color: #0c1514;
-    color: #e73b52;
+    color: #ef3869;
     border-radius: 2px;
 }
 
