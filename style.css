@@ -107,16 +107,15 @@ header {
 }
 
 .nav_text {
-    z-index: -20;
-    color: #0c1514;
     background-color: white;
     line-height: 40px;
     margin-left: 10px;
     margin-right: 10px;
     display: block;
     padding: 0 20px;
+    color: #0c1514;
     text-decoration: none;
-    transition: opacity 0.5s ease-in-out, color 0.5s ease-in-out, background-color 0.5s ease-in-out;
+    transition: .5s;
     font-size: 18px;
     font-family: 'DrukWide-Heavy-Trial', sans-serif;
     border-radius: 0px;
@@ -131,7 +130,6 @@ header {
 
 
 .nav_text2 {
-    z-index: -20;
     color: #ef3869;
     background-color: #0c1514;
     line-height: 40px;
@@ -441,7 +439,6 @@ footer {
     align-items: center;
     padding: 10px;
 }
-
 .box_p3 {
     display: block;
     margin: 0 auto;
@@ -449,7 +446,6 @@ footer {
     height: auto;
     
 }
-
 .footer_text {
     background-color: #0c1514;
     line-height: 35px;
@@ -463,13 +459,11 @@ footer {
     font-family: 'DrukWide-Heavy-Trial', sans-serif;
     border-radius: 2px;
 }
-
 .footer_text:hover {
     background-color: #0c1514;
     color: white;
     border-radius: 2px;
 }
-
 .footer_insta {
     background-color: #0c1514;
     line-height: 35px;
