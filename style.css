@@ -141,9 +141,7 @@ header {
     transition: opacity 0.5s ease-in-out, color 0.5s ease-in-out, background-color 0.5s ease-in-out;
     font-size: 18px;
     font-family: 'DrukWide-Heavy-Trial', sans-serif;
-    border-radius: 0px;
 }
-
 
 .nav_text2:hover {
     cursor: pointer;
@@ -153,6 +151,7 @@ header {
 .nav-mobile {
     display: none;
 }
+
 
 
 /*//////////////    PAGE1    /////////////// */
@@ -744,29 +743,47 @@ footer {
         height: 70px;
         width: 100%;
     }
-    .nav_text, .nav_text2 {
-        display: block;
-        font-size: 18px;
-        padding: 17px 15px;
-        margin-left: 0px;
-        margin-right: 0px;
+    .nav_text,
+    .nav_text2 {
+    height: 70px;
+    line-height: 50px;
+    width: 100%;
+    padding: 0 15px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
     }
+
+    .nav_text:active,
+    .nav_text2:active {
+        background-color: white; /* ou autre, mais ne touche pas line-height/padding/margin */
+        color: #0c1514;
+    }
+
     #navLinks {
         position: absolute;
         top: 80px;
-        height: 0;
         right: 0;
         left: 0;
+        width: 100%;
         flex-direction: column;
         align-items: center;
-        width: 100%;
         border-bottom: 2px solid white;
+
         overflow: hidden;
-        transition: height 0.3s ease;
+        max-height: 0;
+        display: flex; /* toujours flex, pour éviter le saut */
+
+        transition: max-height 0.3s ease;
     }
+
+
     #navLinks.show {
-        display: flex;
-        height: 210px;
+        max-height: 500px; /* plus grand que la hauteur réelle du menu */
     }
     #page1 {
         z-index: 1;
@@ -864,6 +881,23 @@ footer {
         margin-right: 50px;
         font-weight: 600;
         transition: .3s;
+    }
+    /* FOOTER */
+    footer {
+        height: 75px;
+        padding: 10px;
+    }
+    .box_p3 {
+        width: 88vw;
+    }
+    .footer_text {
+        line-height: 35px;
+        margin-right: 5px;
+        font-size: 16px;
+    }
+    .footer_insta {
+        line-height: 35px;
+        font-size: 23px;
     }
 }
 
