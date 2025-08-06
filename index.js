@@ -387,3 +387,4 @@ document.addEventListener('DOMContentLoaded', () => {
     cursor.style.transform = `translate(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%)) scale(1)`;
   });
 });
+
