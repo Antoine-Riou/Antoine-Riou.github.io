@@ -81,7 +81,7 @@ body::-webkit-scrollbar-thumb {
 
 .video-container {
     background-color: black;
-    box-shadow: 0 0 0 2px white;
+    box-shadow: 0 0 0 2px #9efed9;
     width: 100%;
     height: auto;
     position: relative;
@@ -315,7 +315,7 @@ body::-webkit-scrollbar-thumb {
     height: 100%;
     list-style-type: none;
     text-align: center;
-    color: white;
+    color: #9efed9;
 }
 
 .auto-grid .item {
@@ -335,7 +335,7 @@ body::-webkit-scrollbar-thumb {
     object-fit: cover;
     transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
     /* filter: grayscale(100%) contrast(60%) brightness(120%); */
-    box-shadow: 0 0 0 2px white;
+    box-shadow: 0 0 0 2px #9efed9;
     transform: scale(0.99);
     margin-bottom: 10px;
 }

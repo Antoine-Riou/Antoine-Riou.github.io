@@ -22,6 +22,12 @@ video.addEventListener('mouseleave', () => {
     mediaElement.load();
     var mediaElement = document.getElementById("myvideo6");
     mediaElement.load();
+    var mediaElement = document.getElementById("myvideo7");
+    mediaElement.load();
+    var mediaElement = document.getElementById("myvideo8");
+    mediaElement.load();
+    var mediaElement = document.getElementById("myvideo9");
+    mediaElement.load();
     
 });
 });

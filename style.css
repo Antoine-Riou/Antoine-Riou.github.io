@@ -222,6 +222,8 @@ header {
     z-index: 0;
 }
 
+
+
 /*//////////////    PAGE2    /////////////// */
 
 #page2 {
@@ -320,6 +322,7 @@ header {
     position: relative;
 }
 
+/* Style général des vidéos (Projets 1 à 6 en Blanc) */
 .auto-grid video {
     background-color: black;
     width: 100%;
@@ -337,6 +340,20 @@ header {
     cursor: pointer;
 }
 
+/* Style SPÉCIFIQUE pour les projets 7, 8, 9 (Cyan) */
+#myvideo7, 
+#myvideo8, 
+#myvideo9 {
+    box-shadow: 0 0 0 2px #9efed9;
+}
+
+#myvideo7:hover, 
+#myvideo8:hover, 
+#myvideo9:hover {
+    box-shadow: 0 0 0 10px #9efed9;
+}
+
+
 .auto-grid p {
     position: relative;
     font-size: 15px;
@@ -348,64 +365,96 @@ header {
     margin-bottom: 10px;
 }
 
+/* Transitions pour TOUS les projets */
 #myvideo1, #mytext1, #categorie1,
 #myvideo2, #mytext2, #categorie2,
 #myvideo3, #mytext3, #categorie3,
 #myvideo4, #mytext4, #categorie4,
 #myvideo5, #mytext5, #categorie5,
 #myvideo6, #mytext6, #categorie6,
-#myvideo7, #mytext7, #categorie7 {
+#myvideo7, #mytext7, #categorie7,
+#myvideo8, #mytext8, #categorie8,
+#myvideo9, #mytext9, #categorie9 {
     transition: .4s;
 }
 
+/* Hover Desktop - Textes BLANCS (1 à 6) */
 body:has(#myvideo1:hover) #mytext1,
 body:has(#myvideo2:hover) #mytext2,
 body:has(#myvideo3:hover) #mytext3,
 body:has(#myvideo4:hover) #mytext4,
 body:has(#myvideo5:hover) #mytext5,
-body:has(#myvideo6:hover) #mytext6,
-body:has(#myvideo7:hover) #mytext7 {
+body:has(#myvideo6:hover) #mytext6 {
     color: white;
     margin-left: 10px;
 }
 
+/* Hover Desktop - Textes CYAN (7 à 9) */
+body:has(#myvideo7:hover) #mytext7,
+body:has(#myvideo8:hover) #mytext8,
+body:has(#myvideo9:hover) #mytext9 {
+    color: #9efed9;
+    margin-left: 10px;
+}
+
+/* Hover Desktop - Catégories (Tous) */
 body:has(#myvideo1:hover) #categorie1,
 body:has(#myvideo2:hover) #categorie2,
 body:has(#myvideo3:hover) #categorie3,
 body:has(#myvideo4:hover) #categorie4,
 body:has(#myvideo5:hover) #categorie5,
 body:has(#myvideo6:hover) #categorie6, 
-body:has(#myvideo7:hover) #categorie7 {
+body:has(#myvideo7:hover) #categorie7,
+body:has(#myvideo8:hover) #categorie8,
+body:has(#myvideo9:hover) #categorie9 {
     padding-right: 20px;
     opacity: 1;
 }
 
-/* Les transitions lors du survol (hover) */
+/* Hover Mobile (.hovered) - Textes BLANCS (1 à 6) */
 .hovered #mytext1,
 .hovered #mytext2,
 .hovered #mytext3,
 .hovered #mytext4,
 .hovered #mytext5,
-.hovered #mytext6,
-.hovered #mytext7 {
+.hovered #mytext6 {
     color: white;
     margin-left: 10px;
 }
 
+/* Hover Mobile (.hovered) - Textes CYAN (7 à 9) */
+.hovered #mytext7,
+.hovered #mytext8,
+.hovered #mytext9 {
+    color: #9efed9;
+    margin-left: 10px;
+}
+
+/* Hover Mobile (.hovered) - Catégories (Tous) */
 .hovered #categorie1,
 .hovered #categorie2,
 .hovered #categorie3,
 .hovered #categorie4,
 .hovered #categorie5,
 .hovered #categorie6,
-.hovered #categorie7 {
+.hovered #categorie7,
+.hovered #categorie8,
+.hovered #categorie9 {
     padding-right: 20px;
     opacity: 1;
 }
 
+/* Hover Mobile (.hovered) - Vidéos Standard (Blanc) */
 .hovered video {
     box-shadow: 0 0 0 10px white;
     transform: scale(0.95);
+}
+
+/* Hover Mobile (.hovered) - Vidéos Spécifiques (Cyan) */
+.hovered #myvideo7,
+.hovered #myvideo8,
+.hovered #myvideo9 {
+    box-shadow: 0 0 0 10px #9efed9;
 }
 
 #categorie1,
@@ -414,7 +463,9 @@ body:has(#myvideo7:hover) #categorie7 {
 #categorie4,
 #categorie5,
 #categorie6,
-#categorie7 {
+#categorie7,
+#categorie8,
+#categorie9 {
     opacity: 0;
     position: relative;
     font-size: 15px;
@@ -565,7 +616,9 @@ footer {
     #categorie4,
     #categorie5,
     #categorie6,
-    #categorie7 {
+    #categorie7,
+    #categorie8,
+    #categorie9 {
         font-size: 19px;
     }
     /* FOOTER */
@@ -663,7 +716,9 @@ footer {
     #categorie4,
     #categorie5,
     #categorie6,
-    #categorie7 {
+    #categorie7,
+    #categorie8,
+    #categorie9 {
         font-size: 14px;
     }
     /* FOOTER */
@@ -903,4 +958,3 @@ footer {
         font-size: 23px;
     }
 }
-
