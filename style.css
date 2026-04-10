@@ -1,12 +1,4 @@
 @font-face {
-    font-family: "CabinetGrotesk-Black";
-    src: url("fonts/CabinetGrotesk-Black.otf");
-}
-@font-face {
-    font-family: "CabinetGrotesk-Bold";
-    src: url("fonts/CabinetGrotesk-Bold.otf");
-}
-@font-face {
     font-family: "DrukWide-Heavy-Trial";
     src: url("fonts/DrukWide-Heavy-Trial.otf");
 }
@@ -15,26 +7,17 @@
     font-family: "DrukWide-Heavy-Trial";
     src: url("fonts/DrukWide-Heavy-Trial.ttf");
 }
-
-@font-face {
-    font-family: "DrukWide-HeavyItalic-Trial";
-    src: url("fonts/DrukWide-HeavyItalic-Trial.otf");
-}
-@font-face {
-    font-family: "DrukWide-Bold-Trial";
-    src: url("fonts/DrukWide-Bold-Trial.otf");
-}
 @font-face {
     font-family: "DrukWide-BoldItalic-Trial";
     src: url("fonts/DrukWide-BoldItalic-Trial.otf");
 }
 @font-face {
-    font-family: "Oswald-VariableFont_wght";
-    src: url("fonts/Oswald-VariableFont_wght.ttf");
-}
-@font-face {
     font-family: "Gilroy-Regular";
     src: url("fonts/Gilroy-Regular.ttf");
+}
+@font-face {
+    font-family: "HerrVonMuellerhoff-Regular";
+    src: url("fonts/HerrVonMuellerhoff-Regular.ttf");
 }
 
 
@@ -191,24 +174,47 @@ header {
 #logo,
 #logo2 {
     position: absolute;
-    top: 50%;
+    top: 48.5%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
     height: auto;
     pointer-events: none;
     transition: none;
+    font-family: 'DrukWide-Heavy-Trial', sans-serif;
+    font-size: 6vw;
+    color: white;
+    white-space: nowrap;
+    margin: 0;
+    letter-spacing: 2px;
 }
 
 #logo {
-    filter: drop-shadow(0 0 2px #9cffd9); 
+    text-shadow: 0 0 2px #9cffd9; 
     z-index: 10;
 }
 
 #logo2 {
-    filter: drop-shadow(0 0 4px #9cffd9); 
+    text-shadow: 0 0 8px #9cffd9; 
     z-index: 11;
     opacity: 1;
+}
+
+#subtitle {
+    position: absolute;
+    top: 58.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    pointer-events: none;
+    transition: none;
+    font-family: 'HerrVonMuellerhoff-Regular', sans-serif;
+    font-size: 2.5vw;
+    color: #ef3869; /* Le rouge de ta palette */
+    white-space: nowrap;
+    margin: 0;
+    letter-spacing: 4px;
+    z-index: 12;
+    text-shadow: 0 0 5px rgba(239, 56, 105, 0.4); /* Léger glow rouge */
 }
 
 #bg-video {
@@ -322,7 +328,7 @@ header {
     position: relative;
 }
 
-/* Style général des vidéos (Projets 1 à 6 en Blanc) */
+/* Style général des vidéos */
 .auto-grid video {
     background-color: black;
     width: 100%;
@@ -339,20 +345,6 @@ header {
     transform: scale(0.95);
     cursor: pointer;
 }
-
-/* Style SPÉCIFIQUE pour les projets 7, 8, 9 (Cyan) */
-#myvideo7, 
-#myvideo8, 
-#myvideo9 {
-    box-shadow: 0 0 0 2px #9efed9;
-}
-
-#myvideo7:hover, 
-#myvideo8:hover, 
-#myvideo9:hover {
-    box-shadow: 0 0 0 10px #9efed9;
-}
-
 
 .auto-grid p {
     position: relative;
@@ -378,22 +370,17 @@ header {
     transition: .4s;
 }
 
-/* Hover Desktop - Textes BLANCS (1 à 6) */
+/* Hover Desktop - Textes BLANCS (Tous) */
 body:has(#myvideo1:hover) #mytext1,
 body:has(#myvideo2:hover) #mytext2,
 body:has(#myvideo3:hover) #mytext3,
 body:has(#myvideo4:hover) #mytext4,
 body:has(#myvideo5:hover) #mytext5,
-body:has(#myvideo6:hover) #mytext6 {
-    color: white;
-    margin-left: 10px;
-}
-
-/* Hover Desktop - Textes CYAN (7 à 9) */
+body:has(#myvideo6:hover) #mytext6,
 body:has(#myvideo7:hover) #mytext7,
 body:has(#myvideo8:hover) #mytext8,
 body:has(#myvideo9:hover) #mytext9 {
-    color: #9efed9;
+    color: white;
     margin-left: 10px;
 }
 
@@ -411,22 +398,17 @@ body:has(#myvideo9:hover) #categorie9 {
     opacity: 1;
 }
 
-/* Hover Mobile (.hovered) - Textes BLANCS (1 à 6) */
+/* Hover Mobile (.hovered) - Textes BLANCS (Tous) */
 .hovered #mytext1,
 .hovered #mytext2,
 .hovered #mytext3,
 .hovered #mytext4,
 .hovered #mytext5,
-.hovered #mytext6 {
-    color: white;
-    margin-left: 10px;
-}
-
-/* Hover Mobile (.hovered) - Textes CYAN (7 à 9) */
+.hovered #mytext6,
 .hovered #mytext7,
 .hovered #mytext8,
 .hovered #mytext9 {
-    color: #9efed9;
+    color: white;
     margin-left: 10px;
 }
 
@@ -448,13 +430,6 @@ body:has(#myvideo9:hover) #categorie9 {
 .hovered video {
     box-shadow: 0 0 0 10px white;
     transform: scale(0.95);
-}
-
-/* Hover Mobile (.hovered) - Vidéos Spécifiques (Cyan) */
-.hovered #myvideo7,
-.hovered #myvideo8,
-.hovered #myvideo9 {
-    box-shadow: 0 0 0 10px #9efed9;
 }
 
 #categorie1,
@@ -569,7 +544,10 @@ footer {
     }
     #logo,
     #logo2 {
-    width: 400px;
+    font-size: 5vw;
+    }
+    #subtitle {
+        font-size: 2vw;
     }
     /* PAGE2 */
     #page2 {
@@ -675,7 +653,10 @@ footer {
     }
     #logo,
     #logo2 {
-    width: 200px;
+    font-size: 7vw;
+    }
+    #subtitle {
+        font-size: 3vw;
     }
     .box_p2 {
         width: 88vw;
@@ -857,10 +838,23 @@ footer {
     #logo,
     #logo2 {
     position: absolute !important;
-    top: 50% !important;
+    top: 48% !important;
     left: 50% !important;
     transform: translate(-50%, -50%) !important;
-    height: 110px !important;
+    font-size: 6.5vw;
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+    transition: none;
+    }
+    #subtitle {
+    position: absolute !important;
+    top: 60% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    font-size: 5vw;
+    width: 100%;
+    text-align: center;
     pointer-events: none;
     transition: none;
     }

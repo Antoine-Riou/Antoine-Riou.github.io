@@ -1,18 +1,6 @@
 @font-face {
-    font-family: "CabinetGrotesk-Black";
-    src: url("fonts/CabinetGrotesk-Black.otf");
-}
-@font-face {
-    font-family: "CabinetGrotesk-Bold";
-    src: url("fonts/CabinetGrotesk-Bold.otf");
-}
-@font-face {
     font-family: "DrukWide-Heavy-Trial";
     src: url("fonts/DrukWide-Heavy-Trial.otf");
-}
-@font-face {
-    font-family: "DrukWide-Bold-Trial";
-    src: url("fonts/DrukWide-Bold-Trial.otf");
 }
 @font-face {
     font-family: "DrukWide-BoldItalic-Trial";
@@ -81,7 +69,7 @@ body::-webkit-scrollbar-thumb {
 
 .video-container {
     background-color: black;
-    box-shadow: 0 0 0 2px #9efed9;
+    box-shadow: 0 0 0 2px white;
     width: 100%;
     height: auto;
     position: relative;
@@ -315,7 +303,7 @@ body::-webkit-scrollbar-thumb {
     height: 100%;
     list-style-type: none;
     text-align: center;
-    color: #9efed9;
+    color: white;
 }
 
 .auto-grid .item {
@@ -335,7 +323,7 @@ body::-webkit-scrollbar-thumb {
     object-fit: cover;
     transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
     /* filter: grayscale(100%) contrast(60%) brightness(120%); */
-    box-shadow: 0 0 0 2px #9efed9;
+    box-shadow: 0 0 0 2px white;
     transform: scale(0.99);
     margin-bottom: 10px;
 }

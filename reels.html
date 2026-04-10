@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Découvrez mes Reels : formats courts dynamiques et créatifs." />
+        <title>REELS</title>
+        <link rel="icon" type="image/x-icon" href="ELEMENTS/favicon.ico">
+        <link rel="stylesheet" href="reels.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    
+    <body>
+        
+        <header>
+            <nav class="nav">
+                <div class="burger" id="burgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul id="navLinks">
+                    <li><a href="index.html" class="nav_text2">PROJETS</a></li>
+                    <li><a href="reels.html" class="nav_text active">REELS</a></li>
+                    <li><a href="photo.html" class="nav_text2">PHOTO</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <div id="main">
+            <div class="page" id="page2">
+                <div class="margin_p2" id="margin_p2"></div>
+                <div class="box_p2">
+
+                    <div class="container_p2">
+                        <div class="marquee" aria-hidden="true">
+                            <img draggable="false" oncontextmenu="return false;" src="ELEMENTS/reels_marque.svg" alt="Reels Marquee">
+                            <img draggable="false" oncontextmenu="return false;" src="ELEMENTS/reels_marque.svg" alt="Reels Marquee">
+                            <img draggable="false" oncontextmenu="return false;" src="ELEMENTS/reels_marque.svg" alt="Reels Marquee">
+                            <img draggable="false" oncontextmenu="return false;" src="ELEMENTS/reels_marque.svg" alt="Reels Marquee">
+                            <img draggable="false" oncontextmenu="return false;" src="ELEMENTS/reels_marque.svg" alt="Reels Marquee">
+                            <img draggable="false" oncontextmenu="return false;" src="ELEMENTS/reels_marque.svg" alt="Reels Marquee">
+                            <img draggable="false" oncontextmenu="return false;" src="ELEMENTS/reels_marque.svg" alt="Reels Marquee">
+                        </div>
+            
+                        <div class="marquee" aria-hidden="true">
+                            <img draggable="false" oncontextmenu="return false;" src="ELEMENTS/reels_marque.svg" alt="Reels Marquee">
+                            <img draggable="false" oncontextmenu="return false;" src="ELEMENTS/reels_marque.svg" alt="Reels Marquee">
+                            <img draggable="false" oncontextmenu="return false;" src="ELEMENTS/reels_marque.svg" alt="Reels Marquee">
+                            <img draggable="false" oncontextmenu="return false;" src="ELEMENTS/reels_marque.svg" alt="Reels Marquee">
+                            <img draggable="false" oncontextmenu="return false;" src="ELEMENTS/reels_marque.svg" alt="Reels Marquee">
+                            <img draggable="false" oncontextmenu="return false;" src="ELEMENTS/reels_marque.svg" alt="Reels Marquee">
+                            <img draggable="false" oncontextmenu="return false;" src="ELEMENTS/reels_marque.svg" alt="Reels Marquee">
+                        </div>
+                    </div>
+
+                    <ul class="auto-grid">
+
+                        <li><div class="item"><div class="reel-box">
+                        <video class="reel-video" id="reelvideo1" src="ELEMENTS/reel1.mp4" muted loop playsinline preload="metadata"></video>
+                            <div class="volume-control">
+                                <div class="volume-bar"><div class="volume-fill"></div></div>
+                            </div>
+                        </div></div></li>
+
+                        <li><div class="item"><div class="reel-box">
+                        <video class="reel-video" id="reelvideo2" src="ELEMENTS/reel2.mp4" muted loop playsinline preload="metadata"></video>
+                            <div class="volume-control">
+                                <div class="volume-bar"><div class="volume-fill"></div></div>
+                            </div>
+                        </div></div></li>
+
+                        <li><div class="item"><div class="reel-box">
+                        <video class="reel-video" id="reelvideo3" src="ELEMENTS/reel3.mp4" muted loop playsinline preload="metadata"></video>
+                            <div class="volume-control">
+                                <div class="volume-bar"><div class="volume-fill"></div></div>
+                            </div>
+                        </div></div></li>
+
+                        <li><div class="item"><div class="reel-box">
+                        <video class="reel-video" id="reelvideo4" src="ELEMENTS/reel4.mp4" muted loop playsinline preload="metadata"></video>
+                            <div class="volume-control">
+                                <div class="volume-bar"><div class="volume-fill"></div></div>
+                            </div>
+                        </div></div></li>
+
+                        <li><div class="item"><div class="reel-box">
+                        <video class="reel-video" id="reelvideo5" src="ELEMENTS/reel5.mp4" muted loop playsinline preload="metadata"></video>
+                            <div class="volume-control">
+                                <div class="volume-bar"><div class="volume-fill"></div></div>
+                            </div>
+                        </div></div></li>
+
+                    </ul>
+
+                    <br>
+                    <div class="mentions"><p> antoine-riou.github.io | © 2020-2026 Tous droits réservés. </p></div>
+                </div>
+                
+            </div>
+
+            <footer id="footer">
+                <div class="box_p3">
+                    <a href="http://instagram.com/_u/ant0ine.riou/" target="_blank" class="footer_insta"><i class="fa fa-instagram"></i></a>
+                    <a href="ELEMENTS/CV_Antoine_Riou.pdf" target="_blank" class="footer_text">MON PARCOURS</a>
+                </div>
+            </footer>
+        </div>
+
+        <!-- SCRIPTS -->
+        <script src="burger.js"></script>
+        <script src="reels_mobile.js"></script>
+        <script>
+            // Hover desktop : lecture + gestion de la barre de son synchronisée
+            const items = document.querySelectorAll('.item');
+            const allVideos = document.querySelectorAll('.reel-video');
+            const allVolumeFills = document.querySelectorAll('.volume-fill');
+
+            let globalVolume = 0; // Volume partagé, de 0.0 à 1.0
+            let isDragging = false;
+            
+            // Variable pour le glissement
+            let activeControl = null;
+
+            // Fonction pour mettre à jour l'UI de toutes les barres de volume
+            function updateAllVolumeBars() {
+                allVolumeFills.forEach(fill => {
+                    fill.style.width = `${globalVolume * 100}%`;
+                });
+            }
+
+            items.forEach(item => {
+                const reelBox = item.querySelector('.reel-box');
+                const video = item.querySelector('.reel-video');
+                const volumeControl = item.querySelector('.volume-control');
+
+                // Appliquer le volume global au survol et jouer la vidéo
+                reelBox.addEventListener('mouseenter', () => {
+                    video.volume = globalVolume;
+                    video.muted = (globalVolume === 0);
+                    video.play().catch(e => {}); 
+                });
+                
+                reelBox.addEventListener('mouseleave', () => {
+                    // Ne pas arrêter la vidéo si on est en train de régler le volume
+                    if (!isDragging) {
+                        video.pause();
+                        video.currentTime = 0;
+                    }
+                });
+
+                // Rendre la barre cliquable et draggable
+                if (volumeControl) {
+                    const startDrag = (e) => {
+                        e.preventDefault();
+                        isDragging = true;
+                        activeControl = volumeControl; // La barre sur laquelle on a cliqué
+                        updateGlobalVolume(e.touches ? e.touches[0] : e);
+                    };
+                    volumeControl.addEventListener('mousedown', startDrag);
+                    volumeControl.addEventListener('touchstart', startDrag, {passive: false});
+                }
+            });
+
+            // Fonction qui met à jour le volume global et l'applique à tout
+            function updateGlobalVolume(e) {
+                if (!activeControl) return;
+                const rect = activeControl.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const percentage = Math.max(0, Math.min(1, x / rect.width));
+                
+                globalVolume = percentage; // Mettre à jour la variable globale
+
+                // Appliquer le nouveau volume à TOUTES les vidéos
+                allVideos.forEach(v => {
+                    v.volume = globalVolume;
+                    v.muted = (globalVolume === 0);
+                });
+
+                // Mettre à jour l'affichage de TOUTES les barres
+                updateAllVolumeBars();
+            }
+
+            // Suivi du déplacement de la souris pour gérer le volume
+            window.addEventListener('mousemove', (e) => {
+                if (isDragging) updateGlobalVolume(e);
+            });
+            window.addEventListener('touchmove', (e) => {
+                if (isDragging) updateGlobalVolume(e.touches[0]);
+            }, {passive: true});
+
+            // Arrêt du réglage de volume quand on lâche le clic
+            const stopDrag = () => {
+                if (isDragging) {
+                    isDragging = false;
+                    activeControl = null;
+                    // Vérifier si la souris est en dehors de toutes les reel-box pour mettre en pause
+                    const isOverReelBox = Array.from(document.querySelectorAll('.reel-box')).some(box => box.matches(':hover'));
+                    if (!isOverReelBox) {
+                        allVideos.forEach(v => {
+                            v.pause();
+                            v.currentTime = 0;
+                        });
+                    }
+                }
+            };
+            window.addEventListener('mouseup', stopDrag);
+            window.addEventListener('touchend', stopDrag);
+        </script>
+        
+    </body>
+</html>

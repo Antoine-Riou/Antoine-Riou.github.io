@@ -81,49 +81,66 @@ videos.forEach(video => {
 
 /*//////////////   HOVERED - mobile  /////////////// */
 
-let activeVideo = null;
+let activeItem = null;
 
-function isElementAtCenter(element) {
-    const rect = element.getBoundingClientRect();
-    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-    const center = windowHeight / 2;
-    const tolerance = 50;
-    return Math.abs((rect.top + rect.bottom) / 2 - center) < tolerance;
-}
-
-function manageVideosOnScroll() {
-    if (!isMobile()) return;
-
+function initMobileProjectsClick() {
     const items = document.querySelectorAll('.item');
+    
     items.forEach((item) => {
+        // Sauvegarde de l'image de couverture (poster) initiale
         const video = item.querySelector('.video');
-        if (video && isElementAtCenter(item)) {
-            if (video.paused && activeVideo !== video) {
-                if (activeVideo) {
-                    activeVideo.pause();
-                    activeVideo.currentTime = 0;
-                    activeVideo.closest('.item').classList.remove('hovered');
-                    activeVideo.setAttribute('poster', activeVideo.getAttribute('data-poster'));
+        if (video && video.getAttribute('poster')) {
+            video.dataset.poster = video.getAttribute('poster');
+        }
+
+        item.addEventListener('click', (e) => {
+            if (!isMobile()) return;
+
+            // Premier clic : on empêche le lien de s'ouvrir, on joue la vidéo
+            if (activeItem !== item) {
+                e.preventDefault(); 
+
+                // Si une autre vidéo était active, on la coupe
+                if (activeItem) {
+                    activeItem.classList.remove('hovered');
+                    const oldVideo = activeItem.querySelector('.video');
+                    if (oldVideo) {
+                        oldVideo.pause();
+                        oldVideo.currentTime = 0;
+                        if (oldVideo.dataset.poster) oldVideo.setAttribute('poster', oldVideo.dataset.poster);
+                    }
                 }
-                video.play();
+
+                // On lance la nouvelle
                 item.classList.add('hovered');
-                video.removeAttribute('poster');
-                activeVideo = video;
+                if (video) {
+                    video.removeAttribute('poster');
+                    video.play().catch(err => {});
+                }
+                activeItem = item;
             }
-        } else {
-            if (video !== activeVideo && !video.paused) {
+            // Au deuxième clic : le lien vers le projet s'ouvre normalement !
+        });
+    });
+
+    // Clic ailleurs met en pause
+    document.addEventListener('click', (e) => {
+        if (!isMobile() || !activeItem) return;
+
+        if (!e.target.closest('.item')) {
+            activeItem.classList.remove('hovered');
+            const video = activeItem.querySelector('.video');
+            if (video) {
                 video.pause();
                 video.currentTime = 0;
-                item.classList.remove('hovered');
-                video.setAttribute('poster', video.getAttribute('data-poster'));
+                if (video.dataset.poster) video.setAttribute('poster', video.dataset.poster);
             }
+            activeItem = null;
         }
     });
 }
 
-window.addEventListener('scroll', manageVideosOnScroll);
-window.addEventListener('load', manageVideosOnScroll);
-window.addEventListener('resize', manageVideosOnScroll);
+window.addEventListener('load', initMobileProjectsClick);
 
 
 
@@ -290,26 +307,30 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     const logo = document.getElementById('logo');
     const logo2 = document.getElementById('logo2');
+    const subtitle = document.getElementById('subtitle');
     const page1 = document.getElementById('page1');
     const header = document.querySelector('header');
 
-    let isMobile = window.matchMedia("(max-width: 480px)").matches;
+    let isMobileDevice = window.matchMedia("(max-width: 480px)").matches;
 
     function updateLogoBasePosition() {
-        if (isMobile) {
+        if (isMobileDevice) {
             logo.style.top = '';
             logo2.style.top = '';
+            if (subtitle) subtitle.style.top = '';
         } else {
             const headerHeight = header.offsetHeight;
             const page1Height = page1.offsetHeight;
-            const centerTop = `calc(${headerHeight}px + ${(page1Height - headerHeight) / 2}px)`;
+            const centerTop = `calc(${headerHeight}px + ${(page1Height - headerHeight) / 2}px - 1vw)`;
+            const subtitleTop = `calc(${headerHeight}px + ${(page1Height - headerHeight) / 2}px + 3vw)`;
             logo.style.top = centerTop;
             logo2.style.top = centerTop;
+            if (subtitle) subtitle.style.top = subtitleTop;
         }
     }
 
     function handleMove(e) {
-        if (isMobile) return;
+        if (isMobileDevice) return;
 
         const centerX = window.innerWidth / 2;
         const centerY = (page1.offsetHeight / 2) + header.offsetHeight;
@@ -330,20 +351,23 @@ document.addEventListener('DOMContentLoaded', () => {
         // Facteurs de déplacement différents pour chaque logo
         const factor1 = 1.0;  // logo principal
         const factor2 = 1.12;  // logo secondaire (plus puissant)
+        const factor3 = 0.7;   // sous-titre (plus lent pour effet de profondeur)
 
         logo.style.transform = `translate(calc(-50% + ${moveX * factor1}px), calc(-50% + ${moveY * factor1}px))`;
         logo2.style.transform = `translate(calc(-50% + ${moveX * factor2}px), calc(-50% + ${moveY * factor2}px))`;
+        if (subtitle) subtitle.style.transform = `translate(calc(-50% + ${moveX * factor3}px), calc(-50% + ${moveY * factor3}px))`;
     }
 
     function handleLeave() {
-        if (isMobile) return;
+        if (isMobileDevice) return;
         logo.style.transform = 'translate(-50%, -50%)';
         logo2.style.transform = 'translate(-50%, -50%)';
+        if (subtitle) subtitle.style.transform = 'translate(-50%, -50%)';
     }
 
     updateLogoBasePosition();
 
-    if (!isMobile) {
+    if (!isMobileDevice) {
         document.addEventListener('mousemove', handleMove);
         document.addEventListener('mouseleave', handleLeave);
         document.addEventListener('touchmove', (e) => {
@@ -356,16 +380,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addEventListener('resize', () => {
-        const wasMobile = isMobile;
-        isMobile = window.matchMedia("(max-width: 480px)").matches;
+        const wasMobile = isMobileDevice;
+        isMobileDevice = window.matchMedia("(max-width: 480px)").matches;
 
-        if (isMobile !== wasMobile) {
+        if (isMobileDevice !== wasMobile) {
             location.reload(); // reset comportement si switch mobile/desktop
         } else {
             updateLogoBasePosition();
-            if (!isMobile) {
+            if (!isMobileDevice) {
                 logo.style.transform = 'translate(-50%, -50%)';
                 logo2.style.transform = 'translate(-50%, -50%)';
+                if (subtitle) subtitle.style.transform = 'translate(-50%, -50%)';
             }
         }
     });
@@ -387,4 +412,3 @@ document.addEventListener('DOMContentLoaded', () => {
     cursor.style.transform = `translate(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%)) scale(1)`;
   });
 });
-
