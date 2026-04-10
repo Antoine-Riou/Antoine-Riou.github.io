@@ -548,6 +548,7 @@ footer {
     }
     #subtitle {
         font-size: 2vw;
+        top: 55.5%; /* Remonte le sous-titre pour recréer le chevauchement sur grand écran */
     }
     /* PAGE2 */
     #page2 {
@@ -857,6 +858,7 @@ footer {
     text-align: center;
     pointer-events: none;
     transition: none;
+    letter-spacing: 0px; /* Conserve l'attachement des lettres sur mobile */
     }
     /* PAGE2 */
     #page2 {
