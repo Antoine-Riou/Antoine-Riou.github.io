@@ -60,4 +60,27 @@ function initMobileReelsClick() {
     });
 }
 
-window.addEventListener('load', initMobileReelsClick);
+function fixBlackThumbnails() {
+    const videos = document.querySelectorAll('.reel-video');
+    videos.forEach(video => {
+        // Ajoute playsinline et preload (très important pour le navigateur Insta/iOS)
+        video.setAttribute('playsinline', '');
+        video.setAttribute('preload', 'metadata');
+        
+        // Astuce pour forcer l'affichage de la 1ère frame si aucune image "poster" n'est définie
+        if (!video.getAttribute('poster')) {
+            const source = video.querySelector('source');
+            if (video.src && !video.src.includes('#t=')) {
+                video.src += '#t=0.001';
+            } else if (source && source.src && !source.src.includes('#t=')) {
+                source.src += '#t=0.001';
+                video.load();
+            }
+        }
+    });
+}
+
+window.addEventListener('load', () => {
+    initMobileReelsClick();
+    if (isMobile()) fixBlackThumbnails();
+});
