@@ -194,7 +194,6 @@ header {
 
 .container_p2 img {
     z-index: 2;
-    float: right;
     height: 90px;
 }
 
@@ -266,8 +265,27 @@ header {
     filter: grayscale(0%) contrast(100%);
 }
 
-/* Barre de volume épurée */
-.volume-control {
+/* Icône Play/Pause au centre */
+.play-pause-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 11;
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.play-pause-icon.visible {
+    opacity: 1;
+}
+
+/* Barre de timeline épurée */
+.timeline-control {
     position: absolute;
     bottom: 45px;
     left: 25px;
@@ -281,12 +299,12 @@ header {
     cursor: pointer;
 }
 
-.reel-box:hover .volume-control,
-.hovered .volume-control {
+.reel-box:hover .timeline-control,
+.hovered .timeline-control {
     opacity: 1;
 }
 
-.volume-bar {
+.timeline-bar {
     width: 100%;
     height: 3px;
     background-color: rgba(255, 255, 255, 0.3);
@@ -294,7 +312,7 @@ header {
     position: relative;
 }
 
-.volume-fill {
+.timeline-fill {
     width: 0%;
     height: 100%;
     background-color: white;
@@ -306,7 +324,7 @@ header {
 }
 
 /* Petit point indicateur stylisé au survol de la barre */
-.volume-fill::after {
+.timeline-fill::after {
     content: '';
     position: absolute;
     right: -4px;
@@ -319,7 +337,7 @@ header {
     transition: opacity 0.2s;
 }
 
-.volume-control:hover .volume-fill::after {
+.timeline-control:hover .timeline-fill::after {
     opacity: 1;
 }
 
@@ -678,7 +696,6 @@ footer {
 
     .container_p2 img {
         z-index: 2;
-        float: right;
         height: 35px;
     }
 

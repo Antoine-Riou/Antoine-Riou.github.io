@@ -13,8 +13,8 @@ function initMobileReelsClick() {
         item.addEventListener('click', (e) => {
             if (!isMobile()) return;
             
-            // Ne pas interférer avec le clic sur la barre de volume
-            if (e.target.closest('.volume-control')) return;
+            // Ne pas interférer avec le clic sur la timeline
+            if (e.target.closest('.timeline-control')) return;
 
             const video = item.querySelector('.reel-video');
 
@@ -38,7 +38,10 @@ function initMobileReelsClick() {
                 }
 
                 item.classList.add('hovered');
-                if (video) video.play().catch(err => {});
+                if (video) {
+                    video.muted = false;
+                    video.play().catch(err => {});
+                }
                 activeMobileItem = item;
             }
         });

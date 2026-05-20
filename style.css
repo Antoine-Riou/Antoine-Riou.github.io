@@ -235,7 +235,7 @@ header {
 
 #page2 {
     padding-top: 25px;  
-    padding-bottom: 20px;
+    padding-bottom: 0;
     margin-top: 60vh;
     z-index: 3;
     position: relative;
@@ -249,14 +249,14 @@ header {
     margin: 0 auto;
     width: 88vw;
     height: auto;
-    margin-bottom: 40px;
+    margin-bottom: 0;
 }
 
 /*//////////////    MARQUEE    /////////////// */
 
 .container_p2 {
     background-color: white;
-    display: block;
+    display: flex;
     margin: 0 auto;
     width: 88vw;
     height: 90px;
@@ -268,33 +268,61 @@ header {
 }
 
 .marquee {
-    align-items: center;
     display: flex;
-    animation: marquee 80s linear infinite;
+    align-items: center;
+    flex-shrink: 0;
+    animation: marquee 40s linear infinite;
     transition: .5s;
-    position: absolute;
-    left: 0;
-    top: 0;
-    transform: translate(3190px);
-}
-
-.marquee:nth-child(1) {
-    animation-delay: -40s;
 }
 
 @keyframes marquee {
         0% {
-            transform: translate(3190px);
+            transform: translateX(0);
         }
         100% {
-            transform: translate(-3190px);
+            transform: translateX(-100%);
         }
     }
 
 .container_p2 img {
     z-index: 2;
-    float: right;
     height: 90px;
+}
+
+/*//////////////    LOGO MARQUEE    /////////////// */
+
+.container_logos {
+    background-color: white;
+    display: flex;
+    margin: 0 auto 25px auto;
+    width: 88vw;
+    height: 90px;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0px;
+}
+
+.marquee_logos {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    animation: marquee-logos 40s linear infinite;
+}
+
+.container_logos img {
+    height: 50px;
+    /* Force les logos à prendre la couleur exacte du fond (#0c1514) */
+    filter: brightness(0) invert(5%) sepia(10%) saturate(1400%) hue-rotate(125deg) brightness(96%) contrast(92%);
+}
+
+@keyframes marquee-logos {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }
 
 /*//////////////    GRID    /////////////// */
@@ -304,7 +332,7 @@ header {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px 25px;
     margin-top: 25px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 @media (max-width: 1024px) {
     .auto-grid {
@@ -450,6 +478,14 @@ body:has(#myvideo9:hover) #categorie9 {
     font-family: 'DrukWide-BoldItalic-Trial', sans-serif;
 }
 
+.mentions {
+    margin-bottom: 120px;
+    margin-top: 0px;
+    text-align: center;
+    color: white;
+    font-size: 13px;
+}
+
 
 /*//////////////    FOOTER    /////////////// */
 
@@ -554,35 +590,36 @@ footer {
     /* PAGE2 */
     #page2 {
         padding-top: 30px; 
-        padding-bottom: 15px;   
+        padding-bottom: 0;   
     }
     .box_p2 {
         width: 90vw;
-        margin-bottom: 90px;
+        margin-bottom: 0;
     }
     /* MARQUEE */
     .container_p2 {
         width: 90vw;
         height: 110px;
     }
-    .marquee {
-        transform: translate(3900px);
-    }  
-    @keyframes marquee {
-        0% {
-            transform: translate(3900px);
-        }
-        100% {
-            transform: translate(-3900px);
-        }
-    }
     .container_p2 img {
         height: 110px;
     }
+    /* LOGO MARQUEE */
+    .container_logos {
+        width: 90vw;
+        height: 110px;
+        margin-top: 0px;
+        margin-bottom: 30px;
+    }
+    .container_logos img {
+        height: 60px;
+    }
+
     /* GRID */
     .auto-grid {
         grid-gap: 15px 30px;
         margin-top: 30px;
+        margin-bottom: 22px;
         
     }
     .auto-grid p {
@@ -601,6 +638,11 @@ footer {
     #categorie9 {
         font-size: 19px;
     }
+    .mentions {
+        margin-bottom: 160px;
+        font-size: 14px;
+    }
+
     /* FOOTER */
     footer {
         height: 115px;
@@ -651,7 +693,8 @@ footer {
     }
     /* PAGE2 */
     #page2 {
-        padding-top: 20px; 
+        padding-top: 20px;
+        padding-bottom: 0; 
     }
     #logo,
     #logo2 {
@@ -662,31 +705,32 @@ footer {
     }
     .box_p2 {
         width: 88vw;
-        margin-bottom: 20px;
+        margin-bottom: 0;
     }
     /* MARQUEE */
     .container_p2 {
         width: 88vw;
         height: 45px;
     }
-    .marquee {
-        transform: translate(1595px);
-    }  
-    @keyframes marquee {
-        0% {
-            transform: translate(1595px);
-        }
-        100% {
-            transform: translate(-1595px);
-        }
-    }
     .container_p2 img {
         height: 45px;
     }
+    /* LOGO MARQUEE */
+    .container_logos {
+        width: 88vw;
+        height: 45px;
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+    .container_logos img {
+        height: 25px;
+    }
+
     /* GRID */
     .auto-grid {
         grid-gap: 5px 20px;
         margin-top: 20px;
+        margin-bottom: 10px;
     }
     .auto-grid p {
         font-size: 14px;
@@ -704,6 +748,11 @@ footer {
     #categorie9 {
         font-size: 14px;
     }
+    .mentions {
+        font-size: 10px;
+        margin-bottom: 105px;
+    }
+
     /* FOOTER */
     footer {
         height: 75px;
@@ -863,7 +912,7 @@ footer {
     }
     /* PAGE2 */
     #page2 {
-        padding-bottom: 30px;
+        padding-bottom: 0;
         margin-top: 0vh;
         z-index: 2;
         position: relative;
@@ -875,7 +924,7 @@ footer {
 
     .container_p2 {
         background-color: white;
-        display: block;
+        display: flex;
         margin: 0 auto;
         width: 88vw;
         height: 35px;
@@ -885,33 +934,16 @@ footer {
         transition: .5s;
         border-radius: 0px;
     }
-    .marquee {
-        align-items: center;
-        display: flex;
-        animation: marquee 80s linear infinite;
-        transition: .5s;
-        position: absolute;
-        left: 0;
-        transform: translate(1240px);
-        top: 0;
-    }
-    .marquee:nth-child(1) {
-        animation-delay: -40s;
-    }
-    
-    @keyframes marquee {
-        0% {
-            transform: translate(1240px);
-        }
-        100% {
-            transform: translate(-1240px);
-        }
-    }
-    .container_p2 img {
-        z-index: 2;
-        float: right;
+    /* LOGO MARQUEE */
+    .container_logos {
         height: 35px;
+        margin-top: 0px;
+        margin-bottom: 20px;
     }
+    .container_logos img {
+        height: 20px;
+    }
+
     iframe {
         position: absolute;
         top: 0;
@@ -937,6 +969,11 @@ footer {
         font-weight: 600;
         transition: .3s;
     }
+    .mentions {
+        margin-bottom: 100px;
+        font-size: 10px;
+    }
+
     /* FOOTER */
     footer {
         height: 75px;

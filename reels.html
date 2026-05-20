@@ -59,22 +59,34 @@
 
                         <li><div class="item"><div class="reel-box">
                         <video class="reel-video" id="reelvideo1" src="ELEMENTS/reel1.mp4#t=0.001" poster="ELEMENTS/minia_reel1.jpg" muted loop playsinline preload="metadata"></video>
-                            <div class="volume-control">
-                                <div class="volume-bar"><div class="volume-fill"></div></div>
+                            <div class="play-pause-icon"></div>
+                            <div class="timeline-control">
+                                <div class="timeline-bar"><div class="timeline-fill"></div></div>
+                            </div>
+                        </div></div></li>
+
+                        <li><div class="item"><div class="reel-box fix-line">
+                        <video class="reel-video" id="reelvideo4" src="ELEMENTS/reel4.mp4#t=0.001" poster="ELEMENTS/minia_reel4.jpg" muted loop playsinline preload="metadata"></video>
+                            <div class="play-pause-icon"></div>
+                            <div class="timeline-control">
+                                <div class="timeline-bar"><div class="timeline-fill"></div></div>
                             </div>
                         </div></div></li>
 
                         <li><div class="item"><div class="reel-box">
                         <video class="reel-video" id="reelvideo2" src="ELEMENTS/reel2.mp4#t=0.001" poster="ELEMENTS/minia_reel2.jpg" muted loop playsinline preload="metadata"></video>
-                            <div class="volume-control">
-                                <div class="volume-bar"><div class="volume-fill"></div></div>
+                            <div class="play-pause-icon"></div>
+                            <div class="timeline-control">
+                                <div class="timeline-bar"><div class="timeline-fill"></div></div>
                             </div>
                         </div></div></li>
+                        
 
                         <li><div class="item"><div class="reel-box">
                         <video class="reel-video" id="reelvideo3" src="ELEMENTS/reel3.mp4#t=0.001" poster="ELEMENTS/minia_reel3.jpg" muted loop playsinline preload="metadata"></video>
-                            <div class="volume-control">
-                                <div class="volume-bar"><div class="volume-fill"></div></div>
+                            <div class="play-pause-icon"></div>
+                            <div class="timeline-control">
+                                <div class="timeline-bar"><div class="timeline-fill"></div></div>
                             </div>
                         </div></div></li>
 
@@ -98,97 +110,115 @@
         <script src="burger.js"></script>
         <script src="reels_mobile.js"></script>
         <script>
-            // Hover desktop : lecture + gestion de la barre de son synchronisée
+            // Hover desktop : lecture, son et gestion de la timeline
             const items = document.querySelectorAll('.item');
-            const allVideos = document.querySelectorAll('.reel-video');
-            const allVolumeFills = document.querySelectorAll('.volume-fill');
 
-            let globalVolume = 0; // Volume partagé, de 0.0 à 1.0
             let isDragging = false;
             
-            // Variable pour le glissement
-            let activeControl = null;
-
-            // Fonction pour mettre à jour l'UI de toutes les barres de volume
-            function updateAllVolumeBars() {
-                allVolumeFills.forEach(fill => {
-                    fill.style.width = `${globalVolume * 100}%`;
-                });
-            }
+            let activeTimelineControl = null;
+            let activeVideo = null;
 
             items.forEach(item => {
                 const reelBox = item.querySelector('.reel-box');
                 const video = item.querySelector('.reel-video');
-                const volumeControl = item.querySelector('.volume-control');
+                const timelineControl = item.querySelector('.timeline-control');
+                const timelineFill = item.querySelector('.timeline-fill');
+                const playPauseIcon = item.querySelector('.play-pause-icon');
 
-                // Appliquer le volume global au survol et jouer la vidéo
+                // Mise à jour de la barre de progression pendant la lecture
+                video.addEventListener('timeupdate', () => {
+                    if (video.duration) {
+                        const percentage = (video.currentTime / video.duration) * 100;
+                        timelineFill.style.width = `${percentage}%`;
+                    }
+                });
+
+                // Activer le son au max au survol et jouer la vidéo
                 reelBox.addEventListener('mouseenter', () => {
-                    video.volume = globalVolume;
-                    video.muted = (globalVolume === 0);
+                    video.volume = 1;
+                    video.muted = false;
                     video.play().catch(e => {}); 
                 });
                 
                 reelBox.addEventListener('mouseleave', () => {
-                    // Ne pas arrêter la vidéo si on est en train de régler le volume
-                    if (!isDragging) {
+                    // Ne pas arrêter la vidéo si on est en train de l'avancer
+                    if (!isDragging || activeVideo !== video) {
                         video.pause();
                         video.currentTime = 0;
+                        if (playPauseIcon) {
+                            playPauseIcon.classList.remove('visible');
+                        }
                     }
                 });
 
-                // Rendre la barre cliquable et draggable
-                if (volumeControl) {
+                // Gestion du clic pour pause/play (uniquement sur Desktop)
+                video.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) return; // Sur mobile, c'est géré par reels_mobile.js
+
+                    if (video.paused) {
+                        video.play().catch(err => {});
+                        if (playPauseIcon) {
+                            playPauseIcon.textContent = '►';
+                            playPauseIcon.classList.add('visible');
+                            setTimeout(() => playPauseIcon.classList.remove('visible'), 300);
+                        }
+                    } else {
+                        video.pause();
+                        if (playPauseIcon) {
+                            playPauseIcon.textContent = '❚❚';
+                            playPauseIcon.classList.add('visible');
+                        }
+                    }
+                });
+
+                // Rendre la timeline cliquable et draggable
+                if (timelineControl) {
                     const startDrag = (e) => {
                         e.preventDefault();
                         isDragging = true;
-                        activeControl = volumeControl; // La barre sur laquelle on a cliqué
-                        updateGlobalVolume(e.touches ? e.touches[0] : e);
+                        activeTimelineControl = timelineControl;
+                        activeVideo = video;
+                        updateTimeline(e.touches ? e.touches[0] : e);
                     };
-                    volumeControl.addEventListener('mousedown', startDrag);
-                    volumeControl.addEventListener('touchstart', startDrag, {passive: false});
+                    timelineControl.addEventListener('mousedown', startDrag);
+                    timelineControl.addEventListener('touchstart', startDrag, {passive: false});
                 }
             });
 
-            // Fonction qui met à jour le volume global et l'applique à tout
-            function updateGlobalVolume(e) {
-                if (!activeControl) return;
-                const rect = activeControl.getBoundingClientRect();
+            // Fonction qui met à jour la progression de la vidéo
+            function updateTimeline(e) {
+                if (!activeTimelineControl || !activeVideo) return;
+                const rect = activeTimelineControl.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const percentage = Math.max(0, Math.min(1, x / rect.width));
                 
-                globalVolume = percentage; // Mettre à jour la variable globale
-
-                // Appliquer le nouveau volume à TOUTES les vidéos
-                allVideos.forEach(v => {
-                    v.volume = globalVolume;
-                    v.muted = (globalVolume === 0);
-                });
-
-                // Mettre à jour l'affichage de TOUTES les barres
-                updateAllVolumeBars();
+                if (activeVideo.duration) {
+                    activeVideo.currentTime = percentage * activeVideo.duration;
+                }
             }
 
-            // Suivi du déplacement de la souris pour gérer le volume
+            // Suivi du déplacement de la souris pour gérer la timeline
             window.addEventListener('mousemove', (e) => {
-                if (isDragging) updateGlobalVolume(e);
+                if (isDragging) updateTimeline(e);
             });
             window.addEventListener('touchmove', (e) => {
-                if (isDragging) updateGlobalVolume(e.touches[0]);
+                if (isDragging) updateTimeline(e.touches[0]);
             }, {passive: true});
 
-            // Arrêt du réglage de volume quand on lâche le clic
+            // Arrêt de l'ajustement quand on lâche le clic
             const stopDrag = () => {
                 if (isDragging) {
                     isDragging = false;
-                    activeControl = null;
-                    // Vérifier si la souris est en dehors de toutes les reel-box pour mettre en pause
-                    const isOverReelBox = Array.from(document.querySelectorAll('.reel-box')).some(box => box.matches(':hover'));
-                    if (!isOverReelBox) {
-                        allVideos.forEach(v => {
-                            v.pause();
-                            v.currentTime = 0;
-                        });
+                    activeTimelineControl = null;
+                    
+                    if (activeVideo) {
+                        const isOverReelBox = activeVideo.closest('.reel-box').matches(':hover');
+                        if (!isOverReelBox && window.matchMedia("(hover: hover)").matches) {
+                            activeVideo.pause();
+                            activeVideo.currentTime = 0;
+                        }
                     }
+                    activeVideo = null;
                 }
             };
             window.addEventListener('mouseup', stopDrag);
