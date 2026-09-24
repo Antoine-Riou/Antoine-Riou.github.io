@@ -58,7 +58,23 @@
                     <ul class="auto-grid">
 
                         <li><div class="item"><div class="reel-box">
-                        <video class="reel-video" id="reelvideo1" src="ELEMENTS/reel1.mp4#t=0.001" poster="ELEMENTS/minia_reel1.jpg" muted loop playsinline preload="metadata"></video>
+                        <video class="reel-video" id="reelvideo5" src="ELEMENTS/reel5.mp4#t=0.001" poster="ELEMENTS/minia_reel5.jpg" muted loop playsinline preload="metadata"></video>
+                            <div class="play-pause-icon"></div>
+                            <div class="timeline-control">
+                                <div class="timeline-bar"><div class="timeline-fill"></div></div>
+                            </div>
+                        </div></div></li>
+
+                        <li><div class="item"><div class="reel-box">
+                        <video class="reel-video" id="reelvideo6" src="ELEMENTS/reel6.mp4#t=0.001" poster="ELEMENTS/minia_reel6.jpg" muted loop playsinline preload="metadata"></video>
+                            <div class="play-pause-icon"></div>
+                            <div class="timeline-control">
+                                <div class="timeline-bar"><div class="timeline-fill"></div></div>
+                            </div>
+                        </div></div></li>
+
+                        <li><div class="item"><div class="reel-box">
+                        <video class="reel-video" id="reelvideo7" src="ELEMENTS/reel7.mp4#t=0.001" poster="ELEMENTS/minia_reel7.jpg" muted loop playsinline preload="metadata"></video>
                             <div class="play-pause-icon"></div>
                             <div class="timeline-control">
                                 <div class="timeline-bar"><div class="timeline-fill"></div></div>
@@ -67,6 +83,22 @@
 
                         <li><div class="item"><div class="reel-box fix-line">
                         <video class="reel-video" id="reelvideo4" src="ELEMENTS/reel4.mp4#t=0.001" poster="ELEMENTS/minia_reel4.jpg" muted loop playsinline preload="metadata"></video>
+                            <div class="play-pause-icon"></div>
+                            <div class="timeline-control">
+                                <div class="timeline-bar"><div class="timeline-fill"></div></div>
+                            </div>
+                        </div></div></li>
+
+                        <li><div class="item"><div class="reel-box fix-line">
+                        <video class="reel-video" id="reelvideo8" src="ELEMENTS/reel8.mp4#t=0.001" poster="ELEMENTS/minia_reel8.jpg" muted loop playsinline preload="metadata"></video>
+                            <div class="play-pause-icon"></div>
+                            <div class="timeline-control">
+                                <div class="timeline-bar"><div class="timeline-fill"></div></div>
+                            </div>
+                        </div></div></li>
+
+                        <li><div class="item"><div class="reel-box">
+                        <video class="reel-video" id="reelvideo1" src="ELEMENTS/reel1.mp4#t=0.001" poster="ELEMENTS/minia_reel1.jpg" muted loop playsinline preload="metadata"></video>
                             <div class="play-pause-icon"></div>
                             <div class="timeline-control">
                                 <div class="timeline-bar"><div class="timeline-fill"></div></div>
@@ -114,9 +146,48 @@
             const items = document.querySelectorAll('.item');
 
             let isDragging = false;
-            
-            let activeTimelineControl = null;
             let activeVideo = null;
+            let activeTimelineControl = null;
+
+            function pauseAllOtherVideos(currentVideo) {
+                document.querySelectorAll('.reel-video').forEach(video => {
+                    if (video !== currentVideo) {
+                        video.pause();
+                        video.currentTime = 0;
+                        video.muted = false;
+                    }
+                });
+
+                document.querySelectorAll('.item').forEach(itemEl => {
+                    const itemVideo = itemEl.querySelector('.reel-video');
+                    if (itemVideo !== currentVideo) {
+                        itemEl.classList.remove('hovered');
+                    }
+                });
+            }
+
+            function setActiveItem(video) {
+                document.querySelectorAll('.item').forEach(itemEl => {
+                    const itemVideo = itemEl.querySelector('.reel-video');
+                    const isActive = itemVideo === video;
+                    itemEl.classList.toggle('hovered', isActive);
+                });
+            }
+
+            function getVideoVolume(video) {
+                if (!video) return 1;
+                const volumes = {
+                    reelvideo1: 0.4,
+                    reelvideo2: 0.7,
+                    reelvideo3: 0.7,
+                    reelvideo4: 0.8,
+                    reelvideo5: 0.8,
+                    reelvideo6: 0.8,
+                    reelvideo7: 0.8,
+                    reelvideo8: 1
+                };
+                return volumes[video.id] ?? 1;
+            }
 
             items.forEach(item => {
                 const reelBox = item.querySelector('.reel-box');
@@ -133,18 +204,26 @@
                     }
                 });
 
-                // Activer le son au max au survol et jouer la vidéo
+                // Au hover, on affiche le bouton play uniquement si la vidéo n'est pas déjà active.
                 reelBox.addEventListener('mouseenter', () => {
-                    video.volume = 1;
-                    video.muted = false;
-                    video.play().catch(e => {}); 
+                    if (window.innerWidth <= 768) return;
+                    if (activeVideo === video) return;
+
+                    video.volume = getVideoVolume(video);
+
+                    if (playPauseIcon) {
+                        playPauseIcon.textContent = '►';
+                        playPauseIcon.classList.add('visible');
+                    }
                 });
                 
                 reelBox.addEventListener('mouseleave', () => {
-                    // Ne pas arrêter la vidéo si on est en train de l'avancer
-                    if (!isDragging || activeVideo !== video) {
-                        video.pause();
-                        video.currentTime = 0;
+                    if (activeVideo === video) {
+                        return;
+                    }
+
+                    if (!isDragging) {
+                        item.classList.remove('hovered');
                         if (playPauseIcon) {
                             playPauseIcon.classList.remove('visible');
                         }
@@ -156,7 +235,13 @@
                     if (window.innerWidth <= 768) return; // Sur mobile, c'est géré par reels_mobile.js
 
                     if (video.paused) {
+                        pauseAllOtherVideos(video);
+                        setActiveItem(video);
+                        video.muted = false;
+                        video.volume = getVideoVolume(video);
                         video.play().catch(err => {});
+                        activeVideo = video;
+
                         if (playPauseIcon) {
                             playPauseIcon.textContent = '►';
                             playPauseIcon.classList.add('visible');
@@ -164,6 +249,8 @@
                         }
                     } else {
                         video.pause();
+                        activeVideo = null;
+                        setActiveItem(null);
                         if (playPauseIcon) {
                             playPauseIcon.textContent = '❚❚';
                             playPauseIcon.classList.add('visible');
