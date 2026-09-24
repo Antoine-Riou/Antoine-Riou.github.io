@@ -48,5 +48,5 @@ window.addEventListener('resize', applyHoverEffectOnImage);
 
 // Vérifier si l'utilisateur est sur mobile
 function isMobile() {
-    return window.innerWidth <= 768;
+    return window.matchMedia('(max-width: 480px)').matches;
 }

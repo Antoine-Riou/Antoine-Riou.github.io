@@ -230,12 +230,27 @@ header {
 }
 @media (max-width: 1024px) {
     .auto-grid {
-        grid-template-columns: repeat(2, 1fr);
+        display: block;
+        column-count: 2;
+        column-gap: 20px;
+    }
+
+    .auto-grid li {
+        display: block;
+        break-inside: avoid;
+        margin-bottom: 15px;
     }
 }
 @media (max-width: 480px) {
     .auto-grid {
+        display: grid;
         grid-template-columns: repeat(1, 1fr);
+    }
+
+    .auto-grid li {
+        display: block;
+        break-inside: auto;
+        margin-bottom: 0;
     }
 }
 
@@ -639,7 +654,7 @@ footer {
     .footer_insta {
         line-height: 35px;
         margin-right: 10px;
-        font-size: 20px;
+        font-size: 23px;
     }
 }
 

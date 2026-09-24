@@ -251,7 +251,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 
-@media (max-width: 980px) {
+@media (max-width: 1024px) {
     .first-box {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto auto;
@@ -291,10 +291,10 @@ body::-webkit-scrollbar-thumb {
 
 .auto-grid {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 10px 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px 25px;
+    margin-top: 25px;
+    margin-bottom: 15px;
 }
 
 #categorie2, #mytext2{
@@ -305,9 +305,15 @@ body::-webkit-scrollbar-thumb {
     font-family: 'DrukWide-BoldItalic-Trial', sans-serif;
 }
 
-@media (min-width: 980px) {
+@media (max-width: 1024px) {
     .auto-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .auto-grid {
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 
@@ -366,18 +372,18 @@ footer {
     padding: 10px;
 }
 .box_p3 {
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin: 0 auto;
     width: 88vw;
     height: auto;
-    
 }
 .footer_text {
     background-color: #0c1514;
     line-height: 35px;
     margin-right: 5px;
     display: block;
-    float: right;
     color: #ef3869;
     text-decoration: none;
     transition: .5s;
@@ -394,7 +400,6 @@ footer {
     background-color: #0c1514;
     line-height: 35px;
     display: block;
-    float: left;
     color: white;
     text-decoration: none;
     transition: .5s;
